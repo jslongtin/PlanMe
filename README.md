@@ -32,3 +32,15 @@ facade
 proxy
 observer
 strategy
+
+
+### ceux possibles
+strategy 
+composite
+observer
+
+
+Ref : 
+
+[Structure derriere notion] https://www.notion.so/blog/data-model-behind-notion
+[API notion]https://www.notion.so/blog/creating-the-notion-api
