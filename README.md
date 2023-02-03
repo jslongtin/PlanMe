@@ -53,3 +53,6 @@ https://www.youtube.com/watch?v=Ke90Tje7VS0&ab_channel=ProgrammingwithMosh
 
 interesting for building a custumizable interface
 https://tailwindcss.com/
+
+vite project guide
+https://www.youtube.com/watch?v=b0pkpcD8Ms4&ab_channel=ForrestKnight
