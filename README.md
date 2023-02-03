@@ -42,7 +42,7 @@ composite
 observer
 
 
-###Ref : 
+Ref : 
 
 [Structure derriere notion] https://www.notion.so/blog/data-model-behind-notion
 
@@ -51,3 +51,5 @@ observer
 tuto react
 https://www.youtube.com/watch?v=Ke90Tje7VS0&ab_channel=ProgrammingwithMosh
 
+interesting for building a custumizable interface
+https://tailwindcss.com/
