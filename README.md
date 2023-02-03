@@ -58,3 +58,7 @@ vite project guides:
   https://www.youtube.com/watch?v=b0pkpcD8Ms4&ab_channel=ForrestKnight
     video by the creator:
       https://www.youtube.com/watch?v=DkGV5F4XnfQ&ab_channel=VueMastery
+
+exploring diferent frameworks :
+  link at timestamp on react :
+https://youtu.be/cuHDQhDhvPE?t=262
