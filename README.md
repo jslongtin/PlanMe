@@ -31,6 +31,8 @@ adapter
 facade
 proxy
 observer
+
+
 strategy
 
 
@@ -43,4 +45,14 @@ observer
 Ref : 
 
 [Structure derriere notion] https://www.notion.so/blog/data-model-behind-notion
+
 [API notion]https://www.notion.so/blog/creating-the-notion-api
+
+tuto react
+https://www.youtube.com/watch?v=Ke90Tje7VS0&ab_channel=ProgrammingwithMosh
+
+interesting for building a custumizable interface
+https://tailwindcss.com/
+
+vite project guide
+https://www.youtube.com/watch?v=b0pkpcD8Ms4&ab_channel=ForrestKnight
