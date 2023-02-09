@@ -1,6 +1,9 @@
 # Projet_Synthese
 CVM: -C61
+Nom du projet : PlanMe
+Equipiers: Finnegan Simpson et Jessika Longtin
 
+# Notes
 ## Partition
 C61
 pwd:AMD487amd
