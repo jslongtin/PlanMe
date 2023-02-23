@@ -1,0 +1,18 @@
+Utilisateur = {
+    "id": 0,
+    "Courriel": "",
+    "Nom": "",
+    "Prenom": "",
+    "MotDePasse": "",
+    "PhotoDeProfil": "",
+    "Theme": "",
+    "Contacts": { 
+        id_utilisateur1,
+        id_utilisateur2
+    },
+    "Pages": {
+        "page": {
+            
+        }
+    }
+}

@@ -8502,11 +8502,11 @@
 								"$ref": "AAAAAAGGODsVCYtGa+U="
 							},
 							"font": "Arial;13;0",
-							"left": 560,
+							"left": 552,
 							"top": 640,
 							"width": 153,
-							"height": 113,
-							"text": "- email\n- nom\n-nickname\n- mot de passe\n- photo de profile -contacts                         - theme              "
+							"height": 124,
+							"text": "- email\n- nom\n-nickname\n- mot de passe\n- photo de profile -contacts                         - theme                          - date naissance"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -8522,7 +8522,7 @@
 								"$ref": "AAAAAAGGOFJxk7d6RcU="
 							},
 							"lineStyle": 1,
-							"points": "649:639;660:592"
+							"points": "646:639;659:592"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -8538,7 +8538,7 @@
 								"$ref": "AAAAAAGGOFJxk7d6RcU="
 							},
 							"lineStyle": 1,
-							"points": "646:753;663:847"
+							"points": "643:764;662:847"
 						},
 						{
 							"_type": "UMLAssociationView",
