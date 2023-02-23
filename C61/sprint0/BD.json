@@ -1,4 +1,5 @@
-Utilisateur = {
+// Utilisateur
+{
     "id": 0,
     "Courriel": "",
     "Nom": "",
@@ -7,11 +8,32 @@ Utilisateur = {
     "PhotoDeProfil": "",
     "Theme": "",
     "Contacts": { 
-        id_utilisateur1,
-        id_utilisateur2
+    
     },
     "Pages": {
         "page": {
+            
+        }
+    }
+}
+// contact
+{
+    "id_utilisateur",
+    "id_utilisateur2",
+    ...
+}
+// page
+{
+    "modules": {
+        "moduleTexte":{
+            "id": 0,
+            "contenu" : "",
+            "police" : "",
+            "tailleTexte" : 12
+        },
+        "moduleListe":{
+            "id" : 0,
+            "type" : ""
             
         }
     }
