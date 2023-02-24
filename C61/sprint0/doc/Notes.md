@@ -128,3 +128,8 @@ https://www.youtube.com/watch?v=ENrzD9HAZK4
 calandar:
 https://codesandbox.io/s/xmt6r?file=/src/Details.js
 
+
+https://www.notion.so/blog/creating-the-notion-api
+
+https://www.reddit.com/r/Notion/comments/glmarl/what_tech_stack_does_notion_use
+https://www.notion.so/blog/sharding-postgres-at-notion
