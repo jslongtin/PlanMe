@@ -2,9 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
-// class function
-function Module() {
+
+function Utilisateur() {
     return <h2>slayyyyyyyyyy</h2>;
 }
 
-export default Module
+export default Utilisateur
