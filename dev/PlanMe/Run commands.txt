@@ -1,5 +1,8 @@
 cd PlanMe
 # si node-modules pas la:
+
+cd dev\planme
+
 npm install
 
 npm run dev
