@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+// ref: inspirer de chat gpt et modifier
+// FIXME
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
