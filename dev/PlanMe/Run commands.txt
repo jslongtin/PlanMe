@@ -6,3 +6,12 @@ cd dev\planme
 npm install
 
 npm run dev
+
+
+autres dependances:
+
+postgres:
+npm install pg
+
+Express:
+npm install express --save
