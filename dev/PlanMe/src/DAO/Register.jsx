@@ -8,7 +8,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     // Send registration request to backend
     alert("Registration successful"); // Show success message if registration is successful
-    window.location.href = "/login"; // Redirect to login page after successful registration
+    window.location.href = "/login"; // Redirect to login page
   };
   //   const handleRegister = async (e) => {
   //     e.preventDefault();
