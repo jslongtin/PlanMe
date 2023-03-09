@@ -15,3 +15,10 @@ npm install pg
 
 Express:
 npm install express --save
+
+
+
+
+error styled compon
+npm install styled-components 
+npm install react-router-dom
