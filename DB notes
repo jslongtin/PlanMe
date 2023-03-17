@@ -1,0 +1,26 @@
+https://forums.docker.com/t/error-response-from-daemon-open-pipe-docker-engine-windows-the-system-cannot-find-the-file-specified/131750/7
+
+
+https://www.coretechnologies.com/products/AlwaysUp/Apps/StartDockerDaemonAsAWindowsService.html#:~:text=To%20start%20Docker%20in%20daemon,immediately%2C%20before%20anyone%20logs%20on.
+
+kernel errors : 
+https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
+
+kernel error -> ubuntu cant login a vid:
+https://www.youtube.com/watch?time_continue=144&v=UZcXfPFeJN8&embeds_euri=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dwsl%2Brequires%2Ban%2Bupdate%2Bto%2Bits%2Bkernel%26rlz%3D1C1CHBF_enCA888CA888%26oq%3Dwsl%2Brequ%26aqs%3Dchrome.0.0i512l3j6&feature=emb_logo&ab_channel=ElyasTech
+
+install ubuntu 
+microsoft store 
+
+install wsl
+https://learn.microsoft.com/en-us/windows/wsl/install
+
+
+docker hub postgres 
+https://hub.docker.com/_/postgres
+
+C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
+
+docker login
+
+docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa111 -d postgres
