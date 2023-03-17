@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Login from "./DAO/Login";
 import Register from "./DAO/Register";
+import Menubar from "./Components/Menubar";
 import "./index.css";
 
 const App = () => {
@@ -13,8 +14,10 @@ const App = () => {
 
   return (
     <div>
-      {page === "login" && <Login onPageChange={handlePageChange} />}
-      {page === "register" && <Register onPageChange={handlePageChange} />}
+      <Menubar /> 
+     
+      {/* {page === "login" && <Login onPageChange={handlePageChange} />} */}
+      {/* {page === "register" && <Register onPageChange={handlePageChange} />} */}
     </div>
   );
 };
