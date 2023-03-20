@@ -4,7 +4,6 @@ import './MenuBar.css'
 function Menubar() {
     return (
         <div id="menuBar">
-            
             <div id="menuTopSection">
                 <div className="pdp"></div>
                 <div className="search"></div>

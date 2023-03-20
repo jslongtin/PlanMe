@@ -14,7 +14,9 @@
   -webkit-text-size-adjust: 100%;
 
   /* variables perso */
-  --secondaryBackground : #cccccc
+  --secondaryColor : #cccccc;
+  --primaryColor: #adc4ad;
+  --thirdColor : #A7C7E7;
 
 }
 

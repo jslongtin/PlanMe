@@ -3,10 +3,13 @@ import reactLogo from '../assets/img/Hello_Kitty.svg'
 import '../App.css'
 
 
-// TODO
-// class function
+
 function Module() {
-    return <h2>slayyyyyyyyyy</h2>;
+    return (
+        <div className="module">
+            module
+        </div>
+    )
 }
 
 export default Module
