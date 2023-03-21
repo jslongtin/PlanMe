@@ -24,3 +24,6 @@ C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
 docker login
 
 docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa111 -d postgres
+
+
+https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
