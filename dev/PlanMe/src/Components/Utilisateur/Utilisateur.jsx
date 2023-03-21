@@ -31,6 +31,17 @@ function Utilisateur(props) {
         } else if (name === "courriel") {
             setCourriel(value)
         }
+         else if (name === "motDePasse") {
+            setMotDePasse(value)
+        }
+         else if (name === "theme") {
+            setTheme(value)
+        }
+         else if (name === "photoDeProfil") {
+            setPhotoDeProfil(value)
+        }else if (name === "contacts") {
+            setContacts(value)
+        }
     }
     return (
         <>

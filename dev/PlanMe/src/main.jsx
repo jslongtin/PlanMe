@@ -15,10 +15,10 @@ const App = () => {
 
   return (
     <div>
-      <Page/> 
+      {/* <Page/>  */}
      
-      {/* {page === "login" && <Login onPageChange={handlePageChange} />} */}
-      {/* {page === "register" && <Register onPageChange={handlePageChange} />} */}
+      {page === "login" && <Login onPageChange={handlePageChange} />}
+      {page === "register" && <Register onPageChange={handlePageChange} />}
     </div>
   );
 };
