@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import "./css/register.css";
+import "./register.css";
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [sirname, setSirname] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = async (e) => {
@@ -48,24 +47,12 @@ const Register = () => {
         <label>
           Sirname:
           <input
-            type="sirname"
-            value={sirname}
+            type="username"
+            value={username}
             onChange={(e) => setSirname(e.target.value)}
             required
           />
         </label>
-        <br />
-
-        <label>
-          Name:
-          <input
-            type="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <br />
         <label>
           Password:
           <input

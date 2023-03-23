@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Login from "./DAO/Login";
-import Register from "./DAO/Register";
+import Login from "./Components/Login/Login";
+import Register from "./Components/register/Register";
 import Menubar from "./Components/Menubar/Menubar";
 import Page from "./Components/Pages/Page";
 import "./index.css";
