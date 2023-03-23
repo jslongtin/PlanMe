@@ -3,32 +3,32 @@ import "./css/register.css";
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [sirname, setSirname] = useState("");
-  const [name, setName] = useState("");
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = async (e) => {
-    // Send registration request to backend
-    alert("Registration successful"); // Show success message if registration is successful
-    window.location.href = "/login"; // Redirect to login page
-  };
-  //   const handleRegister = async (e) => {
-  //     e.preventDefault();
-  //     // Send registration request to backend
-  //     const response = await fetch("/register", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ email, password }),
-  //     });
-  //     if (response.ok) {
-  //       alert("Registration successful"); // Show success message if registration is successful
-  //       window.location.href = "/login"; // Redirect to login page after successful registration
-  //     } else {
-  //       alert("Registration failed"); // Show error message if registration fails
-  //     }
-  //   };
+  // const handleRegister = async (e) => {
+  //   // Send registration request to backend
+  //   alert("Registration successful"); // Show success message if registration is successful
+  //   window.location.href = "/login"; // Redirect to login page
+  // };
+    const handleRegister = async (e) => {
+      e.preventDefault();
+      // Send registration request to backend
+      const response = await fetch("/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, nom, prenom, password }),
+      });
+      if (response.ok) {
+        alert("Registration successful"); // Show success message if registration is successful
+        window.location.href = "/login"; // Redirect to login page after successful registration
+      } else {
+        alert("Registration failed"); // Show error message if registration fails
+      }
+    };
 
   return (
     <div>
@@ -46,22 +46,22 @@ const Register = () => {
 
         <br />
         <label>
-          Sirname:
+          Nom:
           <input
-            type="sirname"
-            value={sirname}
-            onChange={(e) => setSirname(e.target.value)}
+            type="nom"
+            value={nom}
+            onChange={(e) => setNom(e.target.value)}
             required
           />
         </label>
         <br />
 
         <label>
-          Name:
+          Prenom:
           <input
-            type="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            type="prenom"
+            value={prenom}
+            onChange={(e) => setPrenom(e.target.value)}
             required
           />
         </label>
