@@ -1,13 +1,11 @@
 // TODO
 import React from 'react'
-import Menubar from '../MenuBar/Menubar'
+import ReactDOM from "react-dom";
+import './page.css'
 
 function Page() {
     return (
-        // objet menubar dans la page 
-        // ref: w3school , page des components 
-        <div><Menubar /></div>
-
+       <div id="modulesContainer">page</div>
     )
 }
 

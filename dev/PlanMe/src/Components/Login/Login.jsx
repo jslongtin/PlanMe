@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./css/login.css";
+import "./login.css";
 
 const Login = ({ onPageChange }) => {
   const [email, setEmail] = useState("");
@@ -47,7 +47,7 @@ const Login = ({ onPageChange }) => {
         </label>
         <br />
         <button type="submit">Login</button>
-        <button onClick={() => onPageChange("register")}>Register</button>
+        <button onClick={() => onPageChange("register")}>register</button>
       </form>
     </div>
   );
