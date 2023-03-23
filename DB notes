@@ -27,3 +27,10 @@ docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa111 -d postgres
 
 
 https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
+
+
+
+
+get content in database:
+
+node C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\Connxion.js

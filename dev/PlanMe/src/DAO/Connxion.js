@@ -12,8 +12,8 @@ const { Client } = pg;
 // Set up the PostgreSQL client
 const client = new Client({
   user: "postgres",
-  host: "localhost",
-  database: "PlanMe",
+  host: "34.68.74.227",
+  database: "postgres",
   password: "AAAaaa111",
   port: 5432,
 });
