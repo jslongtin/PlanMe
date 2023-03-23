@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./register.css";
+import axios from 'axios';
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     // Send registration request to backend
+  
     alert("Registration successful"); // Show success message if registration is successful
     window.location.href = "/login"; // Redirect to login page
   };
@@ -49,7 +51,7 @@ const Register = () => {
           <input
             type="username"
             value={username}
-            onChange={(e) => setSirname(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
