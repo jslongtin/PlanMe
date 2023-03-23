@@ -1,0 +1,8 @@
+#modulesContainer {
+    height: 100vh;
+    width: 90%;
+    position: absolute;
+    display: flex;
+    align-self: flex-end;
+    background-color: var(--primaryColor);
+}

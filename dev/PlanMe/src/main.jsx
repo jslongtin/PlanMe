@@ -5,6 +5,7 @@ import Register from "./Components/register/Register";
 import Menubar from "./Components/Menubar/Menubar";
 import Page from "./Components/Pages/Page";
 import "./index.css";
+import Dashboard from "./Components/dashboard/dashboard";
 
 const App = () => {
   const [page, setPage] = React.useState("login");
@@ -15,7 +16,7 @@ const App = () => {
 
   return (
     <div>
-      <Page/> 
+      <Dashboard/> 
      
       {/* {page === "login" && <Login onPageChange={handlePageChange} />} */}
       {/* {page === "register" && <Register onPageChange={handlePageChange} />} */}
