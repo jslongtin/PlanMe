@@ -7,14 +7,14 @@
     display: flex;
     flex-direction: row;
     align-self: start;
-}
+} 
 
 #menuTopSection {
     position: absolute;
     align-self: flex-start;
     width: 100%;
     height: 20%;
-    /* background-color: var(--primaryColor); */
+    background-color: var(--primaryColor);
 }
 
 #menuPages {

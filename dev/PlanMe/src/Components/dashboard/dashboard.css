@@ -1,4 +1,23 @@
 #dashboard {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+#navBarContainer {
+    /* align-self: flex-start; */
+    left: 0;
+    width: 20vw;
+    height: 100vh;
+    /* background-color: aquamarine; */
+}
+
+#pageContainer {
+    /* align-self: flex-end; */
+    display: flex;
+    width: 80%;
+    height: 100%;
+  
+    
 }
