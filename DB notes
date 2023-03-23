@@ -34,3 +34,8 @@ https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
 get content in database:
 
 node C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\Connxion.js
+
+
+google cloud vm + docker server + postgres 
+Run a Postgres Database for Free on Google Cloud!:
+https://www.youtube.com/watch?v=JLdy_cJ1KRA&ab_channel=ScriptBytes

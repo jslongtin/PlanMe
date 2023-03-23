@@ -19,7 +19,14 @@ const client = new Client({
 });
 client.connect();
 
-client.query("SELECT * FROM users", (error, result) => {
+client.query("SELECT prenom FROM users", (error, result) => {
+  if (!error) {
+    console.log(result.rows);
+  } else {
+    console.error(error);
+  }
+});
+client.query("SELECT courriel FROM utilisateurs", (error, result) => {
   if (!error) {
     console.log(result.rows);
   } else {
