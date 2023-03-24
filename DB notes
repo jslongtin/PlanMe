@@ -36,6 +36,10 @@ get content in database:
 node C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\Connxion.js
 
 
+
+sudo docker run --name planmedb -e POSTGRES_PASSWORD=Synthesis61 -v postgres:/var/lib/postgresql/data -p 5432:5432 -d postgres
+
+
 google cloud vm + docker server + postgres 
 Run a Postgres Database for Free on Google Cloud!:
 https://www.youtube.com/watch?v=JLdy_cJ1KRA&ab_channel=ScriptBytes
