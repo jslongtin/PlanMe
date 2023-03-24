@@ -36,6 +36,7 @@ get content in database:
 
 node C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\Connxion.js
 
+nodemon C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\API\testapi.js
 
 
 sudo docker run --name planmedb -e POSTGRES_PASSWORD=Synthesis61 -v postgres:/var/lib/postgresql/data -p 5432:5432 -d postgres
