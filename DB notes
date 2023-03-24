@@ -25,10 +25,11 @@ docker login
 
 docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa111 -d postgres
 
-
+<!-- jess -->
 https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
-
-
+https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application
+https://www.youtube.com/watch?v=Dm0CmZz-QyI
+<!--  b -->
 
 
 get content in database:

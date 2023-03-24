@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: row;
     align-self: start;
-} 
+}
 
 #menuTopSection {
     position: absolute;
@@ -19,11 +19,39 @@
 
 #menuPages {
     position: absolute;
-    align-self:flex-end;
+    align-self: flex-end;
     width: 100%;
     height: 80%;
     background-color: var(--thirdColor);
 }
+
+.pageSection {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 5%;
+    background-color: gray;
+    text-align: center;
+}
+
+.textPageSection {
+    width: 40%;
+    height: 100%;
+    text-align: center;
+}
+
+.iconePageSection {
+    align-self: flex-start;
+    width: 20%;
+    height: 100%;
+
+}
+
+img {
+    border-radius: 10px;
+}
+
+
 /* #navBarUsername{
 
 } */

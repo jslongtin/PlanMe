@@ -1,5 +1,5 @@
 import React from "react";
-import Menubar from '../MenuBar/Menubar'
+import Navbar from '../Navbar/navbar'
 import Page from '../Pages/page'
 import './dashboard.css'
 
@@ -8,7 +8,7 @@ function Dashboard() {
         // objet menubar dans la page 
         // ref: w3school , page des components 
         <div id="dashboard">
-            <div id="navBarContainer"> <Menubar /></div>
+            <div id="navBarContainer"> <Navbar /></div>
             <div id="pageContainer"> <Page/> </div>
         </div>
 
