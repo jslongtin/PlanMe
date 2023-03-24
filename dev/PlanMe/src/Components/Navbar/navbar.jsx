@@ -1,8 +1,17 @@
 import React from 'react'
-import './MenuBar.css'
+import './navbar.css'
 import PhotoDeProfil from '../photoDeProfil/photoDeProfil'
+import { useState } from 'react'
+function Navbar(props) {
+    // REVIEW
+    let id = props.id
+    let titre = props.titre
+    let icone = props.icone
 
-function Menubar() {
+    let addPage = (page) => {
+        let section = <div className="pageSection"><div className="iconePageSection"></div> {page.icone} </div>
+    }
+
     return (
         <div id="menuBar">
             <div id="menuTopSection">
@@ -17,4 +26,4 @@ function Menubar() {
     )
 }
 
-export default Menubar
+export default Navbar
