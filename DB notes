@@ -44,3 +44,36 @@ sudo docker run --name planmedb -e POSTGRES_PASSWORD=Synthesis61 -v postgres:/va
 google cloud vm + docker server + postgres 
 Run a Postgres Database for Free on Google Cloud!:
 https://www.youtube.com/watch?v=JLdy_cJ1KRA&ab_channel=ScriptBytes
+
+
+
+
+
+
+
+
+DOCKER FILE IN THE PROJECT : 
+
+cd docker
+
+docker-compose up --build 
+
+docker-compose down  
+
+docker-compose -f docker/docker-compose.yml up   
+
+
+
+docker build -t synthese .
+
+docker run -d --name PlanMe -p 5432:5432 synthese
+388d5dbc6728d9f7f555b5ce21b9bd235599906f4cd5626a97b622052dd3041c
+
+
+
+
+
+
+
+
+
