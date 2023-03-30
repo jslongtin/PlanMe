@@ -3,12 +3,11 @@ const bodyParser = require('body-parser');
 const { genSalt, hash, compare } = require('bcrypt');
 const { sign } = require('jsonwebtoken');
 const pg = require('pg');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 
-const cors = require('cors');
-// Enable CORS for all routes
 app.use(cors());
 
 // Set up a connection to the PostgreSQL database using pg.Pool
@@ -65,6 +64,9 @@ app.post('/login', async (req, res) => {
     console.error(err);
     res.status(500).json({ error: err });
   }
+});
+app.get('/test', (req, res) => {
+  res.status(200).send('Test route is working!');
 });
 
 app.listen(8080, () => {

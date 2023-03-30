@@ -11,3 +11,13 @@ nodemon C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\API\testapi.js
 SET THE PORT
 set PORT=5000
 
+
+
+
+---------------------------------
+#TODO
+ Invoke-WebRequest -Uri 'http://127.0.0.1:8080/test' -Method 'GET'
+ error 
+
+
+---------------------------------
