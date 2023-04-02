@@ -1,16 +1,27 @@
 FROM node:14-alpine
-FROM postgres:latest
+
+# Install PostgreSQL client
+RUN apk update && \
+    apk add --no-cache postgresql-client
 
 # Set environment variables
 ENV POSTGRES_USER postgres
 ENV POSTGRES_PASSWORD AAAaaa111
 ENV POSTGRES_DB synthese
+ENV PORT 3001
 
-# Copy SQL scripts to the Docker container
-COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d/
+# Create app directory
+WORKDIR /usr/src/app
 
-# Install any dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+# Install app dependencies
+COPY package*.json ./
+RUN npm install
 
-# Expose PostgreSQL port
-EXPOSE 5432
+# Bundle app source
+COPY . .
+
+# Expose API server port
+EXPOSE $PORT
+
+# Start API server
+CMD ["npm", "start"]
