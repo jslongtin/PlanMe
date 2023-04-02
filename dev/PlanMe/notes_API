@@ -16,7 +16,7 @@ set PORT=5000
 
 ---------------------------------
 #TODO
- Invoke-WebRequest -Uri 'http://127.0.0.1:8080/test' -Method 'GET'
+ Invoke-WebRequest -Uri 'http://127.0.0.1:3000/test' -Method 'GET'
  error 
 
 

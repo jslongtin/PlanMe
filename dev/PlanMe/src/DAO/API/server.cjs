@@ -13,7 +13,7 @@ app.use(cors());
 // Set up a connection to the PostgreSQL database using pg.Pool
 const pool = new pg.Pool({
   user: 'postgres',
-  host: 'db',
+  host: 'localhost',
   database: 'synthese',
   password: 'AAAaaa111',
   port: 5432, // or your database's port
@@ -65,10 +65,42 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ error: err });
   }
 });
-app.get('/test', (req, res) => {
-  res.status(200).send('Test route is working!');
+
+const courses = [
+    {id: 1, name: 'course1'},
+    {id: 2, name: 'course2'},
+    {id: 3, name: 'course3'}
+];
+
+// Get all users
+app.get('/users', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM utilisateurs');
+    console.log(result.rows);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
-app.listen(8080, () => {
-  console.log('Server is listening on port 8080');
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
+app.get('/api/courses', (req, res) => {
+    res.send([1, 2, 3]);
+});
+
+// /api/courses/1
+
+app.get('/api/courses/:id', (req, res) => {
+    res.send(req.query);
+});
+
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
+});
+
+

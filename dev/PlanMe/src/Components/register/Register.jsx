@@ -9,7 +9,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     // Send registration request to backend
-    const response = await fetch("http://127.0.0.1:8080/register", {
+    const response = await fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
