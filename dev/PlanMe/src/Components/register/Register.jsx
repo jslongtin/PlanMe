@@ -9,7 +9,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     // Send registration request to backend
-    const response = await fetch("/api/register", {
+    const response = await fetch("http://127.0.0.1:3001/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ const Register = () => {
     if (response.ok) {
       console.log({ email, username, password });
       alert("Registration successful"); // Show success message if registration is successful
-      // window.location.href = "/login"; // Redirect to login page after successful registration
+      window.location.href = "/login"; // Redirect to login page after successful registration
     } else {
       alert("Registration failed"); // Show error message if registration fails
     }
