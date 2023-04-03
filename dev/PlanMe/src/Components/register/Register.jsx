@@ -7,31 +7,26 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const handleRegister = async (e) => {
+    e.preventDefault();
     // Send registration request to backend
-  
-    alert("Registration successful"); // Show success message if registration is successful
-    window.location.href = "/login"; // Redirect to login page
+    const response = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, username, password }),
+    });
+    if (response.ok) {
+      console.log({ email, username, password });
+      alert("Registration successful"); // Show success message if registration is successful
+      // window.location.href = "/login"; // Redirect to login page after successful registration
+    } else {
+      alert("Registration failed"); // Show error message if registration fails
+    }
   };
-  //   const handleRegister = async (e) => {
-  //     e.preventDefault();
-  //     // Send registration request to backend
-  //     const response = await fetch("/register", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ email, password }),
-  //     });
-  //     if (response.ok) {
-  //       alert("Registration successful"); // Show success message if registration is successful
-  //       window.location.href = "/login"; // Redirect to login page after successful registration
-  //     } else {
-  //       alert("Registration failed"); // Show error message if registration fails
-  //     }
-  //   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Register</h1>
       <form onSubmit={handleRegister}>
         <label>

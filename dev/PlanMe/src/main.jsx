@@ -7,8 +7,6 @@ import Page from "./Components/Pages/page";
 import "./index.css";
 import Dashboard from "./Components/dashboard/dashboard";
 
-
-
 const App = () => {
   const [page, setPage] = React.useState("login");
 
@@ -18,13 +16,12 @@ const App = () => {
 
   return (
     <div id="main">
-     <Dashboard />
-  
+      <Dashboard />
+
       {/* {page === "login" && <Login onPageChange={handlePageChange} />} */}
-      {/* {page === "register" && <Register onPageChange={handlePageChange} />} */}
+      {/* {<Register/>} */}
     </div>
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
