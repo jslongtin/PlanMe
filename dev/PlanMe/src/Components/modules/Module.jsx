@@ -1,13 +1,18 @@
 import { useState } from 'react'
-import reactLogo from '../assets/img/Hello_Kitty.svg'
-import '../App.css'
+
+import './module.css'
 
 
 
 function Module() {
+    const [text, setText] = useState("");
+    const textChange = (event) =>{
+    
+    
+    }
     return (
         <div className="module">
-            module
+            <textarea name="" id="" cols="30" rows="10"></textarea>
         </div>
     )
 }

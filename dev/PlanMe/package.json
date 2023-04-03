@@ -3,13 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server.js"
-    
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -21,10 +19,10 @@
     "pg": "^8.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^5.3.4",
     "sequelize": "^6.29.3",
     "sqlite3": "^5.1.6",
-    "styled-components": "^5.3.8"
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
@@ -39,5 +37,4 @@
   "author": "",
   "license": "ISC",
   "description": ""
-  
 }

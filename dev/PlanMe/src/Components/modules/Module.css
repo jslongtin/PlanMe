@@ -1,7 +1,10 @@
 .module {
     position: relative;
-
-    width: 70vw;
-    height: 20vh;
+    width: 80%;
+    height: 20%;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: 5px solid var(--primaryColor);
+    padding: 10px;
 
 }
