@@ -15,7 +15,8 @@ services:
       POSTGRES_DB: synthese
     volumes:
       - db-data:/var/lib/postgresql/data
-      - C:\travail\Projet_Synthese\dev\PlanMe\Docker\init.sql #/docker-entrypoint-initdb.d/init.sql a changer en fonction de l'emplacement du fichier
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
 
 volumes:
   db-data:

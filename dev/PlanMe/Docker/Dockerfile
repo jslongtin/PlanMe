@@ -18,7 +18,8 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY . .
+COPY server.cjs /usr/src/app/
+COPY package*.json ./
 
 # Expose API server port
 EXPOSE $PORT
