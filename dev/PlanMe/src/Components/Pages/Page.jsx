@@ -11,7 +11,9 @@ function Page(props) {
     let icone = props.icone
 
     return (
-       <div id="modulesContainer"> <Module /></div>
+       <div id="modulesContainer"> <Module />
+       <Module />
+       </div>
     )
 }
 

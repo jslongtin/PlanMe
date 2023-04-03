@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <div id="main">
-      {/* <Dashboard /> */}
+      <Dashboard />
 
       {page === "login" && <Login onPageChange={handlePageChange} />}
     </div>

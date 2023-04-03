@@ -4,6 +4,8 @@ import './module.css'
 
 
 // ref : https://chat.openai.com/chat
+
+// FIXME real time update des plusieurs selecteurs a revoir , it's whack
 function Module() {
     const [text, setText] = useState("");
     // useState(false) = valeure par default
@@ -28,6 +30,8 @@ function Module() {
         document.execCommand('underline', false, null);
         setUnderline(!underline)
     };
+
+    
     return (
         <div className="module">
             <div className="toolbar">
