@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "5432:5432"
+      - "3001:3001"
     depends_on:
       - db
   db:
@@ -15,8 +15,8 @@ services:
       POSTGRES_DB: synthese
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-
+    ports:
+      - "5432:5432"
 
 volumes:
   db-data:

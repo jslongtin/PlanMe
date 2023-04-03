@@ -21,3 +21,8 @@ set PORT=5000
 
 
 ---------------------------------
+
+
+
+Copy-Item C:\travail\Projet_Synthese\dev\PlanMe\package*.json C:\travail\Projet_Synthese\dev\PlanMe\Docker\
+PS C:\travail\Projet_Synthese\dev\planme> Copy-Item C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\API\server.cjs C:\travail\Projet_Synthese\dev\PlanMe\Docker\

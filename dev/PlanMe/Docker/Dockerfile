@@ -18,8 +18,9 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY server.cjs /usr/src/app/
-COPY package*.json ./
+COPY ./server.cjs /usr/src/app/
+COPY ./package*.json ./
+COPY ./vite.config.js ./
 
 # Expose API server port
 EXPOSE $PORT
