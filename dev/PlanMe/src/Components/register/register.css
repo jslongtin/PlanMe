@@ -52,12 +52,12 @@
     background-color: #0069d9;
   }
   
-  button:last-of-type {
+  form > button {
     background-color: #17a2b8;
     margin-bottom: 0;
   }
   
-  button:last-of-type:hover {
+  form > button:hover {
     background-color: #117a8b;
   }
   

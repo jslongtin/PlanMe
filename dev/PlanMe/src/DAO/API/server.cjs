@@ -59,15 +59,18 @@ app.post('/api/register', async (req, res) => {
 // retourne tous les utilisateurs
 app.post('/api/users', async (req, res) => {
   try {
+    
     const { email, username, password } = req.body;
+    const salt = await genSalt(10);
+    password = await hash(password, salt);
     const insertUserQuery = 'INSERT INTO utilisateurs (email, username, password) VALUES ($1, $2, $3)';
     await pool.query(insertUserQuery, [email, username, password]);
     console.log('User registered:', { email, username, password });
 
-    const getUsersQuery = 'SELECT * FROM utilisateurs';
-    const { rows } = await pool.query(getUsersQuery);
-    res.status(200).json(rows);
-    console.log('All users:', rows);
+    // const getUsersQuery = 'SELECT * FROM utilisateurs';
+    // const { rows } = await pool.query(getUsersQuery);
+    // res.status(200).json(rows);
+    // console.log('All users:', rows);
     
   } catch (err) {
     console.log('Error during getting all users:', err.message);
