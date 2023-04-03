@@ -1,3 +1,4 @@
+/*ref: https://www.w3schools.com/css/css3_borders.asp */
 .module {
     position: relative;
     width: 80%;
@@ -7,4 +8,7 @@
     border: 5px solid var(--primaryColor);
     padding: 10px;
 
+}
+.active{
+background-color: var(--primaryColor);
 }
