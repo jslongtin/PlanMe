@@ -18,8 +18,7 @@ const App = () => {
     <div id="main">
       <Dashboard />
 
-      {/* {page === "login" && <Login onPageChange={handlePageChange} />} */}
-      {/* {<Register/>} */}
+      {page === "login" && <Login onPageChange={handlePageChange} />}
     </div>
   );
 };

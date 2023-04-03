@@ -57,7 +57,7 @@
     margin-bottom: 0;
   }
   
-  button:last-of-type:hover {
+  form > button:hover {
     background-color: #117a8b;
   }
   
