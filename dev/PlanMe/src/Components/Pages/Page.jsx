@@ -1,7 +1,9 @@
 // TODO
 import React from 'react'
 import ReactDOM from "react-dom";
+import Module from '../modules/module';
 import './page.css'
+
 
 function Page(props) {
     let id = props.id
@@ -9,7 +11,7 @@ function Page(props) {
     let icone = props.icone
 
     return (
-       <div id="modulesContainer">page</div>
+       <div id="modulesContainer"> <Module /></div>
     )
 }
 

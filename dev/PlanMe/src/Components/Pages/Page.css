@@ -2,6 +2,8 @@
     width: 100%;
     height: 100%;
     display: flex;
- 
-    background-color: #fcba03;
+    flex-direction: column;   
+    align-items: center;
+    overflow: hidden;
+    background-color:brown;
 }

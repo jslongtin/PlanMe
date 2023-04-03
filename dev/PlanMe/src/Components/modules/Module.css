@@ -1,7 +1,14 @@
+/*ref: https://www.w3schools.com/css/css3_borders.asp */
 .module {
     position: relative;
+    width: 80%;
+    height: 20%;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: 5px solid var(--primaryColor);
+    padding: 10px;
 
-    width: 70vw;
-    height: 20vh;
-
+}
+.active{
+background-color: var(--primaryColor);
 }
