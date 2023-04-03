@@ -28,6 +28,8 @@ function Module() {
         document.execCommand('underline', false, null);
         setUnderline(!underline)
     };
+
+    
     return (
         <div className="module">
             <div className="toolbar">

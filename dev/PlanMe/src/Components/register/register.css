@@ -52,7 +52,7 @@
     background-color: #0069d9;
   }
   
-  button:last-of-type {
+  form > button:last-of-type {
     background-color: #17a2b8;
     margin-bottom: 0;
   }
