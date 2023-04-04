@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
 
-const Register = () => {
+const Register = ({ onPageChange }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +24,7 @@ const Register = () => {
       alert("Registration failed"); // Show error message if registration fails
     }
   };
-
+  
   return (
     <div className="form-container">
       <h1>Register</h1>
@@ -61,6 +61,7 @@ const Register = () => {
         <br />
         <button type="submit">Register</button>
       </form>
+        <button onClick={() => onPageChange("login")}>login</button>
     </div>
   );
 };

@@ -20,10 +20,11 @@ RUN npm install
 # Bundle app source
 COPY ./server.cjs /usr/src/app/
 COPY ./package*.json ./
-COPY ./vite.config.js ./
 
 # Expose API server port
 EXPOSE $PORT
+
+ENTRYPOINT ["node", "server.cjs"]
 
 # Start API server
 CMD ["npm", "start"]

@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "5432:5432"
+      - "3002:3002"
     depends_on:
       - db
   db:

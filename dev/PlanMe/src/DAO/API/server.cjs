@@ -23,46 +23,13 @@ const pool = new pg.Pool({
   password: 'AAAaaa111',
   port: 5432, // or your database's port
 });
-
-// Define a route handler for registering a new user
-app.post('/api/register', async (req, res) => {
-  console.log(req.body);
-  const { email, username, password } = req.body;
-
-  try {
-    // Check if the user with the same email already exists
-    const existingUserQuery = 'SELECT * FROM utilisateurs WHERE email = $1';
-    const { rowCount } = await pool.query(existingUserQuery, [email]);
-
-    if (rowCount > 0) {
-      res.status(409).send('User with this email already exists.');
-    } else {
-      // Hash the password before storing it in the database
-      const salt = await genSalt(10);
-      const hashedPassword = await hash(password, salt);
-
-      // Insert the new user into the database
-      const insertUserQuery = 'INSERT INTO utilisateurs (email, username, password) VALUES ($1, $2, $3)';
-      await pool.query(insertUserQuery, [email, username, hashedPassword]);
-      console.log('User registered:', { email, username, password });
-
-      res.status(201).send('Registration successful');
-    }
-  } catch (err) {
-    console.log('Error during registration:', err.message);
-    console.error(err);
-
-    res.status(500).send('An error occurred while registering the user.');
-  }
-});
-
-// retourne tous les utilisateurs
+// enregistre un nouvel utilisateur et l'ajoute à la base de données
 app.post('/api/users', async (req, res) => {
   try {
     
     const { email, username, password } = req.body;
-    const salt = await genSalt(10);
-    password = await hash(password, salt);
+    // const salt = await genSalt(10);
+    // password = await hash(password, salt);
     const insertUserQuery = 'INSERT INTO utilisateurs (email, username, password) VALUES ($1, $2, $3)';
     await pool.query(insertUserQuery, [email, username, password]);
     console.log('User registered:', { email, username, password });
@@ -72,6 +39,44 @@ app.post('/api/users', async (req, res) => {
     // res.status(200).json(rows);
     // console.log('All users:', rows);
     
+  } catch (err) {
+    console.log('Error during getting all users:', err.message);
+    console.error(err);
+    res.status(500).send('An error occurred while getting all users from the database.');
+  }
+});
+// vérifie si l'utilisateur existe dans la base de données
+app.post('/api/login', async (req, res) => {
+  try {
+
+    const { email, username, password } = req.body;
+
+    const checkUserQuery = 'SELECT * FROM utilisateurs WHERE email = $1';
+    const { rows } = await pool.query(checkUserQuery, [email]);
+    const user = rows.find((user) => user.email === email);
+    if (user) {
+    res.status(200).json(rows);
+    }
+    // const isMatch = await compare(password, user.password);
+    // if (!isMatch) {
+    //   return res.status(400).json({ msg: 'Invalid credentials' });
+    // }
+    // const payload = {
+    //   user: {
+    //     id: user.id,
+    //   },
+    // };
+    // sign(
+    //   payload,
+    //   'secret',
+    //   {
+    //     expiresIn: 360000,
+    //   },
+    //   (err, token) => {
+    //     if (err) throw err;
+    //     res.json({ token });
+    //   }
+    // );    
   } catch (err) {
     console.log('Error during getting all users:', err.message);
     console.error(err);
