@@ -15,18 +15,21 @@ function ModTexte() {
   }
   const handleBoldClick = () => {
     document.execCommand('bold', false, null);
-    setBold(!bold)
+    setBold(!bold);
+    document.querySelector(".editor").focus();
   };
-
+  
   const handleItalicClick = () => {
     document.execCommand('italic', false, null);
-    setItalic(!italic)
+    setItalic(!italic);
+    document.querySelector(".editor").focus();
   };
-
+  
   const handleUnderlineClick = () => {
     document.execCommand('underline', false, null);
-    setUnderline(!underline)
-    };
+    setUnderline(!underline);
+    document.querySelector(".editor").focus();
+  };
     return (
       <Module>   <div className="toolbar">
         <button className={bold ? "active" : ""} onClick={handleBoldClick}>B</button>
