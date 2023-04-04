@@ -1,7 +1,8 @@
-// TODO
+
 import React from 'react'
 import ReactDOM from "react-dom";
 import Module from '../modules/module';
+import ModTexte from '../modules/text/text'
 import './page.css'
 
 
@@ -11,8 +12,9 @@ function Page(props) {
     let icone = props.icone
 
     return (
-       <div id="modulesContainer"> <Module />
-       <Module />
+       <div id="modulesContainer">
+       {/* <Module /> */}
+       <ModTexte />
        </div>
     )
 }
