@@ -4,7 +4,7 @@ import { useState } from 'react'
 import './text.css'
 
 function ModTexte() {
-  
+  const [titre, setTitre] = useState("Titre");
   const [text, setText] = useState("");
   // useState(false) = valeure par default
   
@@ -14,6 +14,10 @@ function ModTexte() {
 
   const handleTextChange = (event) => {
     setText(event.target.value)
+
+  }
+  const handleTitreChange = (event) => {
+    setTitre(event.target.value)
 
   }
   const handleBoldClick = () => {
@@ -33,40 +37,52 @@ function ModTexte() {
     setUnderline(!underline);
     document.querySelector(".editor").focus();
   };
-  // const handleSaveClick = async () => {
-  //   e.preventDefault();
-  //   // Send registration request to backend
-  //   const response = await fetch("http://127.0.0.1:3001/api/savenotes", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ id, title, content }),
-  //   });
-  //   if (response.ok) {
-  //     console.log({ id, title, content });
-  //     alert("Save successful"); // Show success message if save is successful
-      
-  //   } else {
-  //     alert("save failed"); // Show error message if save fails
-  //   }
+  
+  const handleSaveClick = async () => {
+    // Send an HTTP POST request to save the note to the database
+    const owner = localStorage.getItem("user_id")
+    const note = document.querySelector(".editor").innerHTML;
+    const titre = document.querySelector(".titre").innerHTML;
+    const response = await fetch("http://127.0.0.1:3001/api/savenotes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({owner_id: owner, title: titre, contenu: note }),
+    });
+    if (response.ok) {
+      const data = await response.text();
+      alert(data); // Display a success message
+    } else {
+      alert("Failed to save note"); // Display an error message
+    }
+  };
  
     return (
-      <Module>   <div className="toolbar">
-        <button className={bold ? "active" : ""} onClick={handleBoldClick}>B</button>
-        <button className={italic ? "active" : ""} onClick={handleItalicClick}>I</button>
-        <button className={underline ? "active" : ""} onClick={handleUnderlineClick}>U</button>
-        <button >Save</button>
-      </div>
+      <Module>   
+        <div
+            className="titre"
+            contentEditable="true"
+            dangerouslySetInnerHTML={{ __html: text }}
+            onInput={handleTitreChange}
+          />
+        <div className="toolbar">
+          
+          <button className={bold ? "active" : ""} onClick={handleBoldClick}>B</button>
+          <button className={italic ? "active" : ""} onClick={handleItalicClick}>I</button>
+          <button className={underline ? "active" : ""} onClick={handleUnderlineClick}>U</button>
+          <button onClick={handleSaveClick}>Save</button>
+        </div>
         <div
           className="editor"
           contentEditable="true"
           dangerouslySetInnerHTML={{ __html: text }}
           onInput={handleTextChange}
-        /> </Module>
+        /> 
+        </Module>
     )
 
-// };
+
 }
 
   export default ModTexte

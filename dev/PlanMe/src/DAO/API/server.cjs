@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, contenu-Type, Accept');
   next();
 });
 // Set up a connection to the PostgreSQL database using pg.Pool
@@ -91,30 +91,15 @@ app.post('/api/login', async (req, res) => {
 // TEXT NOTES SECTION
 app.post('/api/savenotes', async (req, res) => {
   try {
-    const { id, title, content } = req.body;
-    let result;
-    const isNote = 'SELECT COUNT() FROM notes WHERE id = $1';
-    if (isNote > 0) {
-      const updateNoteQuery = 'UPDATE notes SET title = $1, content = $2 WHERE id = $3';
-      result = await pool.query(updateNoteQuery, [title, content, id]);
-      console.log(`Note ${id} updated:`, { title, content });
-      res.status(200).send(`Note ${id} updated`);
-      console.log(`Note ${id} updated:`, { title, content });
+    const { owner_id, title, contenu } = req.body;
+    const insertNoteQuery = 'INSERT INTO moduletexte (owner_id, title, contenu,date_creation) VALUES ($1, $2, $3,NOW()) RETURNING id';
+    result = await pool.query(insertNoteQuery, [owner_id,title, contenu]);
+    res.status(200).send(`Note ${title} created`);
+    console.log(`Note ${title} updated:`, { title, contenu });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('An error occurred while accessing the database.');
     }
-    else {
-      // If no ID matched, insert a new note
-      const insertNoteQuery = 'INSERT INTO notes (title, content) VALUES ($1, $2) RETURNING id';
-      result = await pool.query(insertNoteQuery, [title, content]);
-      const newId = result.rows[0].id;
-      console.log(`Note ${newId} created:`, { title, content });
-      res.status(200).send(`Note ${newId} created`);
-      console.log(`Note ${id} updated:`, { title, content });
-
-    }
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('An error occurred while accessing the database.');
-  }
 });
 
 

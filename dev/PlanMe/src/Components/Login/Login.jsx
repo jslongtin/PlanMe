@@ -18,6 +18,7 @@ const Login = ({ onPageChange }) => {
     if (response.ok) {
       const data = await response.json();
       localStorage.setItem("username", data.username);
+      localStorage.setItem("user_id", data.id);
       onPageChange("dashboard"); 
       
     } else {
