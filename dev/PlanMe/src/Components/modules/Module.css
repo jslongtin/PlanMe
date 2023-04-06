@@ -2,7 +2,7 @@
 .module {
     position: relative;
     width: 80%;
-    height: 20%;
+    height: 30%;
     background-color: whitesmoke;
     border-radius: 10px;
     border: 5px solid var(--primaryColor);

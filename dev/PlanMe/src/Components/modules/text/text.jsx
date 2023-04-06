@@ -4,14 +4,17 @@ import { useState } from 'react'
 import './text.css'
 
 function ModTexte() {
+  
   const [text, setText] = useState("");
   // useState(false) = valeure par default
+  
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
   const [underline, setUnderline] = useState(false);
 
   const handleTextChange = (event) => {
     setText(event.target.value)
+
   }
   const handleBoldClick = () => {
     document.execCommand('bold', false, null);

@@ -3,8 +3,16 @@
     }
     .editor{
         height: 60%;
-       
+        background-color: aliceblue;
+        overflow: auto;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+        resize: vertical;
+        
     }
+    
     .toolbar{
         display: flex;
         flex-direction: row;
@@ -16,3 +24,4 @@
     [contenteditable] {
         outline: 0px solid transparent;
       }
+    

@@ -1,22 +1,22 @@
-
-import React from 'react'
-import ReactDOM from "react-dom";
+import React, { useState } from 'react';
 import Module from '../modules/module';
-import ModTexte from '../modules/text/text'
-import './page.css'
+import ModTexte from '../modules/text/text';
 
+function Page() {
+  const [modTexteList, setModTexteList] = useState([]); // state variable to track list of ModTexte modules
 
-function Page(props) {
-    let id = props.id
-    let titre = props.titre
-    let icone = props.icone
+  const handleAddModTexte = () => {
+    setModTexteList([...modTexteList, <ModTexte key={modTexteList.length} />]); // add a new ModTexte component to the list
+  };
 
-    return (
-       <div id="modulesContainer">
-       {/* <Module /> */}
-       <ModTexte />
-       </div>
-    )
+  return (
+    <div id="modulesContainer">
+      {modTexteList.map((modTexte, index) => (
+        <div key={index}>{modTexte}</div>
+      ))}
+      <button onClick={handleAddModTexte}>Add ModTexte</button>
+    </div>
+  );
 }
 
-export default Page
+export default Page;
