@@ -16,9 +16,9 @@ const Login = ({ onPageChange }) => {
       body: JSON.stringify({ email, password }),
     });
     if (response.ok) {
-      onPageChange("dashboard"); // Change the page to dashboard if login is successful
+      onPageChange("dashboard"); 
     } else {
-      alert("Invalid email or password"); // Show error message if login fails
+      alert("Invalid email or password"); 
     }
   };
 
