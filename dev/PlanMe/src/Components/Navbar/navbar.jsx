@@ -19,14 +19,14 @@ function Navbar(props) {
             document.getElementById('menuPages')
         );
     }
-
+    const username = localStorage.getItem('username');
     return (
         <div id="menuBar">
             <div id="menuTopSection">
                 <div className="pdp"> <PhotoDeProfil /> </div>
                 {/* TODO */}
                 {/* allet chercher le nom de l'utilisateeur */}
-                <div id="navBarUsername">hello Kitty's Plan Me</div>
+                <div id="navBarUsername">username : {username}</div>
                 <div className="search"></div>
             </div>
             // REVIEW

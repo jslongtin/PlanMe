@@ -1,8 +1,8 @@
 /*ref: https://www.w3schools.com/css/css3_borders.asp */
 .module {
     position: relative;
-    width: 80%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
     background-color: whitesmoke;
     border-radius: 10px;
     border: 5px solid var(--primaryColor);

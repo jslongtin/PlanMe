@@ -60,7 +60,7 @@ app.post('/api/login', async (req, res) => {
         hash = user.password;
         const result = await bcrypt.compare(password, hash);
         if (result) {
-          res.status(200).json(rows);
+          res.status(200).json(user);
         }
         
     }
@@ -95,17 +95,21 @@ app.post('/api/savenotes', async (req, res) => {
     let result;
     const isNote = 'SELECT COUNT() FROM notes WHERE id = $1';
     if (isNote > 0) {
-      // If an ID is provided, update the existing note
       const updateNoteQuery = 'UPDATE notes SET title = $1, content = $2 WHERE id = $3';
       result = await pool.query(updateNoteQuery, [title, content, id]);
       console.log(`Note ${id} updated:`, { title, content });
+      res.status(200).send(`Note ${id} updated`);
+      console.log(`Note ${id} updated:`, { title, content });
     }
     else {
-      // If no ID is provided, insert a new note
+      // If no ID matched, insert a new note
       const insertNoteQuery = 'INSERT INTO notes (title, content) VALUES ($1, $2) RETURNING id';
       result = await pool.query(insertNoteQuery, [title, content]);
       const newId = result.rows[0].id;
       console.log(`Note ${newId} created:`, { title, content });
+      res.status(200).send(`Note ${newId} created`);
+      console.log(`Note ${id} updated:`, { title, content });
+
     }
   } catch (err) {
     console.error(err);

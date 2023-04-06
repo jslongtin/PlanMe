@@ -56,7 +56,7 @@ function ModTexte() {
         <button className={bold ? "active" : ""} onClick={handleBoldClick}>B</button>
         <button className={italic ? "active" : ""} onClick={handleItalicClick}>I</button>
         <button className={underline ? "active" : ""} onClick={handleUnderlineClick}>U</button>
-        {/* <button className={underline ? "active" : ""} onClick={handleSaveClick}>U</button> */}
+        <button >Save</button>
       </div>
         <div
           className="editor"

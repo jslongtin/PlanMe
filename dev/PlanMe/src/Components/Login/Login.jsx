@@ -16,7 +16,10 @@ const Login = ({ onPageChange }) => {
       body: JSON.stringify({ email, password }),
     });
     if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("username", data.username);
       onPageChange("dashboard"); 
+      
     } else {
       alert("Invalid email or password"); 
     }
