@@ -75,6 +75,11 @@ docker run -d --name PlanMe -p 5432:5432 synthese
 
 
 
+current build google cloud - :
 
+host ip: 34.72.6.142
+
+sudo docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa11
+1e004b141a5477e9fc874f5091f78fb9bb98d8672a5bdc5cc5ef1feb1b816d28
 
 
