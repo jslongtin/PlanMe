@@ -9,7 +9,7 @@ const Register = ({ onPageChange }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     // Send registration request to backend
-    const response = await fetch("http://127.0.0.1:3001/api/users", {
+    const response = await fetch("http://127.0.0.1:3001/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,3 +1,12 @@
+// ref: https://www.tabnine.com/code/javascript/functions/crypto/randomBytes
+const crypto = require('crypto');
+const session = require('express-session');
+
+const generateKey = (length) => {
+  return crypto.randomBytes(Math.ceil(length / 2))
+    .toString('hex')
+    .slice(0, length);
+};
 // code taken / inspired from https://www.youtube.com/watch?v=7nafaH9SddU
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -5,9 +14,10 @@ const bcrypt = require("bcrypt")
 const { sign } = require('jsonwebtoken');
 const pg = require('pg');
 const cors = require('cors');
-import { DB_HOST, DB_NAME, DB_USER, DB_PASS,DB_PORT } from './ConnectionDB.js';
-const app = express();
 
+const { DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT } = require('./ConnectionDB.cjs');
+
+const app = express();
 // pool connection pour la base de donn
 const pool = new pg.Pool({
   host: DB_HOST,
@@ -183,11 +193,3 @@ app.listen(port, () => {
 });
 
 
-// ref: https://www.tabnine.com/code/javascript/functions/crypto/randomBytes
-const crypto = require('crypto');
-
-const generateKey = (length) => {
-  return crypto.randomBytes(Math.ceil(length / 2))
-    .toString('hex')
-    .slice(0, length);
-};
