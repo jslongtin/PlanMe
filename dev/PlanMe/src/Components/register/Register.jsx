@@ -9,7 +9,7 @@ const Register = ({ onPageChange }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     // Send registration request to backend
-    const response = await fetch("http://127.0.0.1:3001/api/register", {
+    const response = await fetch("/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const Register = ({ onPageChange }) => {
       alert("Registration failed"); // Show error message if registration fails
     }
   };
-  
+
   return (
     <div className="form-container">
       <h1>Register</h1>
@@ -61,7 +61,7 @@ const Register = ({ onPageChange }) => {
         <br />
         <button type="submit">Register</button>
       </form>
-        <button onClick={() => onPageChange("login")}>login</button>
+      <button onClick={() => onPageChange("login")}>login</button>
     </div>
   );
 };
