@@ -7,7 +7,7 @@ RUN apk update && \
 # Set environment variables
 ENV POSTGRES_USER postgres
 ENV POSTGRES_PASSWORD AAAaaa111
-ENV POSTGRES_DB synthese
+ENV POSTGRES_DB postgres
 ENV PORT 3001
 
 # Create app directory
@@ -24,7 +24,7 @@ COPY ./package*.json ./
 # Expose API server port
 EXPOSE $PORT
 
-ENTRYPOINT ["node", "server.cjs"]
+# ENTRYPOINT ["nodemon", "server.cjs"]
 
 # Start API server
-CMD ["npm", "start"]
+# CMD ["npm", "start"]

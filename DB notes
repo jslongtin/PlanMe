@@ -71,7 +71,7 @@ docker run -d --name PlanMe -p 5432:5432 synthese
 388d5dbc6728d9f7f555b5ce21b9bd235599906f4cd5626a97b622052dd3041c
 
 
-
+docker run -d --name PlanMe -p 5432:5432 postgres
 
 
 
