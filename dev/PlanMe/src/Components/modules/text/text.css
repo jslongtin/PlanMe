@@ -9,8 +9,7 @@
         word-wrap: break-word;
         word-break: break-word;
         hyphens: auto;
-        resize: vertical;;
-        
+        /* resize: vertical; */
     }
     .titre{
         position: relative;
@@ -18,7 +17,6 @@
         overflow: auto;
         overflow-wrap: break-word;
         word-wrap: break-word; 
-        
     }
     
     .toolbar{
@@ -32,4 +30,6 @@
     [contenteditable] {
         outline: 0px solid transparent;
       }
-    
+.module{
+    width: 100%;
+}

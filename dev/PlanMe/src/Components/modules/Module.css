@@ -1,9 +1,10 @@
-/*ref: https://www.w3schools.com/css/css3_borders.asp */
+
 .module {
     position: relative;
     background-color: whitesmoke;
     border-radius: 10px;
-    border: 5px solid var(--primaryColor);
+    border: 5px solid var(--primaryColor); /*ref: https://www.w3schools.com/css/css3_borders.asp */
     padding: 10px;
-
+    width: 100%;
+    height: 100%;
 }
