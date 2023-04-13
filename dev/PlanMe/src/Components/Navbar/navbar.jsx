@@ -27,7 +27,7 @@ function Navbar(props) {
                 {/* TODO */}
                 {/* allet chercher le nom de l'utilisateeur */}
                 <div id="navBarUsername">username : {username}</div>
-                <button>X</button>
+                <button>logout</button>
                 <div className="search"></div>
             </div>
             // REVIEW
