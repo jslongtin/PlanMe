@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
 
-const Register = () => {
+const Register = ({onPageChange}) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -59,7 +59,7 @@ const Register = () => {
           />
         </label>
         <br />
-        <button type="submit">Register</button>
+        <button type="submit" onClick={() => onPageChange("register")}>Register</button>
       </form>
     </div>
   );

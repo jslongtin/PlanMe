@@ -3,7 +3,7 @@ import './navbar.css'
 import PhotoDeProfil from '../photoDeProfil/photoDeProfil'
 import { useState } from 'react'
 import Page from '../Pages/page'
-function Navbar(props) {
+function Navbar(props,{onPageChange}) {
     // REVIEW
     let id = props.id
     let titre = props.titre
@@ -27,7 +27,11 @@ function Navbar(props) {
                 {/* TODO */}
                 {/* allet chercher le nom de l'utilisateeur */}
                 <div id="navBarUsername">username : {username}</div>
-                <button>logout</button>
+                <button onClick={() => {
+                sessionStorage.clear(); // Clear all items from sessionStorage
+                onPageChange("register"); // Redirect to register page
+                }}>Logout</button>
+
                 <div className="search"></div>
             </div>
             // REVIEW
@@ -37,5 +41,6 @@ function Navbar(props) {
 
     )
 }
+
 
 export default Navbar
