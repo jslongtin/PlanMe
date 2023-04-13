@@ -35,7 +35,7 @@ const pool = new Pool({
     CREATE TABLE IF NOT EXISTS utilisateurs (
         email VARCHAR(255) NOT NULL PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
-        motdepasse VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         photo BYTEA,
         theme_id INTEGER,
         FOREIGN KEY (theme_id) REFERENCES themes (id)
