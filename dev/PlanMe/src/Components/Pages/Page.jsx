@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Module from '../modules/module';
 import ModTexte from '../modules/text/text';
+import './page.css'
 
 function Page() {
   // const [modTexteList, setModTexteList] = useState([]); // state variable to track list of ModTexte modules
