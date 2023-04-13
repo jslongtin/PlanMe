@@ -19,7 +19,7 @@ function Navbar(props) {
             document.getElementById('menuPages')
         );
     }
-    const username = localStorage.getItem('username');
+    const username = sessionStorage.getItem('username');
     return (
         <div id="menuBar">
             <div id="menuTopSection">

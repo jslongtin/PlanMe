@@ -73,7 +73,7 @@ app.post('/api/users', async (req, res) => {
 
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
-
+  
   try {
     // Check if the user exists in the database
     const getUserQuery = 'SELECT * FROM utilisateurs WHERE email = $1';
@@ -85,7 +85,7 @@ app.post('/api/login', async (req, res) => {
     }
 
     // Compare the user's password to the hashed password in the database
-    const { password: hashedPassword } = rows[0];
+    const { username, password: hashedPassword } = rows[0];
     const isMatch = await compare(password, hashedPassword);
 
     if (!isMatch) {
@@ -95,7 +95,7 @@ app.post('/api/login', async (req, res) => {
 
     // Generate a JWT token and send it to the client
     const token = sign({ email }, 'your_secret_key_here');
-    res.status(200).json({ token });
+    res.status(200).json({ username, token });
   } catch (err) {
     console.log('Error during login:', err.message);
     console.error(err);

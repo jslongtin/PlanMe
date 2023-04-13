@@ -16,6 +16,8 @@ const Login = ({ onPageChange }) => {
       body: JSON.stringify({ email, password }),
     });
     if (response.ok) {
+      const data = await response.json();
+      sessionStorage.setItem("username", data.username); // Save username in session storage
       onPageChange("dashboard"); // Change the page to dashboard if login is successful
     } else {
       alert("Invalid email or password"); // Show error message if login fails
