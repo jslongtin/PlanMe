@@ -2,6 +2,6 @@
     width: 80%;
     height: 20%;
     display: flex;
-    flex-direction: column;   
+    flex-direction: row;   
     /* overflow: hidden; */
 }

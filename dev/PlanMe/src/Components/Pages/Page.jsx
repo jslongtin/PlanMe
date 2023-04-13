@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Module from '../modules/module';
 import ModTexte from '../modules/text/text';
-import './page.css'
+import './page.css';
+import AddMod from '../modules/addMod/addMod';
 
 function Page() {
   // const [modTexteList, setModTexteList] = useState([]); // state variable to track list of ModTexte modules
@@ -15,6 +16,7 @@ function Page() {
   
   return (
     <div id="modulesContainer">
+      <AddMod/>
       <ModTexte/>  
       {/* {modTexteList.map((modTexte, index) => (
         <div key={index}>{modTexte}</div>

@@ -30,6 +30,7 @@ npm run build
 - only use the dist folder created 
 
 
+Ordre:
 
 cd docker
 docker-compose up --build 
