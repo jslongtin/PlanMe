@@ -16,10 +16,10 @@ const App = () => {
 
   return (
     <div id="main">
-      <Dashboard />
-      {/* {page === "login" && <Login onPageChange={handlePageChange} />}
+      {/* <Dashboard /> */}
+      {page === "login" && <Login onPageChange={handlePageChange} />}
       {page === "register" && <Register onPageChange={handlePageChange} />}
-      {page === "dashboard" && <Dashboard onPageChange={handlePageChange} />} */}
+      {page === "dashboard" && <Dashboard onPageChange={handlePageChange} />}
     </div>
   );
 };

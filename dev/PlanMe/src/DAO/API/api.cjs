@@ -42,7 +42,7 @@ app.post('/api/register', async (req, res) => {
       const hashedPassword = await hash(password, salt);
 
       // Insert the new user into the database
-      const insertUserQuery = 'INSERT INTO utilisateurs (email, username, password) VALUES ($1, $2, $3)';
+      const insertUserQuery = 'INSERT INTO utilisateurs (email, username, motdepasse) VALUES ($1, $2, $3)';
       await pool.query(insertUserQuery, [email, username, hashedPassword]);
       console.log('User registered:', { email, username, password });
 

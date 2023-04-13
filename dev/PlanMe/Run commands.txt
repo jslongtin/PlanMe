@@ -28,3 +28,13 @@ npm install react-router-dom
 to deploy :
 npm run build 
 - only use the dist folder created 
+
+
+
+cd docker
+docker-compose up --build 
+cd dao api
+nodemon api.cjs
+node createBD.cjs
+cd dev\planme
+npm run dev
