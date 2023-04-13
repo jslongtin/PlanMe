@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
 
-const Register = ({ onPageChange }) => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +9,7 @@ const Register = ({ onPageChange }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     // Send registration request to backend
-    const response = await fetch("/api/register", {
+    const response = await fetch("http://127.0.0.1:3001/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,6 @@ const Register = ({ onPageChange }) => {
         <br />
         <button type="submit">Register</button>
       </form>
-      <button onClick={() => onPageChange("login")}>login</button>
     </div>
   );
 };

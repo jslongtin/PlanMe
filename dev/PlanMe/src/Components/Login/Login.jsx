@@ -16,13 +16,9 @@ const Login = ({ onPageChange }) => {
       body: JSON.stringify({ email, password }),
     });
     if (response.ok) {
-      const data = await response.json();
-      localStorage.setItem("username", data.username);
-      localStorage.setItem("user_id", data.id);
-      onPageChange("dashboard"); 
-      
+      onPageChange("dashboard"); // Change the page to dashboard if login is successful
     } else {
-      alert("Invalid email or password"); 
+      alert("Invalid email or password"); // Show error message if login fails
     }
   };
 
@@ -51,8 +47,8 @@ const Login = ({ onPageChange }) => {
         </label>
         <br />
         <button type="submit">Login</button>
-      </form>
         <button onClick={() => onPageChange("register")}>register</button>
+      </form>
     </div>
   );
 };
