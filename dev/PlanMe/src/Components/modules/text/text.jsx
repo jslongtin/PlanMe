@@ -3,6 +3,7 @@ import Module from '../module'
 import { useState } from 'react'
 import './text.css'
 
+
 function ModTexte() {
   const [titre, setTitre] = useState("Titre");
   const [text, setText] = useState("");

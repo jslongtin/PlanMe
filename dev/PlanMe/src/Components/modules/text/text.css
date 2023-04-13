@@ -2,13 +2,13 @@
     background-color: var(--primaryColor);
     }
     .editor{
-        height: 60%;
+        height: 40%;
         background-color: aliceblue;
-        overflow: auto;
+        /* overflow: aut
         overflow-wrap: break-word;
         word-wrap: break-word;
         word-break: break-word;
-        hyphens: auto;
+        hyphens: auto; */
         /* resize: vertical; */
     }
     .titre{
@@ -30,6 +30,3 @@
     [contenteditable] {
         outline: 0px solid transparent;
       }
-.module{
-    width: 100%;
-}
