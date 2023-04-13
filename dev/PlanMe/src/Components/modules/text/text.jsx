@@ -41,7 +41,7 @@ function ModTexte() {
   
   const handleSaveClick = async () => {
     // Send an HTTP POST request to save the note to the database
-    const owner = localStorage.getItem("user_id")
+    const owner = sessionStorage.getItem("user_id")
     const note = document.querySelector(".editor").innerHTML;
     const titre = document.querySelector(".titre").innerHTML;
     const response = await fetch("http://127.0.0.1:3001/api/savenotes", {
