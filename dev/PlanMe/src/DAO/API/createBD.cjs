@@ -55,9 +55,8 @@ let hashedPasswordDefault = await hash("jess", sel);
   const salt = await genSalt(10);
   const hashedPassword = await hash("Secure3!pass4", salt);
   await pool.query(`
-    INSERT INTO  utilisateurs (email,username,password,photo,theme_id)
-     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL)
-     ON CONFLICT DO NOTHING`
+    INSERT INTO OR UPDATE utilisateurs (email,username,password,photo,theme_id)
+     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL)`
      , [hashedPasswordDefault]);
 
   await pool.query(`
