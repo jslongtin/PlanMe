@@ -89,6 +89,19 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+app.post('/api/savenotes', async (req, res) => {
+  try {
+    const { owner, titre, contenu } = req.body;
+    const insertNoteQuery = 'INSERT INTO notes (owner, titre, note, date) VALUES ($1, $2, $3,NOW()) RETURNING id';
+    result = await pool.query(insertNoteQuery, [owner,titre, contenu]);
+    res.status(200).send(`Note ${titre} created`);
+    console.log(`Note ${titre} updated:`, { titre, contenu });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('An error occurred while accessing the database.');
+    }
+});
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);

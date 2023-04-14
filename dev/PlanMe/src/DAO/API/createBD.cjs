@@ -19,6 +19,7 @@ const pool = new Pool({
   await pool.query("DROP TABLE IF EXISTS utilisateurs");
   await pool.query("DROP TABLE IF EXISTS themes");
   await pool.query("DROP TABLE IF EXISTS calendriers");
+  await pool.query("DROP TABLE IF EXISTS notes");
   await pool.query("DROP TABLE IF EXISTS budget");
 
   // Create tables
@@ -111,6 +112,16 @@ const pool = new Pool({
       date DATE,
       notes JSONB,
       evenements JSONB
+    )
+    `);
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS notes (
+      id SERIAL PRIMARY KEY,
+      owner VARCHAR(255),
+      titre VARCHAR(255),
+      note TEXT,
+      date DATE,
+      FOREIGN KEY (owner) REFERENCES utilisateurs (email)
     )
     `);
   await pool.query(`
