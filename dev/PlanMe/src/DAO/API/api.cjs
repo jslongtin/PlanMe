@@ -91,11 +91,11 @@ app.post('/api/login', async (req, res) => {
 
 app.post('/api/savenotes', async (req, res) => {
   try {
-    const { owner, titre, contenu } = req.body;
+    const { owner, titre, note } = req.body;
     const insertNoteQuery = 'INSERT INTO notes (owner, titre, note, date) VALUES ($1, $2, $3,NOW()) RETURNING id';
-    result = await pool.query(insertNoteQuery, [owner,titre, contenu]);
+    result = await pool.query(insertNoteQuery, [owner,titre, note]);
     res.status(200).send(`Note ${titre} created`);
-    console.log(`Note ${titre} updated:`, { titre, contenu });
+    console.log(`Note ${titre} updated:`, { titre, note });
     } catch (err) {
       console.error(err);
       res.status(500).send('An error occurred while accessing the database.');
