@@ -14,12 +14,12 @@ ENV PORT 3001
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package*.json ./
+# COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY ./server.cjs /usr/src/app/
-COPY ./package*.json ./
+# COPY ./server.cjs /usr/src/app/
+# COPY ./package*.json ./
 
 # Expose API server port
 EXPOSE $PORT
