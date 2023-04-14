@@ -59,8 +59,10 @@ const Register = ({onPageChange}) => {
           />
         </label>
         <br />
-        <button type="submit" onClick={() => onPageChange("register")}>Register</button>
+        <button type="submit" >Register</button>
       </form>
+      <button onClick={() => onPageChange("login")}>login</button>
+
     </div>
   );
 };

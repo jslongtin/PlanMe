@@ -29,7 +29,7 @@ function Navbar(props,{onPageChange}) {
                 <div id="navBarUsername">username : {username}</div>
                 <button onClick={() => {
                 sessionStorage.clear(); // Clear all items from sessionStorage
-                onPageChange("register"); // Redirect to register page
+                window.location.reload(); // Reload the page
                 }}>Logout</button>
 
                 <div className="search"></div>
