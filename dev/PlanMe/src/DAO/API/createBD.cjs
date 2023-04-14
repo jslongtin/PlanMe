@@ -1,4 +1,10 @@
 const { Pool } = require("pg");
+const express = require('express');
+const bodyParser = require('body-parser');
+const { genSalt, hash, compare } = require('bcrypt');
+const { sign } = require('jsonwebtoken');
+const pg = require('pg');
+const cors = require('cors');
 
 const pool = new Pool({
   user: "postgres",
@@ -8,18 +14,21 @@ const pool = new Pool({
   port: 5432,
 });
 
+
 (async () => {
+  let sel = await genSalt(10);
+let hashedPasswordDefault = await hash("jess", sel);
   // Drop tables if they exist
-  await pool.query("DROP TABLE IF EXISTS liens");
-  await pool.query("DROP TABLE IF EXISTS tableaux");
-  await pool.query("DROP TABLE IF EXISTS liste");
-  await pool.query("DROP TABLE IF EXISTS module");
-  await pool.query("DROP TABLE IF EXISTS page");
-  await pool.query("DROP TABLE IF EXISTS contact");
-  await pool.query("DROP TABLE IF EXISTS utilisateurs");
-  await pool.query("DROP TABLE IF EXISTS themes");
-  await pool.query("DROP TABLE IF EXISTS calendriers");
-  await pool.query("DROP TABLE IF EXISTS budget");
+  // await pool.query("DROP TABLE IF EXISTS liens");
+  // await pool.query("DROP TABLE IF EXISTS tableaux");
+  // await pool.query("DROP TABLE IF EXISTS liste");
+  // await pool.query("DROP TABLE IF EXISTS module");
+  // await pool.query("DROP TABLE IF EXISTS page");
+  // await pool.query("DROP TABLE IF EXISTS contact");
+  // await pool.query("DROP TABLE IF EXISTS utilisateurs");
+  // await pool.query("DROP TABLE IF EXISTS themes");
+  // await pool.query("DROP TABLE IF EXISTS calendriers");
+  // await pool.query("DROP TABLE IF EXISTS budget");
 
   // Create tables
   await pool.query(`
@@ -40,6 +49,14 @@ const pool = new Pool({
         theme_id INTEGER,
         FOREIGN KEY (theme_id) REFERENCES themes (id)
     )`);
+
+  // créé un user jess a la création de  la bd
+  // ref: https://chat.openai.com/
+  const salt = await genSalt(10);
+  const hashedPassword = await hash("jess", salt);
+  await pool.query(`
+    INSERT INTO  utilisateurs (email,username,password,photo,theme_id)
+     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL)`, [hashedPasswordDefault]);
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS page (
