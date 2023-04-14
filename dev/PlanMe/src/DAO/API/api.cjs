@@ -56,20 +56,6 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// retourne tous les utilisateurs
-app.post('/api/users', async (req, res) => {
-  try {
-    const getUsersQuery = 'SELECT email, username FROM utilisateurs';
-    const { rows } = await pool.query(getUsersQuery);
-    console.log('All users:', rows);
-
-    res.status(200).json({ users: rows });
-  } catch (err) {
-    console.log('Error during getting all users:', err.message);
-    console.error(err);
-    res.status(500).send('An error occurred while getting all users from the database.');
-  }
-});
 
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
