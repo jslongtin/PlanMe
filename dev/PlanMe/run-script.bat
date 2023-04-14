@@ -1,3 +1,4 @@
+@REM ref : https://chat.openai.com/
 @echo off
 
 rem Change to the docker directory and start the containers

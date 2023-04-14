@@ -53,7 +53,7 @@ let hashedPasswordDefault = await hash("jess", sel);
   // créé un user jess a la création de  la bd
   // ref: https://chat.openai.com/
   const salt = await genSalt(10);
-  const hashedPassword = await hash("jess", salt);
+  const hashedPassword = await hash("Secure3!pass4", salt);
   await pool.query(`
     INSERT INTO  utilisateurs (email,username,password,photo,theme_id)
      VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL)
