@@ -2,10 +2,13 @@
 
 rem Change to the docker directory and start the containers
 cd docker
-start /B docker-compose up --build
+start /B docker-compose up --build --detach
 
 rem Wait for the containers to start up
-timeout /t 10 /nobreak >nul
+:check_containers
+timeout /t 5 /nobreak >nul
+docker ps | findstr PlanMe
+if %errorlevel% neq 0 goto check_containers
 
 rem Change to the dao api directory and start nodemon and create the database
 cd ../src/dao/api

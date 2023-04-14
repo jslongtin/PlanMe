@@ -3,6 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:latest
+    container_name: PlanMe
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: AAAaaa111

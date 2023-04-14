@@ -56,7 +56,9 @@ let hashedPasswordDefault = await hash("jess", sel);
   const hashedPassword = await hash("jess", salt);
   await pool.query(`
     INSERT INTO  utilisateurs (email,username,password,photo,theme_id)
-     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL)`, [hashedPasswordDefault]);
+     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL)
+     ON CONFLICT DO NOTHING`
+     , [hashedPasswordDefault]);
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS page (
