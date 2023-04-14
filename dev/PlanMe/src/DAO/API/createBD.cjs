@@ -131,6 +131,16 @@ let hashedPasswordDefault = await hash("jess", sel);
     )
     `);
   await pool.query(`
+    CREATE TABLE IF NOT EXISTS notes (
+      id SERIAL PRIMARY KEY,
+      owner VARCHAR(255),
+      titre VARCHAR(255),
+      note TEXT,
+      date DATE,
+      FOREIGN KEY (owner) REFERENCES utilisateurs (email)
+    )
+    `);
+  await pool.query(`
   CREATE TABLE IF NOT EXISTS budget (
     id SERIAL PRIMARY KEY,
     budget FLOAT,

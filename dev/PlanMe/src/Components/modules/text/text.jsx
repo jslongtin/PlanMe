@@ -49,7 +49,7 @@ function ModTexte() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({owner_id: owner, title: titre, contenu: note }),
+      body: JSON.stringify({owner: owner, titre: titre, note: note }),
     });
     if (response.ok) {
       const data = await response.text();
