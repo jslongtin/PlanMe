@@ -4,10 +4,9 @@ import "./login.css";
 const Login = ({ onPageChange }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  // ref : open ai
   const handleLogin = async (e) => {
     e.preventDefault();
-    // Send login request to backend
     const response = await fetch("http://127.0.0.1:3001/api/login", {
       method: "POST",
       headers: {
@@ -17,11 +16,11 @@ const Login = ({ onPageChange }) => {
     });
     if (response.ok) {
       const data = await response.json();
-      sessionStorage.setItem("username", data.username); // Save username in session storage
-      sessionStorage.setItem("email", email); // Save username in session storage
-      onPageChange("dashboard"); // Change the page to dashboard if login is successful
+      sessionStorage.setItem("username", data.username); 
+      sessionStorage.setItem("email", email); 
+      onPageChange("dashboard");
     } else {
-      alert("Invalid email or password"); // Show error message if login fails
+      alert("Invalid email or password");
     }
   };
 

@@ -28,8 +28,8 @@ function Navbar(props,{onPageChange}) {
                 {/* allet chercher le nom de l'utilisateeur */}
                 <div id="navBarUsername">username : {username}</div>
                 <button onClick={() => {
-                sessionStorage.clear(); // Clear all items from sessionStorage
-                window.location.reload(); // Reload the page
+                sessionStorage.clear(); 
+                window.location.reload();
                 }}>Logout</button>
 
                 <div className="search"></div>

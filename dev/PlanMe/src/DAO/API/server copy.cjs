@@ -75,7 +75,7 @@ app.post('/api/register', async (req, res) => {
     res.status(500).send('An error occurred while getting all users from the database.');
   }
 });
-// DELETE USER AND REDIRECT TO LOGIN PAGE
+//delete user
 app.post('/api/del_user', authenticateUser, async (req, res) => {
   try {
     const { email } = req.body;

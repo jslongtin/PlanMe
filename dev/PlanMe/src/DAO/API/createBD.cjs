@@ -1,10 +1,10 @@
 const { Pool } = require("pg");
-const express = require('express');
-const bodyParser = require('body-parser');
-const { genSalt, hash, compare } = require('bcrypt');
-const { sign } = require('jsonwebtoken');
-const pg = require('pg');
-const cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const { genSalt, hash, compare } = require("bcrypt");
+const { sign } = require("jsonwebtoken");
+const pg = require("pg");
+const cors = require("cors");
 
 const pool = new Pool({
   user: "postgres",
@@ -14,10 +14,9 @@ const pool = new Pool({
   port: 5432,
 });
 
-
 (async () => {
   let sel = await genSalt(10);
-let hashedPasswordDefault = await hash("jess", sel);
+  let hashedPasswordDefault = await hash("jess", sel);
   // Drop tables if they exist
   // await pool.query("DROP TABLE IF EXISTS liens");
   // await pool.query("DROP TABLE IF EXISTS tableaux");
@@ -50,14 +49,18 @@ let hashedPasswordDefault = await hash("jess", sel);
         FOREIGN KEY (theme_id) REFERENCES themes (id)
     )`);
 
-  // créé un user jess a la création de  la bd
+  // créer utilisateurs par defauts a la création de  la bd
   // ref: https://chat.openai.com/
+  //upsert : https://www.tutorialsteacher.com/postgresql/upsert
   const salt = await genSalt(10);
   const hashedPassword = await hash("Secure3!pass4", salt);
-  await pool.query(`
+  await pool.query(
+    `
     INSERT INTO OR UPDATE utilisateurs (email,username,password,photo,theme_id)
-     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL)`
-     , [hashedPasswordDefault]);
+     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL),
+            ("Finn@boop.com", "Finn", "1, NULL, NULL)`,
+    [hashedPasswordDefault]
+  );
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS page (

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./register.css";
 
-const Register = ({onPageChange}) => {
-  const [email, setEmail] = useState("");
+//ref : https://legacy.reactjs.org/docs/hooks-state.html & open ai
+
+const Register = ({ onPageChange }) => {
+  const [email, setEmail] = useState(""); 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    // Send registration request to backend
     const response = await fetch("http://127.0.0.1:3001/api/register", {
       method: "POST",
       headers: {
@@ -18,10 +19,10 @@ const Register = ({onPageChange}) => {
     });
     if (response.ok) {
       console.log({ email, username, password });
-      alert("Registration successful"); // Show success message if registration is successful
-      window.location.href = "/login"; // Redirect to login page after successful registration
+      alert("Registration successful");
+      window.location.href = "/login";
     } else {
-      alert("Registration failed"); // Show error message if registration fails
+      alert("Registration failed");
     }
   };
 
@@ -59,10 +60,9 @@ const Register = ({onPageChange}) => {
           />
         </label>
         <br />
-        <button type="submit" >Register</button>
+        <button type="submit">Register</button>
       </form>
       <button onClick={() => onPageChange("login")}>login</button>
-
     </div>
   );
 };
