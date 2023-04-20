@@ -57,7 +57,7 @@ const pool = new Pool({
   await pool.query(
     `
     INSERT INTO utilisateurs (email, username, password, photo, theme_id) 
-  VALUES ('Jess@hotmail.com', 'Jess', $1, NULL, NULL) `,
+  VALUES ('Jess@hotmail.com', 'Jess', $1, NULL, NULL) ON CONFLICT DO NOTHING`,
     [hashedPasswordDefault]
   );
 
