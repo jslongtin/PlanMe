@@ -11,6 +11,9 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.5",
+    "@fullcalendar/daygrid": "^6.1.5",
+    "@fullcalendar/react": "^6.1.5",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
