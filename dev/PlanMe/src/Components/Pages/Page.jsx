@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Module from '../modules/module';
 import ModTexte from '../modules/text/text';
+import Calendrier from '../modules/calandar/calandar';
 import './page.css';
 import AddMod from '../modules/addMod/addMod';
 
@@ -16,11 +17,16 @@ function Page() {
   
   return (
     <div id="modulesContainer">
+      
       <AddMod/>
       <ModTexte/>  
+      
+      
+      {/* <Calendrier /> */}
+      
       {/* {modTexteList.map((modTexte, index) => (
         <div key={index}>{modTexte}</div>
-      ))}
+        ))}
       <button onClick={handleAddModTexte}>Add ModTexte</button> */}
     </div>
     

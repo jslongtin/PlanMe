@@ -52,7 +52,7 @@ app.post("/api/register", async (req, res) => {
       const insertUserQuery =
         "INSERT INTO utilisateurs (email, username, password) VALUES ($1, $2, $3)";
       await pool.query(insertUserQuery, [email, username, hashedPassword]);
-      console.log("User registered:", { email, username, password });
+      console.log("User registered:", { email, username, hashedPassword });
 
       res.status(201).send("Registration successful");
     }

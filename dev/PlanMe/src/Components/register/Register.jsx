@@ -18,7 +18,7 @@ const Register = ({ onPageChange }) => {
       body: JSON.stringify({ email, username, password }),
     });
     if (response.ok) {
-      console.log({ email, username, password });
+      console.log({ email, username });
       alert("Registration successful");
       window.location.href = "/login";
     } else {
