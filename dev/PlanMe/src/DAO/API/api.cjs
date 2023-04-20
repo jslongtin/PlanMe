@@ -96,59 +96,59 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// Modifier info utilisateur courrant:
-app.post("/api/update_user", authenticateUser, async (req, res) => {
-  try {
-    const userid = req.session.user.id;
-    const { email, username, password } = req.body;
+// // Modifier info utilisateur courrant:
+// app.post("/api/update_user", authenticateUser, async (req, res) => {
+//   try {
+//     const userid = req.session.user.id;
+//     const { email, username, password } = req.body;
 
-    const checkUserQuery = "SELECT * FROM utilisateurs WHERE email = $1";
-    const { rows } = await pool.query(checkUserQuery, [userid]);
-    const user = rows.find((user) => user.id === userid);
-    if (!user) {
-      res.status(401).json({ msg: "User does not exist" });
-      return;
-    }
-    if (user.id != req.session.user.id) {
-      res.status(401).json({ msg: "Action non-autorisee" });
-      return;
-    }
-    const salt = await bcrypt.genSalt(10); //ref : https://www.makeuseof.com/nodejs-bcrypt-hash-verify-salt-password/
-    const hash = await bcrypt.hash(password, salt);
-    const updateUserQuery =
-      "UPDATE utilisateurs SET email = $1, username = $2, password = $3 WHERE id = $4";
-    await pool.query(updateUserQuery, [email, username, hash, userid]);
-    console.log("User updated:", { email, username });
-    res.status(200).json(user);
-  } catch (err) {
-    console.log("Error during updating user:", err.message);
-    console.error(err);
-    res
-      .status(500)
-      .send("An error occurred while trying to update user from the database.");
-  }
-});
+//     const checkUserQuery = "SELECT * FROM utilisateurs WHERE email = $1";
+//     const { rows } = await pool.query(checkUserQuery, [userid]);
+//     const user = rows.find((user) => user.id === userid);
+//     if (!user) {
+//       res.status(401).json({ msg: "User does not exist" });
+//       return;
+//     }
+//     if (user.id != req.session.user.id) {
+//       res.status(401).json({ msg: "Action non-autorisee" });
+//       return;
+//     }
+//     const salt = await bcrypt.genSalt(10); //ref : https://www.makeuseof.com/nodejs-bcrypt-hash-verify-salt-password/
+//     const hash = await bcrypt.hash(password, salt);
+//     const updateUserQuery =
+//       "UPDATE utilisateurs SET email = $1, username = $2, password = $3 WHERE id = $4";
+//     await pool.query(updateUserQuery, [email, username, hash, userid]);
+//     console.log("User updated:", { email, username });
+//     res.status(200).json(user);
+//   } catch (err) {
+//     console.log("Error during updating user:", err.message);
+//     console.error(err);
+//     res
+//       .status(500)
+//       .send("An error occurred while trying to update user from the database.");
+//   }
+// });
 
-//delete user
-app.post("/api/del_user", authenticateUser, async (req, res) => {
-  try {
-    const { email } = req.body;
-    const delUserQuery = "DELETE FROM utilisateurs WHERE email = $1";
-    if (req.session.user && req.session.user.email === email) {
-      await pool.query(delUserQuery, [email]);
-      console.log("User deleted:", { email });
-      req.session.destroy();
-      res.redirect("/login");
-      res.status(200).json(user);
-    }
-  } catch (err) {
-    console.log("Error during deletion:", err.message);
-    console.error(err);
-    res
-      .status(500)
-      .send("An error occurred while trying to delete user from the database.");
-  }
-});
+// //delete user
+// app.post("/api/del_user", authenticateUser, async (req, res) => {
+//   try {
+//     const { email } = req.body;
+//     const delUserQuery = "DELETE FROM utilisateurs WHERE email = $1";
+//     if (req.session.user && req.session.user.email === email) {
+//       await pool.query(delUserQuery, [email]);
+//       console.log("User deleted:", { email });
+//       req.session.destroy();
+//       res.redirect("/login");
+//       res.status(200).json(user);
+//     }
+//   } catch (err) {
+//     console.log("Error during deletion:", err.message);
+//     console.error(err);
+//     res
+//       .status(500)
+//       .send("An error occurred while trying to delete user from the database.");
+//   }
+// });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                Notes                                                    //

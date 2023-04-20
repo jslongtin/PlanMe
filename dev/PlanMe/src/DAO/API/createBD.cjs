@@ -53,12 +53,11 @@ const pool = new Pool({
   // ref: https://chat.openai.com/
   //upsert : https://www.tutorialsteacher.com/postgresql/upsert
   const salt = await genSalt(10);
-  const hashedPassword = await hash("Secure3!pass4", salt);
+  const hashedPassword = await hash("jess", salt);
   await pool.query(
     `
-    INSERT INTO OR UPDATE utilisateurs (email,username,password,photo,theme_id)
-     VALUES('Jess@hotmail.com','Jess',$1,NULL,NULL),
-            ("Finn@boop.com", "Finn", "1, NULL, NULL)`,
+    INSERT INTO utilisateurs (email, username, password, photo, theme_id) 
+  VALUES ('Jess@hotmail.com', 'Jess', $1, NULL, NULL) `,
     [hashedPasswordDefault]
   );
 
