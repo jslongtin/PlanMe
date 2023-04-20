@@ -162,7 +162,7 @@ app.post("/api/savenotes", async (req, res) => {
       "INSERT INTO notes (owner, titre, note, date) VALUES ($1, $2, $3,NOW()) RETURNING id";
     result = await pool.query(insertNoteQuery, [owner, titre, note]);
     res.status(200).send(`Note ${titre} created`);
-    console.log(`Note ${titre} updated:`, { titre, note });
+    console.log(`Note ${titre} creer:`, { titre, note });
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
