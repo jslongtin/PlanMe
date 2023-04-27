@@ -16,8 +16,8 @@ const Login = ({ onPageChange }) => {
     });
     if (response.ok) {
       const data = await response.json();
-      sessionStorage.setItem("username", data.username); 
-      sessionStorage.setItem("email", email); 
+      sessionStorage.setItem("username", data.username);
+      sessionStorage.setItem("email", email);
       onPageChange("dashboard");
     } else {
       alert("Invalid email or password");
@@ -25,12 +25,21 @@ const Login = ({ onPageChange }) => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-primaryColor">
-      <div className="bg-secondaryColor p-10 rounded-lg shadow-2xl w-96">
-        <h1 className="text-3xl font-bold mb-10 text-center text-primaryColor">Login</h1>
+    <div className="flex flex-col min-h-screen">
+    <header className="bg-green-500 text-gray-50 py-6">
+      <h1 className="text-4xl font-bold text-center">PlanMe</h1>
+    </header>
+    <div className="flex-grow bg-green-200 flex items-center justify-center">
+      <div className="bg-teal-900 p-10 rounded-lg shadow-2xl w-96">
+        <h1 className="text-3xl font-bold mb-10 text-center text-gray-50">
+          Login
+        </h1>
         <form onSubmit={handleLogin}>
           <div className="mb-5">
-            <label htmlFor="email" className="block mb-2 text-sm font-bold text-primaryColor">
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-bold text-green-50"
+            >
               Email
             </label>
             <input
@@ -39,11 +48,14 @@ const Login = ({ onPageChange }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="block w-full p-3 rounded-lg bg-white border border-primaryColor focus:outline-none focus:border-thirdColor"
+              className="block w-full p-3 rounded-lg bg-white border border-green-50 focus:outline-none focus:border-green-400"
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="password" className="block mb-2 text-sm font-bold text-primaryColor">
+            <label
+              htmlFor="password"
+              className="block mb-2 text-sm font-bold text-green-50"
+            >
               Password
             </label>
             <input
@@ -52,13 +64,13 @@ const Login = ({ onPageChange }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="block w-full p-3 rounded-lg bg-white border border-primaryColor focus:outline-none focus:border-thirdColor"
+              className="block w-full p-3 rounded-lg bg-white border border-green-50 focus:outline-none focus:border-green-400"
             />
           </div>
           <div className="text-center">
             <button
               type="submit"
-              className="py-3 px-6 bg-primaryColor text-green font-bold rounded-full hover:bg-ash focus:outline-none focus:bg-thirdColor"
+              className="py-3 px-6 bg-green-50 text-green font-bold rounded-full hover:bg-ash focus:outline-none focus:bg-green-400"
             >
               Login
             </button>
@@ -67,13 +79,15 @@ const Login = ({ onPageChange }) => {
         <div className="text-center mt-8">
           <button
             onClick={() => onPageChange("register")}
-            className="text-primaryColor font-semibold hover:text-thirdColor focus:outline-none"
+            className="text-gray-500 font-semibold hover:text-green-700 focus:outline-none"
           >
             Don't have an account? Register
           </button>
         </div>
       </div>
     </div>
+  </div>
+  
   );
 };
 
