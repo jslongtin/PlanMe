@@ -26,7 +26,7 @@ function Navbar(props,{onPageChange}) {
                 <div className="pdp"> <PhotoDeProfil /> </div>
                 {/* TODO */}
                 {/* allet chercher le nom de l'utilisateeur */}
-                <div id="navBarUsername">username : {username}</div>
+                <div id="navBarUsername" >username : {username}</div>
                 <button onClick={() => {
                 sessionStorage.clear(); 
                 window.location.reload();
