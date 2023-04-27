@@ -90,7 +90,7 @@ const pool = new Pool({
   await pool.query(`
     CREATE TABLE IF NOT EXISTS module (
       id SERIAL PRIMARY KEY,
-      contenu VARCHAR(255) NOT NULL,
+      contenu VARCHAR(255) ,
       grandeurPolice INTEGER,
       police VARCHAR(255)
     )

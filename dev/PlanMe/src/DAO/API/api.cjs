@@ -54,6 +54,13 @@ app.post("/api/register", async (req, res) => {
       await pool.query(insertUserQuery, [email, username, hashedPassword]);
       console.log("User registered:", { email, username, hashedPassword });
 
+      // créé les utilisateur avec un module et page de base
+      const initPageQuery = "INSERT INTO page (titre,sous_titre,contenu,utilisateur) VALUES ($1,$2,$3,$4)";
+      await pool.query(initPageQuery, [null, null, null, email]);
+
+      const initModuleQuery = "INSERT INTO module (contenu,grandeurPolice,police) VALUES ($1,$2,$3)";
+      await pool.query(initModuleQuery, [null, null, null]);
+
       res.status(201).send("Registration successful");
     }
   } catch (err) {
