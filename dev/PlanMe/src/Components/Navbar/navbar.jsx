@@ -3,6 +3,8 @@ import './navbar.css'
 import PhotoDeProfil from '../photoDeProfil/photoDeProfil'
 import { useState } from 'react'
 import Page from '../Pages/page'
+import Search from "../search/search"
+
 function Navbar(props,{onPageChange}) {
     // REVIEW
     let id = props.id
@@ -23,7 +25,7 @@ function Navbar(props,{onPageChange}) {
     return (
         <div id="menuBar">
             <div id="menuTopSection">
-                <div className="pdp"> <PhotoDeProfil /> </div>
+                {/* <div className="pdp"> <PhotoDeProfil /> </div> */}
                 {/* TODO */}
                 {/* allet chercher le nom de l'utilisateeur */}
                 <div id="navBarUsername" >username : {username}</div>
@@ -32,7 +34,7 @@ function Navbar(props,{onPageChange}) {
                 window.location.reload();
                 }}>Logout</button>
 
-                <div className="search"></div>
+                <div className="search"> <Search/></div>
             </div>
             // REVIEW
             <div id="menuPages"><div className="pageSection"><img src="../../src/assets/images/arrow.jpg" alt="fleche" /><div className="iconePageSection">allo</div> <div className="textPageSection"> texte</div> </div></div>

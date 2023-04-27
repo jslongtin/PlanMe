@@ -11,10 +11,11 @@
 
 #menuTopSection {
     position: absolute;
-    align-self: flex-start;
+    /* align-self: flex-start; */
     width: 100%;
     height: 20%;
-    background-color: var(--primaryColor);
+    background-color: 
+    
 }
 
 #menuPages {

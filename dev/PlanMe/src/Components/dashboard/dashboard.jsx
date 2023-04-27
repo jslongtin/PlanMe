@@ -3,6 +3,7 @@ import Navbar from '../Navbar/navbar'
 import Page from '../Pages/page'
 import './dashboard.css'
 
+
 function Dashboard() {
     return (
         // objet menubar dans la page 
