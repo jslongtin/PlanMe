@@ -8,12 +8,15 @@ import "./index.css";
 import Dashboard from "./Components/dashboard/dashboard";
 
 const App = () => {
-  const [page, setPage] = React.useState("login");
+  const [page, setPage] = React.useState(sessionStorage.getItem("page") ||"login");
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
-
+  
+  React.useEffect(() => {
+    sessionStorage.setItem("page", page);
+  }, [page]);
   return (
     <div id="main">
       {/* <Dashboard /> */}
