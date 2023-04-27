@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Page from '../Pages/page'
 import Search from "../search/search"
 
-function Navbar(props,{onPageChange}) {
+function Navbar(props, { onPageChange }) {
     // REVIEW
     let id = props.id
     let titre = props.titre
@@ -25,19 +25,23 @@ function Navbar(props,{onPageChange}) {
     return (
         <div id="menuBar">
             <div id="menuTopSection">
-                {/* <div className="pdp"> <PhotoDeProfil /> </div> */}
+                <div id="uiUser" >
+                    <div className="pdp"><PhotoDeProfil /> </div>
+                    <div id="navBarUsername" > {username}'s PlanMe</div>
+                </div>
+
+                <div className="search w-50 h-50"> <Search /></div>
                 {/* TODO */}
                 {/* allet chercher le nom de l'utilisateeur */}
-                <div id="navBarUsername" >username : {username}</div>
+
                 <button onClick={() => {
-                sessionStorage.clear(); 
-                window.location.reload();
+                    sessionStorage.clear();
+                    window.location.reload();
                 }}>Logout</button>
 
-                <div className="search"> <Search/></div>
             </div>
             // REVIEW
-            <div id="menuPages"><div className="pageSection"><img src="../../src/assets/images/arrow.jpg" alt="fleche" /><div className="iconePageSection">allo</div> <div className="textPageSection"> texte</div> </div></div>
+            <div id="menuPages"><div className="pageSection"><img src="../../src/assets/images/arrow.jpg" alt="fleche" /><div className="iconePageSection">icone</div> <div className="textPageSection"> titre</div> </div></div>
             {/* <div id="menuPages">{addPage}</div> */}
         </div>
 
