@@ -7,7 +7,7 @@ const Login = ({ onPageChange }) => {
   // ref : open ai
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/login", {
+    const response = await fetch("http://127.0.0.1:3001/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,8 +16,8 @@ const Login = ({ onPageChange }) => {
     });
     if (response.ok) {
       const data = await response.json();
-      sessionStorage.setItem("username", data.username);
-      sessionStorage.setItem("email", email);
+      sessionStorage.setItem("username", data.username); 
+      sessionStorage.setItem("email", email); 
       onPageChange("dashboard");
     } else {
       alert("Invalid email or password");
