@@ -51,13 +51,7 @@ function Navbar({ setActivePage }) {
         </ul>
       </div>
 
-      <Switch>
-        {pages.map((page) => (
-          <Route key={page.id} path={`/page/${page.id}`}>
-            <Page />
-          </Route>
-        ))}
-      </Switch>
+      
     </div>
   );
 }

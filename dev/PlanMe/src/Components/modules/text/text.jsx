@@ -58,6 +58,7 @@ function ModTexte() {
 
   return (
     <Module>
+      <div>{sessionStorage.getItem("username")}</div>
       <div
         className="titre"
         contentEditable="true"
@@ -84,6 +85,7 @@ function ModTexte() {
         contentEditable="true"
         dangerouslySetInnerHTML={{ __html: text }}
         onInput={handleTextChange}
+        
       />
     </Module>
   );
