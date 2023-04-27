@@ -3,7 +3,7 @@ import "./navbar.css";
 import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
 import { Link, Route, Switch } from "react-router-dom";
 import Search from "../search/search";
-
+import Page from "../Pages/page";
 function Navbar({ setActivePage }) {
   const [pages, setPages] = useState([{ id: 0 }]); // array of page objects with unique ids
 
