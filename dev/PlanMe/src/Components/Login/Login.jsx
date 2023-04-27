@@ -4,6 +4,7 @@ import "./login.css";
 const Login = ({ onPageChange }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user,setUser] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ const Login = ({ onPageChange }) => {
     });
     if (response.ok) {
       const data = await response.json();
+      setUser(email)
       sessionStorage.setItem("username", data.username);
       sessionStorage.setItem("email", email);
       onPageChange("dashboard");
