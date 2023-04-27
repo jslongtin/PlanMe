@@ -1,52 +1,65 @@
-import React from 'react'
-import './navbar.css'
-import PhotoDeProfil from '../photoDeProfil/photoDeProfil'
-import { useState } from 'react'
-import Page from '../Pages/page'
-import Search from "../search/search"
+import React, { useState } from "react";
+import "./navbar.css";
+import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
+import { Link, Route, Switch } from "react-router-dom";
+import Search from "../search/search";
 
-function Navbar(props, { onPageChange }) {
-    // REVIEW
-    let id = props.id
-    let titre = props.titre
-    let icone = props.icone
+function Navbar({ setActivePage }) {
+  const [pages, setPages] = useState([{ id: 0 }]); // array of page objects with unique ids
 
-    // ref: https://dev.to/francodalessio/understanding-react-elements-and-jsx-4dc3
-    // aide création attributs 
-    // REVIEW
-    const addPage = (page) => {
-        let section = <div className="pageSection"><div className="iconePageSection"></div> {page.icone} </div>
-        ReactDOM.render(
-            section,
-            document.getElementById('menuPages')
-        );
-    }
-    const username = sessionStorage.getItem('username');
-    return (
-        <div id="menuBar">
-            <div id="menuTopSection">
-                <div id="uiUser" >
-                    <div className="pdp"><PhotoDeProfil /> </div>
-                    <div id="navBarUsername" > {username}'s PlanMe</div>
-                </div>
+  const handleNewPage = () => {
+    // add a new page object to the pages array
+    const newPage = { id: pages.length };
+    setPages([...pages, newPage]);
 
-                <div className="search w-50 h-50"> <Search /></div>
-                {/* TODO */}
-                {/* allet chercher le nom de l'utilisateeur */}
+    // update the active page to the newly created page
+    setActivePage(newPage.id);
+  };
 
-                <button onClick={() => {
-                    sessionStorage.clear();
-                    window.location.reload();
-                }}>Logout</button>
+  const logout = () => {
+    sessionStorage.clear();
+    window.location.reload();
+  };
 
-            </div>
-            // REVIEW
-            <div id="menuPages"><div className="pageSection"><img src="../../src/assets/images/arrow.jpg" alt="fleche" /><div className="iconePageSection">icone</div> <div className="textPageSection"> titre</div> </div></div>
-            {/* <div id="menuPages">{addPage}</div> */}
+  const username = sessionStorage.getItem("username");
+
+  return (
+    <div id="menuBar">
+      <div id="menuTopSection">
+        <div id="uiUser">
+          <button className="pdp" onClick={() => {}}>
+            <PhotoDeProfil />
+          </button>
+          <div id="navBarUsername">{username}'s PlanMe</div>
         </div>
 
-    )
+        <div className="search w-50 h-50">
+          <Search />
+        </div>
+
+        <button onClick={() => logout()}>Logout</button>
+      </div>
+
+      <div id="menuPages">
+        <button onClick={handleNewPage}>New Page</button>
+        <ul>
+          {pages.map((page) => (
+            <li key={page.id}>
+              <Link to={`/page/${page.id}`}>Page {page.id}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Switch>
+        {pages.map((page) => (
+          <Route key={page.id} path={`/page/${page.id}`}>
+            <Page />
+          </Route>
+        ))}
+      </Switch>
+    </div>
+  );
 }
 
-
-export default Navbar
+export default Navbar;
