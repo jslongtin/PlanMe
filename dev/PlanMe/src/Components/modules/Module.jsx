@@ -1,16 +1,24 @@
 import { useState } from 'react'
-
 import './module.css'
+import ModTexte from './text/text'
 
 
-// ref : https://chat.openai.com/chat
 
-// FIXME real time update des plusieurs selecteurs a revoir , it's whack
 function Module(props) {
+    let createModule = (moduleType) => {
+        let moduleMap = {
+            note: ModTexte
+        };
 
+        //TODO faire du checking so ont passe la bonne chose
+        let NewModule = moduleMap[moduleType]
+        return <NewModule />
+    }
+    let moduleElement = createModule(props.type);
     return (
         <div className="module">
-            {props.children}
+            {moduleElement.children}
+            {/* {props.children} */}
         </div>
     )
 }

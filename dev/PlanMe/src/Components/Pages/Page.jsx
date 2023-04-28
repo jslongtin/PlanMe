@@ -14,22 +14,22 @@ function Page() {
 
 
 
-  
+
   return (
     <div id="modulesContainer">
-      
-      <AddMod/>
-      <ModTexte/>  
-      
-      
+
+      <AddMod />
+      {/* <ModTexte/>   */}
+      <Module type='note' />
+
       {/* <Calendrier /> */}
-      
+
       {/* {modTexteList.map((modTexte, index) => (
         <div key={index}>{modTexte}</div>
         ))}
       <button onClick={handleAddModTexte}>Add ModTexte</button> */}
     </div>
-    
+
   );
 }
 

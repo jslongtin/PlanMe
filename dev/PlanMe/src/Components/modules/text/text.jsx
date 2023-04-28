@@ -58,7 +58,7 @@ function ModTexte() {
 
   return (
     <Module>
-      <div>{sessionStorage.getItem("username")}</div>
+      {/* <div>{sessionStorage.getItem("username")}</div> */}
       <div
         className="titre"
         contentEditable="true"
