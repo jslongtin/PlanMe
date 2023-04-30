@@ -55,10 +55,12 @@ app.post("/api/register", async (req, res) => {
       console.log("User registered:", { email, username, hashedPassword });
 
       // créé les utilisateur avec un module et page de base
-      const initPageQuery = "INSERT INTO page (titre,sous_titre,contenu,utilisateur) VALUES ($1,$2,$3,$4)";
+      const initPageQuery =
+        "INSERT INTO page (titre,sous_titre,contenu,utilisateur) VALUES ($1,$2,$3,$4)";
       await pool.query(initPageQuery, [null, null, null, email]);
 
-      const initModuleQuery = "INSERT INTO module (contenu,grandeurPolice,police) VALUES ($1,$2,$3)";
+      const initModuleQuery =
+        "INSERT INTO module (contenu,grandeurPolice,police) VALUES ($1,$2,$3)";
       await pool.query(initModuleQuery, [null, null, null]);
 
       res.status(201).send("Registration successful");
@@ -232,6 +234,35 @@ app.post("/api/sharenotes", async (req, res) => {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
   }
+});
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                Calandar                                                 //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get("/events", (req, res) => {
+  const events = [
+    {
+      id: 1,
+      title: "Meeting",
+      start: "2023-05-01T10:00:00",
+      end: "2023-05-01T11:00:00",
+    },
+    {
+      id: 2,
+      title: "Lunch",
+      start: "2023-05-01T12:00:00",
+      end: "2023-05-01T13:00:00",
+    },
+    {
+      id: 3,
+      title: "Presentation",
+      start: "2023-05-01T14:00:00",
+      end: "2023-05-01T15:00:00",
+    },
+  ];
+
+  res.json(events);
 });
 
 const port = process.env.PORT || 3001;
