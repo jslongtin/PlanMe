@@ -15,8 +15,7 @@ function Page() {
   return (
     // <div id="modulesContainer">
     //   {/* <TestCalendrier /> */}
-    //   {/* <AddMod /> */}
-    //   {/* <ModTexte/>   */}
+
     //   {/* <Module type="note" /> */}
     //   {/* <Calendrier /> */}
     //   {/* {modTexteList.map((modTexte, index) => (
@@ -25,7 +24,9 @@ function Page() {
     //   <button onClick={handleAddModTexte}>Add ModTexte</button> */}
     // </div>
     <div id="modulesContainer">
-      <Cal />
+      {/* <Cal /> */}
+      <AddMod />
+      <ModTexte />
     </div>
   );
 }
