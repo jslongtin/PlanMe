@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Scheduler from "./Scheduler/Scheduler";
-import Toolbar from "./Toolbar/Toolbar";
-import MessageArea from "./MessageArea/MessageArea";
-const data = [
+
+const dataa = [
   {
     start_date: "2020-06-10 6:00",
     end_date: "2020-06-10 8:00",
@@ -16,7 +15,26 @@ const data = [
     id: 2,
   },
 ];
-
+const data = [
+  {
+    id: 1,
+    text: "Meeting",
+    start_date: "2020-06-10 6:00",
+    end_date: "2020-06-10 8:00",
+  },
+  {
+    id: 2,
+    text: "Lunch",
+    start_date: "2023-05-01T12:00:00",
+    end_date: "2023-05-01T13:00:00",
+  },
+  {
+    id: 3,
+    text: "Presentation",
+    start_date: "2023-05-01T14:00:00",
+    end_date: "2023-05-01T15:00:00",
+  },
+];
 class Cal extends Component {
   state = {
     currentTimeFormatState: true,

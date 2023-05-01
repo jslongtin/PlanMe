@@ -24,9 +24,9 @@ function Page() {
     //   <button onClick={handleAddModTexte}>Add ModTexte</button> */}
     // </div>
     <div id="modulesContainer">
-      {/* <Cal /> */}
-      <AddMod />
-      <ModTexte />
+      <Cal />
+      {/* <AddMod />
+      <ModTexte /> */}
     </div>
   );
 }
