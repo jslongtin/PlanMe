@@ -9,7 +9,7 @@ function Page() {
   // setModules([...modules, { type: moduleType }]);: updates the modules state by creating a new array that consists of all the existing modules (...modules using the spread syntax) 
   // and a new object representing the newly added module. 
   // The new object contains a single property type, which is set to the value of moduleType (the type of module to be added, either "note" or "calendar"). ref : chat gpt
-  const usesModule = (moduleType) => {
+  const handleModules = (moduleType) => {
     setModules([...modules, { type: moduleType }]);
     setShowModule(false); 
   };
@@ -31,13 +31,13 @@ function Page() {
         {showModule && (
           <div className="absolute z-20 bg-white shadow-md rounded p-4 mt-2">
             <button
-              onClick={() => usesModule("note")}
+              onClick={() => handleModules("note")}
               className="bg-green-500 text-white px-4 py-2 rounded mb-2 w-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
             >
               Add Note
             </button>
             <button
-              onClick={() => usesModule("calendar")}
+              onClick={() => handleModules("calendar")}
               className="bg-yellow-500 text-white px-4 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
             >
               Add Calendar
