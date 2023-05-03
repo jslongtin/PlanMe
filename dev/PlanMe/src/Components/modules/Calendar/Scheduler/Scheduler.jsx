@@ -77,7 +77,7 @@ export default class Scheduler extends Component {
         ref={(input) => {
           this.schedulerContainer = input;
         }}
-        className="w-full h-full overflow-auto"
+        className="w-full h-full overflow-auto  relative z-0"
       ></div>
     );
   }

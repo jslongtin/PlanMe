@@ -58,35 +58,38 @@ function ModTexte() {
 
   return (
     <Module>
-      {/* <div>{sessionStorage.getItem("username")}</div> */}
-      <div
-        className="titre"
-        contentEditable="true"
-        dangerouslySetInnerHTML={{ __html: text }}
-        onInput={handleTitreChange}
-      />
-      <div className="toolbar">
-        <button className={bold ? "active" : ""} onClick={handleBoldClick}>
-          B
-        </button>
-        <button className={italic ? "active" : ""} onClick={handleItalicClick}>
-          I
-        </button>
-        <button
-          className={underline ? "active" : ""}
-          onClick={handleUnderlineClick}
-        >
-          U
-        </button>
-        <button onClick={handleSaveClick}>Save</button>
+      <div className="relative z-0">
+        <div
+          className="titre"
+          contentEditable="true"
+          dangerouslySetInnerHTML={{ __html: text }}
+          onInput={handleTitreChange}
+        />
+        <div className="toolbar">
+          <button className={bold ? "active" : ""} onClick={handleBoldClick}>
+            B
+          </button>
+          <button
+            className={italic ? "active" : ""}
+            onClick={handleItalicClick}
+          >
+            I
+          </button>
+          <button
+            className={underline ? "active" : ""}
+            onClick={handleUnderlineClick}
+          >
+            U
+          </button>
+          <button onClick={handleSaveClick}>Save</button>
+        </div>
+        <div
+          className="editor"
+          contentEditable="true"
+          dangerouslySetInnerHTML={{ __html: text }}
+          onInput={handleTextChange}
+        />
       </div>
-      <div
-        className="editor"
-        contentEditable="true"
-        dangerouslySetInnerHTML={{ __html: text }}
-        onInput={handleTextChange}
-        
-      />
     </Module>
   );
 }

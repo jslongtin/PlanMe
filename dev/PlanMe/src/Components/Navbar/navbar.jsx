@@ -50,8 +50,6 @@ function Navbar({ setActivePage }) {
           ))}
         </ul>
       </div>
-
-      
     </div>
   );
 }

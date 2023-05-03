@@ -1,20 +1,5 @@
 import React, { Component } from "react";
 import Scheduler from "./Scheduler/Scheduler";
-
-const dataa = [
-  {
-    start_date: "2020-06-10 6:00",
-    end_date: "2020-06-10 8:00",
-    text: "Event 1",
-    id: 1,
-  },
-  {
-    start_date: "2020-06-13 10:00",
-    end_date: "2020-06-13 18:00",
-    text: "Event 2",
-    id: 2,
-  },
-];
 const data = [
   {
     id: 1,
@@ -67,7 +52,7 @@ class Cal extends Component {
   render() {
     const { currentTimeFormatState, messages } = this.state;
     return (
-      <div className="min-h-screen w-full bg-gray-500">
+      <div className="min-h-screen w-full bg-gray-500 relative z-0">
         <div className="h-full w-full flex-grow mx-auto max-w-7xl min-h-0 p-4">
           <Scheduler
             events={data}

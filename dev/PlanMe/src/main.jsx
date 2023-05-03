@@ -23,11 +23,9 @@ const App = () => {
 
   return (
     <div id="main">
-      {/* <Calendrier events={events} /> */}
+     
       <Dashboard />
-      {/* {page === "login" && <Login onPageChange={handlePageChange} />}
-      {page === "register" && <Register onPageChange={handlePageChange} />} */}
-      {/* {page === "dashboard" && <Dashboard onPageChange={handlePageChange} />} */}
+   
     </div>
   );
 };
