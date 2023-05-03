@@ -13,7 +13,8 @@
     }
     .titre{
         position: relative;
-        background-color: aliceblue;
+        
+        /* background-color: aliceblue; */
         overflow: auto;
         overflow-wrap: break-word;
         word-wrap: break-word; 

@@ -13,13 +13,15 @@
     position: absolute;
     align-self: flex-start;
     width: 100%;
-    height: 25%;
+    height:42%;
     background-color: var(--primaryColor);
     display: flex;
     flex-direction: column;
+    padding: 5px;
 }
 
 #uiUser {
+    width: 100%;
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -29,10 +31,13 @@
     position: absolute;
     align-self: flex-end;
     width: 100%;
-    height: 75%;
+    height:68%;
     background-color: var(--thirdColor);
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
 }
-
+/* 
 .pageSection {
     display: flex;
     flex-direction: row;
@@ -53,8 +58,15 @@
     width: 20%;
     height: 100%;
 
-}
+} */
 
 img {
     border-radius: 10px;
+}
+
+ul > li{
+    text-align: center;
+    width: 100%;
+    background-color: lightgray;
+    border: 2px solid var(--primaryColor); 
 }

@@ -4,6 +4,9 @@ import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
 import { Link, Route, Switch } from "react-router-dom";
 import Search from "../search/search";
 import Page from "../Pages/page";
+import pageProfile from "../ProfilePage/pageProfile";
+
+
 function Navbar({ setActivePage }) {
   const [pages, setPages] = useState([{ id: 0 }]); // array of page objects with unique ids
 
@@ -27,9 +30,9 @@ function Navbar({ setActivePage }) {
     <div id="menuBar">
       <div id="menuTopSection">
         <div id="uiUser">
-          <button className="pdp" onClick={() => {}}>
+          {/* <button className="pdp"> */}
             <PhotoDeProfil />
-          </button>
+          {/* </button> */}
           <div id="navBarUsername">{username}'s PlanMe</div>
         </div>
 

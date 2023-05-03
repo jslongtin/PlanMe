@@ -14,12 +14,10 @@
 }
 
 #pageContainer {
-    /* align-self: flex-end; */
     display: flex;
     width: 80%;
     height: 100%;
     justify-content: center;
-    background-color:brown;
+    overflow-y: scroll;
 
-    
 }

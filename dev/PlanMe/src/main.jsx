@@ -7,6 +7,7 @@ import Navbar from "./Components/Navbar/navbar";
 import Page from "./Components/Pages/page";
 import Dashboard from "./Components/dashboard/dashboard";
 import "./index.css";
+import pageProfile from "./Components/ProfilePage/pageProfile";
 
 const App = () => {
   const [page, setPage] = React.useState(
@@ -23,8 +24,9 @@ const App = () => {
 
   return (
     <div id="main">
-     
-      <Dashboard />
+      <pageProfile/>
+      {/* <Dashboard /> */}
+
    
     </div>
   );

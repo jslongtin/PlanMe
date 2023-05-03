@@ -17,8 +17,8 @@ function Module(props) {
     let moduleElement = createModule(props.type);
     return (
         <div className="module relative z-0">
-            {moduleElement.children}
-            {/* {props.children} */}
+            {/* {moduleElement.children} */}
+            {props.children}
         </div>
     )
 }
