@@ -1,3 +1,6 @@
+// ref : https://github.com/DHTMLX
+// https://docs.dhtmlx.com/scheduler/howtostart_nodejs.html
+// https://www.youtube.com/watch?v=UdmAB5Hoqxg
 import React, { Component } from "react";
 import "dhtmlx-scheduler";
 import "dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css";
