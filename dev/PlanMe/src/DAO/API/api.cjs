@@ -240,30 +240,25 @@ app.post("/api/sharenotes", async (req, res) => {
 //                                                Calandar                                                 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get("/events", (req, res) => {
-  const events = [
-    {
-      id: 1,
-      title: "Meeting",
-      start: "2023-05-01T10:00:00",
-      end: "2023-05-01T11:00:00",
-    },
-    {
-      id: 2,
-      title: "Lunch",
-      start: "2023-05-01T12:00:00",
-      end: "2023-05-01T13:00:00",
-    },
-    {
-      id: 3,
-      title: "Presentation",
-      start: "2023-05-01T14:00:00",
-      end: "2023-05-01T15:00:00",
-    },
-  ];
-
-  res.json(events);
+app.post("/api/createEvent", async (req, res) => {
+  try {
+    const { id, contact } = req.body;
+    const createQuery = "INSERT INTO "
+    const { rows } = await pool.query(getnoteQuery, [id]);
+    const note = rows.find((note) => note.id === id);
+    if (!note) {
+      res.status(401).json({ msg: "Note does not exist" });
+      return;
+    }
+    const getuserQuery = "SELECT * FROM utilisateurs WHERE email = $1";
+    //TODO : faire une fonction qui share avec plusieurs utilisateurs
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
 });
+
+    
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
