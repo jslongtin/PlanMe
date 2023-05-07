@@ -240,18 +240,56 @@ app.post("/api/sharenotes", async (req, res) => {
 //                                                Calandar                                                 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.post("/api/createEvent", async (req, res) => {
+//get all events
+app.get("/api/calendrier/events",async (req, res) => {
   try {
-    const { id, contact } = req.body;
-    const createQuery = "INSERT INTO "
-    const { rows } = await pool.query(getnoteQuery, [id]);
-    const note = rows.find((note) => note.id === id);
-    if (!note) {
-      res.status(401).json({ msg: "Note does not exist" });
-      return;
-    }
-    const getuserQuery = "SELECT * FROM utilisateurs WHERE email = $1";
-    //TODO : faire une fonction qui share avec plusieurs utilisateurs
+    const { email } = req.query;
+    const getEventsQuery = "SELECT * FROM events WHERE user_email = $1";
+    const { rows } = await pool.query(getEventsQuery, [email]);
+    res.status(200).json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
+
+// create event
+app.post("/api/calendrier/new_event", async (req, res) => {
+  try {
+    const { email, title, start_date, end_date} = req.body;
+    const newEventquery= "INSERT INTO events (user_email, title, start_date, end_date) VALUES ($1, $2, $3, $4)";
+    await pool.query(newEventquery, [email, title, start_date, end_date]);
+    res.status(200).send(`Event ${title} created`);
+    console.log(`Event ${title} created:`, { title, start_date, end_date });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
+
+// update event
+app.post("/api/calendrier/update_event/:id", async (req, res) => {
+  try {
+    const { id} = req.params; // ref : chat gpt for express.js : req.params
+    const { title, start_date, end_date} = req.body;
+    const updateEventQuery = "UPDATE events SET title = $1, start_date = $2, end_date = $3 WHERE id = $4";
+    await pool.query(updateEventQuery, [title, start_date, end_date, id]);
+    res.status(200).send("Event ${title} updated")
+    console.log(`Event ${title} updated:`, { title, start_date, end_date });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
+
+// delete event
+app.post("/api/calendrier/delete_event/:id", async (req, res) => {
+  try {
+    const { id } = req.params;// ref : chat gpt for express.js : req.params
+    const deleteEventQuery = "DELETE FROM events WHERE id = $1";
+    await pool.query(deleteEventQuery, [id]);
+    res.status(200).send(`Event ${id} deleted`);
+    console.log(`Event ${id} deleted:`, { id });
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");

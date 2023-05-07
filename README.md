@@ -13,10 +13,6 @@ with nodejs as a context :
 https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/
 
 
-npm install react-big-calendar moment
-npm install @syncfusion/ej2-react-schedule
-
-
 
 page ref code for load notes : 
 
