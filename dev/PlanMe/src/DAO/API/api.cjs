@@ -59,9 +59,9 @@ app.post("/api/register", async (req, res) => {
         "INSERT INTO page (titre,sous_titre,contenu,utilisateur) VALUES ($1,$2,$3,$4)";
       await pool.query(initPageQuery, [null, null, null, email]);
 
-      const initModuleQuery =
-        "INSERT INTO module (contenu,grandeurPolice,police) VALUES ($1,$2,$3)";
-      await pool.query(initModuleQuery, [null, null, null]);
+      // const initModuleQuery =
+      //   "INSERT INTO module (contenu,grandeurPolice,police) VALUES ($1,$2,$3)";
+      // await pool.query(initModuleQuery, [null, null, null]);
 
       res.status(201).send("Registration successful");
     }
@@ -104,6 +104,7 @@ app.post("/api/login", async (req, res) => {
     res.status(500).send("An error occurred while logging in.");
   }
 });
+
 app.post("/api/newPage", async (req, res) => {
   try {
     const { utilisateur,titre } = req.body;
@@ -112,6 +113,20 @@ app.post("/api/newPage", async (req, res) => {
     result = await pool.query(insertPageQuery, [titre, null, utilisateur]);
     res.status(200).send(`Page ${titre} created`);
     console.log(`Page ${titre} creer:`, { titre, utilisateur });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
+app.post("/api/newModule", async (req, res) => {
+  try {
+    const { type,page } = req.body;
+    const insertPageModuleQuery =
+      "INSERT INTO page_module (id_page,id_module) VALUES ($1, $2) ";
+    result = await pool.query(insertPageModuleQuery, []);
+    res.status(200).send(`Page Module created`);
+  
+    
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");

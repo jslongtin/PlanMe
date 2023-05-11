@@ -13,6 +13,23 @@ function Page() {
     setModules([...modules, { type: moduleType }]);
     setShowModule(false); 
   };
+// TODO finir la fonction addModule avec l'api
+  let addModule = async (e) => { 
+    let pageCourante = sessionStorage.getItem("activePage")
+  e.preventDefault();
+  const response = await fetch("http://127.0.0.1:3001/api/newModule", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({e ,pageCourante }),
+  });
+  if (response.ok) {
+    handleModules(e)
+  } else {
+    alert("Invalid email or password");
+  }
+};
 
   const moduleToggle = () => {
     setShowModule(!showModule);
@@ -31,7 +48,7 @@ function Page() {
         {showModule && (
           <div className="absolute z-20 bg-white shadow-md rounded p-4 mt-2">
             <button
-              onClick={() => handleModules("note")}
+              onClick={() => addModule("note")}
               className="bg-green-500 text-white px-4 py-2 rounded mb-2 w-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
             >
               Add Note
