@@ -45,6 +45,8 @@ class Cal extends Component {
   };
 
   async createEvent(title, start_date, end_date) {
+    const user_email = sessionStorage.getItem("email");
+    console.log(user_email);
     const response = await fetch(
       "http://localhost:3001/api/calendrier/new_event",
       {
@@ -52,7 +54,7 @@ class Cal extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, start_date, end_date }),
+        body: JSON.stringify({title, start_date, end_date, user_email }),
       }
     );
     const events = await this.fetchEvents();
@@ -75,10 +77,16 @@ class Cal extends Component {
   }
 
   async deleteEvent(id) {
+    const user_email = sessionStorage.getItem("email");
+
     const response = await fetch(
-      `http://localhost:3001/api/calendrier/delete_event/${id}`,
+      "http://localhost:3001/api/calendrier/delete_event",
       {
-        method: "DELETE",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({user_email, title, start_date, end_date }),
       }
     );
     return response.json();

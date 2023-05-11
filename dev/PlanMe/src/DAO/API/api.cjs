@@ -256,11 +256,11 @@ app.get("/api/calendrier/events",async (req, res) => {
 // create event
 app.post("/api/calendrier/new_event", async (req, res) => {
   try {
-    const { email, title, start_date, end_date} = req.body;
-    const newEventquery= "INSERT INTO events (user_email, title, start_date, end_date) VALUES ($1, $2, $3, $4)";
-    await pool.query(newEventquery, [email, title, start_date, end_date]);
+    const {title, start_date, end_date, user_email} = req.body;
+    const newEventquery= "INSERT INTO events ( title, start_date, end_date, user_email) VALUES ($1, $2, $3, $4)";
+    await pool.query(newEventquery, [title, start_date, end_date,user_email]);
     res.status(200).send(`Event ${title} created`);
-    console.log(`Event ${title} created:`, { title, start_date, end_date });
+    console.log(`Event ${title} created:`, { title, start_date, end_date, user_email });
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
@@ -283,13 +283,13 @@ app.post("/api/calendrier/update_event/:id", async (req, res) => {
 });
 
 // delete event
-app.post("/api/calendrier/delete_event/:id", async (req, res) => {
+app.post("/api/calendrier/delete_event", async (req, res) => {
   try {
-    const { id } = req.params;// ref : chat gpt for express.js : req.params
-    const deleteEventQuery = "DELETE FROM events WHERE id = $1";
+    const { email,title,start_date,end_date,id } = req.params;// ref : chat gpt for express.js : req.params
+    const deleteEventQuery = "DELETE FROM events WHERE email = $1,title = $2,start_date = $3,end_date = $4";
     await pool.query(deleteEventQuery, [id]);
     res.status(200).send(`Event ${id} deleted`);
-    console.log(`Event ${id} deleted:`, { id });
+    console.log(`Event ${title} deleted:`, { title });
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
