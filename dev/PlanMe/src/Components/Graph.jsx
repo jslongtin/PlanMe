@@ -2,7 +2,7 @@
 // ref: https://chat.openai.com/?model=text-davinci-002-render-sha
 import React, { Component } from 'react';
 
-class Vertex {
+class Sommet {
   constructor(id) {
     this.id = id;
     this.adjacent = new Map();
@@ -29,42 +29,42 @@ class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      vertices: new Map(),
-      numVertices: 0,
+      sommets: new Map(),
+      numsommets: 0,
     };
   }
 
-  addVertex(id) {
-    const newVertex = new Vertex(id);
-    const { vertices } = this.state;
-    vertices.set(id, newVertex);
-    this.setState({ vertices, numVertices: this.state.numVertices + 1 });
-    return newVertex;
+  addSommet(id) {
+    let newSommet = new Sommet(id);
+    let { sommets } = this.state;
+    sommets.set(id, newSommet);
+    this.setState({ sommets, numsommets: this.state.numsommets + 1 });
+    return newSommet;
   }
 
-  getVertex(id) {
-    const { vertices } = this.state;
-    if (vertices.has(id)) {
-      return vertices.get(id);
+  getSommet(id) {
+    let { sommets } = this.state;
+    if (sommets.has(id)) {
+      return sommets.get(id);
     }
     return null;
   }
 
-  addEdge(frm, to, weight = 0) {
-    const { vertices } = this.state;
-    if (!vertices.has(frm)) {
-      this.addVertex(frm);
+  addArete(frm, to, weight = 0) {
+    let { sommets } = this.state;
+    if (!sommets.has(frm)) {
+      this.addSommet(frm);
     }
-    if (!vertices.has(to)) {
-      this.addVertex(to);
+    if (!sommets.has(to)) {
+      this.addSommet(to);
     }
-    vertices.get(frm).addNeighbor(vertices.get(to), weight);
-    this.setState({ vertices });
+    sommets.get(frm).addNeighbor(sommets.get(to), weight);
+    this.setState({ sommets });
   }
 
-  getVertices() {
-    const { vertices } = this.state;
-    return Array.from(vertices.keys());
+  getsommets() {
+    let { sommets } = this.state;
+    return Array.from(sommets.keys());
   }
 
   render() {
