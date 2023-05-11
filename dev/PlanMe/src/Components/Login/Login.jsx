@@ -23,11 +23,12 @@ function Login () {
       sessionStorage.setItem("username", data.username);
       sessionStorage.setItem("email", email);
       history.push("/dashboard")
+      
     } else {
       alert("Invalid email or password");
     }
   };
-  
+
   let register = () => {
     history.push("/register")
   }

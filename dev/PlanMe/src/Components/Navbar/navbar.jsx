@@ -5,23 +5,46 @@ import { Link, Route, Switch } from "react-router-dom";
 import Search from "../search/search";
 import Page from "../Pages/page";
 import pageProfile from "../ProfilePage/pageProfile";
+import { useHistory } from "react-router-dom";
 
 
 function Navbar({ setActivePage }) {
-  const [pages, setPages] = useState([{ id: 0 }]); // array of page objects with unique ids
+  const [pages, setPages] = useState(0); // array of page objects with unique ids
+  const history = useHistory();
 
-  const handleNewPage = () => {
-    // add a new page object to the pages array
-    const newPage = { id: pages.length };
-    setPages([...pages, newPage]);
+  // const handleNewPage = () => {
+  //   // add a new page object to the pages array
+  //   const newPage = { id: pages.length };
+  //   setPages([...pages, newPage]);
 
-    // update the active page to the newly created page
-    setActivePage(newPage.id);
+  //   // update the active page to the newly created page
+  //   setActivePage(newPage.id);
+  // };
+  
+  let handleNewPage = async (e) => {
+    let utilisateur = sessionStorage.getItem("email")
+    let titre = "page " + pages
+    e.preventDefault();
+    const response = await fetch("http://127.0.0.1:3001/api/newPage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({utilisateur ,titre }),
+    });
+    if (response.ok) {
+      let li = document.createElement("li")
+      li.innerHTML = "Page " + pages
+      document.getElementById("pageList").append(li)
+      setPages(pages + 1);
+    } else {
+      alert("Invalid email or password");
+    }
   };
 
   const logout = () => {
     sessionStorage.clear();
-    window.location.reload();
+    history.push("/");
   };
 
   const username = sessionStorage.getItem("username");
@@ -29,10 +52,9 @@ function Navbar({ setActivePage }) {
   return (
     <div id="menuBar">
       <div id="menuTopSection">
+
         <div id="uiUser">
-          {/* <button className="pdp"> */}
-            <PhotoDeProfil />
-          {/* </button> */}
+          <PhotoDeProfil />
           <div id="navBarUsername">{username}'s PlanMe</div>
         </div>
 
@@ -45,12 +67,12 @@ function Navbar({ setActivePage }) {
 
       <div id="menuPages">
         <button onClick={handleNewPage}>New Page</button>
-        <ul>
-          {pages.map((page) => (
+        <ul id="pageList">
+          {/* {pages.map((page) => (
             <li key={page.id}>
               <Link to={`/page/${page.id}`}>Page {page.id}</Link>
             </li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </div>

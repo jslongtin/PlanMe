@@ -104,7 +104,19 @@ app.post("/api/login", async (req, res) => {
     res.status(500).send("An error occurred while logging in.");
   }
 });
-
+app.post("/api/newPage", async (req, res) => {
+  try {
+    const { utilisateur,titre } = req.body;
+    const insertPageQuery =
+      "INSERT INTO page (titre,contenu,utilisateur) VALUES ($1, $2, $3) ";
+    result = await pool.query(insertPageQuery, [titre, null, utilisateur]);
+    res.status(200).send(`Page ${titre} created`);
+    console.log(`Page ${titre} creer:`, { titre, utilisateur });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
 // // Modifier info utilisateur courrant:
 // app.post("/api/update_user", authenticateUser, async (req, res) => {
 //   try {

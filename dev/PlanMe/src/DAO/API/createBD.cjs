@@ -76,7 +76,6 @@ const pool = new Pool({
     CREATE TABLE IF NOT EXISTS page (
         id SERIAL PRIMARY KEY,
         titre VARCHAR(255),
-        sous_titre VARCHAR(255),
         contenu TEXT,
         utilisateur VARCHAR(255) NOT NULL,
         FOREIGN KEY (utilisateur) REFERENCES utilisateurs (email)

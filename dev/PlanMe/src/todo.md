@@ -12,3 +12,9 @@ arbre -ary
 math
 calandrir/evenement
 json
+
+
+Semaine remise:
+cleaner code
+comments
+faire readme
