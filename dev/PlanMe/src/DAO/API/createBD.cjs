@@ -23,7 +23,7 @@ const pool = new Pool({
   // await pool.query("DROP TABLE IF EXISTS liste");
   // await pool.query("DROP TABLE IF EXISTS module");
   // await pool.query("DROP TABLE IF EXISTS page");
-  // await pool.query("DROP TABLE IF EXISTS contact");
+  await pool.query("DROP TABLE IF EXISTS contact");
   // await pool.query("DROP TABLE IF EXISTS utilisateurs");
   // await pool.query("DROP TABLE IF EXISTS themes");
   // await pool.query("DROP TABLE IF EXISTS calendriers");
@@ -86,17 +86,24 @@ const pool = new Pool({
     CREATE TABLE IF NOT EXISTS contact (
       id SERIAL PRIMARY KEY,
       utilisateur_email VARCHAR(255) NOT NULL,
-      page_id INTEGER NOT NULL,
-      titre VARCHAR(255),
-      souspage VARCHAR(255),
-      icon VARCHAR(255),
-      hauteur FLOAT DEFAULT 100,
-      largeur FLOAT DEFAULT 200,
-      pageparent INTEGER,
+      contact VARCHAR(255) NOT NULL,
       FOREIGN KEY (utilisateur_email) REFERENCES utilisateurs (email),
-      FOREIGN KEY (pageparent) REFERENCES contact (id)
+      FOREIGN KEY (contact) REFERENCES utilisateurs (email)
     )
     `);
+
+    // ajouter des contacts par defauts a la création de la bd
+    await pool.query(
+      `
+      INSERT INTO contact (utilisateur_email,contact) 
+    VALUES ('Jess@hotmail.com', 'ato@ato.com') ON CONFLICT DO NOTHING`
+    );
+   
+    await pool.query(
+      `INSERT INTO contact (utilisateur_email,contact) 
+    VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
+    );
+    // **************************************************************
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS module (

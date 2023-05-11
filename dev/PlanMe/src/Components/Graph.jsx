@@ -50,15 +50,15 @@ class Graph extends Component {
     return null;
   }
 
-  addArete(frm, to, weight = 0) {
+  addArete(ids, to, weight = 0) {
     let { sommets } = this.state;
-    if (!sommets.has(frm)) {
-      this.addSommet(frm);
+    if (!sommets.has(ids)) {
+      this.addSommet(ids);
     }
     if (!sommets.has(to)) {
       this.addSommet(to);
     }
-    sommets.get(frm).addNeighbor(sommets.get(to), weight);
+    sommets.get(ids).addNeighbor(sommets.get(to), weight);
     this.setState({ sommets });
   }
 

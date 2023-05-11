@@ -1,6 +1,6 @@
 strategy
 factory
-composite
+composite -  deja fait ave les componenants
 
 jess:
 regex
