@@ -23,7 +23,7 @@ const pool = new Pool({
   // await pool.query("DROP TABLE IF EXISTS liste");
   // await pool.query("DROP TABLE IF EXISTS module");
   // await pool.query("DROP TABLE IF EXISTS page");
-  await pool.query("DROP TABLE IF EXISTS contact");
+  // await pool.query("DROP TABLE IF EXISTS contact");
   // await pool.query("DROP TABLE IF EXISTS utilisateurs");
   // await pool.query("DROP TABLE IF EXISTS themes");
   // await pool.query("DROP TABLE IF EXISTS calendriers");
@@ -104,12 +104,20 @@ const pool = new Pool({
     );
     // **************************************************************
 
+
+    // MODULES
   await pool.query(`
-    CREATE TABLE IF NOT EXISTS module (
+    CREATE TABLE IF NOT EXISTS texte (
       id SERIAL PRIMARY KEY,
       contenu VARCHAR(255) ,
-      grandeurPolice INTEGER,
-      police VARCHAR(255)
+    )
+    `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS page_module (
+      id SERIAL PRIMARY KEY,
+      id_page INTEGER,
+      id_module INTEGER
     )
     `);
 

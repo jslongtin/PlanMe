@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 function Navbar({ setActivePage }) {
   const [pages, setPages] = useState(0); // array of page objects with unique ids
   const history = useHistory();
+  const username = sessionStorage.getItem("username");
 
   // const handleNewPage = () => {
   //   // add a new page object to the pages array
@@ -20,7 +21,7 @@ function Navbar({ setActivePage }) {
   //   // update the active page to the newly created page
   //   setActivePage(newPage.id);
   // };
-  
+  // TODO a verifier les id de page avec la bd
   let handleNewPage = async (e) => {
     let utilisateur = sessionStorage.getItem("email")
     let titre = "page " + pages
@@ -35,6 +36,9 @@ function Navbar({ setActivePage }) {
     if (response.ok) {
       let li = document.createElement("li")
       li.innerHTML = "Page " + pages
+      li.addEventListener("click", () => {
+        sessionStorage.setItem("activePage", pages);
+      })
       document.getElementById("pageList").append(li)
       setPages(pages + 1);
     } else {
@@ -47,7 +51,6 @@ function Navbar({ setActivePage }) {
     history.push("/");
   };
 
-  const username = sessionStorage.getItem("username");
 
   return (
     <div id="menuBar">
