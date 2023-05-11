@@ -83,3 +83,7 @@ sudo docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa11
 1e004b141a5477e9fc874f5091f78fb9bb98d8672a5bdc5cc5ef1feb1b816d28
 
 
+reset database:
+
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
