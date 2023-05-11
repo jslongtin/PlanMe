@@ -284,11 +284,12 @@ app.post("/api/calendrier/update_event/:id", async (req, res) => {
 
 // delete event
 app.post("/api/calendrier/delete_event", async (req, res) => {
+  console.log(req.body);
   try {
-    const { email,title,start_date,end_date,id } = req.params;// ref : chat gpt for express.js : req.params
-    const deleteEventQuery = "DELETE FROM events WHERE email = $1,title = $2,start_date = $3,end_date = $4";
-    await pool.query(deleteEventQuery, [id]);
-    res.status(200).send(`Event ${id} deleted`);
+    const {title, start_date, end_date, user_email } = req.body;// ref : chat gpt for express.js : req.params
+    const deleteEventQuery = "DELETE FROM events WHERE title = $1 AND start_date = $2 AND end_date = $3 AND user_email = $4";
+    await pool.query(deleteEventQuery, [title,start_date,end_date, user_email]);
+    res.status(200).send(`Event ${title} deleted`);
     console.log(`Event ${title} deleted:`, { title });
   } catch (err) {
     console.error(err);

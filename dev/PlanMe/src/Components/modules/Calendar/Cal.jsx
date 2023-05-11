@@ -28,10 +28,12 @@ class Cal extends Component {
         await this.createEvent(ev.text, ev.start_date, ev.end_date);
         break;
       case "update":
-        await this.updateEvent(id, ev.text, ev.start_date, ev.end_date);
+        await this.updateEvent(ev.text, ev.start_date, ev.end_date);
         break;
       case "delete":
-        await this.deleteEvent(id);
+        console.log(ev.text);
+        console.log(ev);
+        await this.deleteEvent(ev.text, ev.start_date, ev.end_date);
         break;
       default:
         console.log("Unknown action");
@@ -76,9 +78,11 @@ class Cal extends Component {
     return response.json();
   }
 
-  async deleteEvent(id) {
+  async deleteEvent(title, start_date, end_date) {
     const user_email = sessionStorage.getItem("email");
-
+    console.log(title, start_date, end_date);
+    const start = start_date.toISOString();
+    const end = end_date.toISOString();
     const response = await fetch(
       "http://localhost:3001/api/calendrier/delete_event",
       {
@@ -86,7 +90,7 @@ class Cal extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({user_email, title, start_date, end_date }),
+        body: JSON.stringify({title, start_date: start, end_date: end, user_email}),
       }
     );
     return response.json();
