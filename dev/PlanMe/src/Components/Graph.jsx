@@ -1,3 +1,5 @@
+// ref: https://medium.com/outco/how-to-build-a-graph-data-structure-d779d822f9b4
+// ref: https://chat.openai.com/?model=text-davinci-002-render-sha
 import React, { Component } from 'react';
 
 class Vertex {
