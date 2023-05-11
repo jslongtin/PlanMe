@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Node {
+class Vertex {
   constructor(id) {
     this.id = id;
     this.adjacent = new Map();
@@ -27,20 +27,20 @@ class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodes: new Map(),
+      vertices: new Map(),
       numVertices: 0,
     };
   }
 
-  addNode(id) {
-    let newNode = new Node(id);
-    let { vertices } = this.state;
-    nodes.set(id, newNode);
+  addVertex(id) {
+    const newVertex = new Vertex(id);
+    const { vertices } = this.state;
+    vertices.set(id, newVertex);
     this.setState({ vertices, numVertices: this.state.numVertices + 1 });
     return newVertex;
   }
 
-  getNode(id) {
+  getVertex(id) {
     const { vertices } = this.state;
     if (vertices.has(id)) {
       return vertices.get(id);
@@ -48,19 +48,19 @@ class Graph extends Component {
     return null;
   }
 
-  addConnection(frm, to, weight = 0) {
+  addEdge(frm, to, weight = 0) {
     const { vertices } = this.state;
     if (!vertices.has(frm)) {
-      this.addNode(frm);
+      this.addVertex(frm);
     }
     if (!vertices.has(to)) {
-      this.addNode(to);
+      this.addVertex(to);
     }
     vertices.get(frm).addNeighbor(vertices.get(to), weight);
     this.setState({ vertices });
   }
 
-  getNodes() {
+  getVertices() {
     const { vertices } = this.state;
     return Array.from(vertices.keys());
   }
