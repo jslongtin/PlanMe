@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from "./Components/Login/Login";
 import Register from "./Components/register/Register";
 import Navbar from "./Components/Navbar/navbar";
@@ -10,30 +10,22 @@ import "./index.css";
 import PageProfile from "./Components/ProfilePage/pageProfile";
 
 const App = () => {
-  const [page, setPage] = React.useState(
-    sessionStorage.getItem("page") || "login"
-  );
-
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-  };
-
-  React.useEffect(() => {
-    sessionStorage.setItem("page", page);
-  }, [page]);
 
   return (
     <div id="main">
-     {/* <Dashboard /> */}
-      {page === "login" && <Login onPageChange={handlePageChange} />}
-      {page === "register" && <Register onPageChange={handlePageChange} />}
-      {page === "dashboard" && <Dashboard onPageChange={handlePageChange} />}
+    
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route path="/profile" component={PageProfile} />
+        <Route path="/register" component={Register} />
+        <Route path="/dashboard" component={Dashboard} />
+      </Switch>
+    
     </div>
   );
 };
-
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <Router>
     <App />
-  </BrowserRouter>
+  </Router>
 );

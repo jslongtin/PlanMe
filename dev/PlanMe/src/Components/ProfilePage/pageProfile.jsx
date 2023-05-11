@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-// import axios from "axios";
+
 function PageProfile(){
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -22,21 +22,8 @@ function PageProfile(){
   };
 
   const handleSubmit = async (event) => {
-    // event.preventDefault();
-    // try {
-    //   const response = await axios.put(
-    //     `https://api.example.com/users/${id}`,
-    //     { username, email, password }
-    //   );
-    //   history.push(`/users/${id}`);
-    // } catch (error) {
-    //   setError(error.response.data.message);
-    // }
+    console.log("nfjgd");
   };
-
-  // return (
-  //  <button id="pdp" ></button>
-  // )
   
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

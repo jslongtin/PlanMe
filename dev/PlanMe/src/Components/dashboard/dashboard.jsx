@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/navbar";
 import Page from "../Pages/page";
-import { Link, Route, Switch } from "react-router-dom";
 import "./dashboard.css";
 
 function Dashboard() {

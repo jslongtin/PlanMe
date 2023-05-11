@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./login.css";
+import { useHistory } from "react-router-dom";
 
-const Login = ({ onPageChange }) => {
+function Login () {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user,setUser] = useState("");
+  const history = useHistory();
 
-  const handleLogin = async (e) => {
+  let handleLogin = async (e) => {
     e.preventDefault();
     const response = await fetch("http://127.0.0.1:3001/api/login", {
       method: "POST",
@@ -20,11 +22,15 @@ const Login = ({ onPageChange }) => {
       setUser(email)
       sessionStorage.setItem("username", data.username);
       sessionStorage.setItem("email", email);
-      onPageChange("dashboard");
+      history.push("/dashboard")
     } else {
       alert("Invalid email or password");
     }
   };
+  
+  let register = () => {
+    history.push("/register")
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -80,7 +86,7 @@ const Login = ({ onPageChange }) => {
         </form>
         <div className="text-center mt-8">
           <button
-            onClick={() => onPageChange("register")}
+           onClick={register}
             className="text-gray-500 font-semibold hover:text-green-700 focus:outline-none"
           >
             Don't have an account? Register

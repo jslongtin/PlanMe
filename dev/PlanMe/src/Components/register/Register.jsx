@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./register.css";
+import { useHistory } from "react-router-dom";
 
-const Register = ({ onPageChange }) => {
+function Register () {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -18,11 +20,14 @@ const Register = ({ onPageChange }) => {
     if (response.ok) {
       console.log({ email, username });
       alert("Registration successful");
-      window.location.href = "/login";
+      history.push("/login");
     } else {
       alert("Registration failed");
     }
   };
+  let login = () => {
+    history.goBack("/login")
+  }
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -79,7 +84,7 @@ const Register = ({ onPageChange }) => {
         </form>
         <div className="text-center mt-8">
           <button
-            onClick={() => onPageChange("login")}
+            onClick={login}
             className="text-gray-600 font-semibold hover:text-gray-800 focus:outline-none"
           >
             Already have an account? Login
