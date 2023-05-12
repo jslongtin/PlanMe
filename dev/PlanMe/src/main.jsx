@@ -7,20 +7,19 @@ import Navbar from "./Components/Navbar/navbar";
 import Page from "./Components/Pages/page";
 import Dashboard from "./Components/dashboard/dashboard";
 import "./index.css";
-import PageProfile from "./Components/ProfilePage/pageProfile";
+import Utilisateur from "./Components/Utilisateur/utilisateur";
 
 const App = () => {
 
   return (
     <div id="main">
-    
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/profile" component={PageProfile} />
+        <Route path="/profile" component={Utilisateur} />
         <Route path="/register" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
       </Switch>
-    
+
     </div>
   );
 };
