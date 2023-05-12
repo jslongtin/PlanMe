@@ -4,6 +4,8 @@ Clone de notion
 Nom du projet : PlanMe
 Equipiers: Finnegan Simpson et Jessika Longtin
 
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
 
 
 Docker - BD hosting

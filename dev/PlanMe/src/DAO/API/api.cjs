@@ -97,7 +97,7 @@ app.post("/api/login", async (req, res) => {
 
     // Create a JWT token
     const token = sign({ email }, "your_secret_key_here");
-    res.status(200).json({ username, token });
+    res.status(200).json({email, username, token });
   } catch (err) {
     console.log("Error during login:", err.message);
     console.error(err);
@@ -271,6 +271,7 @@ app.post("/api/sharenotes", async (req, res) => {
 app.get("/api/calendrier/events",async (req, res) => {
   try {
     const { email } = req.query;
+
     const getEventsQuery = "SELECT * FROM events WHERE user_email = $1";
     const { rows } = await pool.query(getEventsQuery, [email]);
     res.status(200).json(rows);
@@ -283,9 +284,9 @@ app.get("/api/calendrier/events",async (req, res) => {
 // create event
 app.post("/api/calendrier/new_event", async (req, res) => {
   try {
-    const {title, start_date, end_date, user_email} = req.body;
-    const newEventquery= "INSERT INTO events ( title, start_date, end_date, user_email) VALUES ($1, $2, $3, $4)";
-    await pool.query(newEventquery, [title, start_date, end_date,user_email]);
+    const {id, title, start_date, end_date, user_email} = req.body;
+    const newEventquery= "INSERT INTO events (id, title, start_date, end_date, user_email) VALUES ($1, $2, $3, $4,$5)";
+    await pool.query(newEventquery, [id, title, start_date, end_date,user_email]);
     res.status(200).send(`Event ${title} created`);
     console.log(`Event ${title} created:`, { title, start_date, end_date, user_email });
   } catch (err) {
@@ -313,9 +314,9 @@ app.post("/api/calendrier/update_event/:id", async (req, res) => {
 app.post("/api/calendrier/delete_event", async (req, res) => {
   console.log(req.body);
   try {
-    const {title, start_date, end_date, user_email } = req.body;// ref : chat gpt for express.js : req.params
-    const deleteEventQuery = "DELETE FROM events WHERE title = $1 AND start_date = $2 AND end_date = $3 AND user_email = $4";
-    await pool.query(deleteEventQuery, [title,start_date,end_date, user_email]);
+    const {id,title} = req.body;// ref : chat gpt for express.js : req.params
+    const deleteEventQuery = "DELETE FROM events WHERE id = $1";
+    await pool.query(deleteEventQuery, [id]);
     res.status(200).send(`Event ${title} deleted`);
     console.log(`Event ${title} deleted:`, { title });
   } catch (err) {

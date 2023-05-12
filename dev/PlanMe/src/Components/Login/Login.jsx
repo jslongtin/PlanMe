@@ -19,9 +19,12 @@ function Login () {
     });
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       setUser(email)
       sessionStorage.setItem("username", data.username);
       sessionStorage.setItem("email", email);
+      console.log(data.username);
+      console.log(data.email);
       history.push("/dashboard")
       
     } else {
