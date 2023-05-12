@@ -165,7 +165,7 @@ const pool = new Pool({
   await pool.query(`
     CREATE TABLE IF NOT EXISTS events (
       id BIGINT PRIMARY KEY,
-      title Text,
+      text Text,
       start_date TIMESTAMP NOT NULL,
       end_date TIMESTAMP NOT NULL,
       user_email VARCHAR(255) NOT NULL,
