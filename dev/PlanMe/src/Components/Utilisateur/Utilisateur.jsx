@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./utilisateur.css";
-
+import { useHistory } from "react-router-dom";
 // creation utilisateur aevc argument et affichage
 // ref: w3school react pages
 function Utilisateur() {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [theme, setTheme] = useState("");
-  const [contacts, setContacts] = useState("");
-  const [suggestedContacts, setSuggestedContacts] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
+  let [email, setEmail] = useState("");
+  let [username, setUsername] = useState("");
+  let [theme, setTheme] = useState("");
+  let [contacts, setContacts] = useState("");
+  let [suggestedContacts, setSuggestedContacts] = useState("");
+  let [profilePicture, setProfilePicture] = useState("");
+  const history = useHistory();
   
 
   const handleSubmit = (e) => {
@@ -17,10 +18,15 @@ function Utilisateur() {
     // TODO: handle form submission to update profile
   };
 
+  let back = () => {
+    history.push("/dashboard");
+}
+
   return (
-    <div>
-      <h1>My Profile</h1>
+    <div id="profileContainer">
+      
       <form onSubmit={handleSubmit}>
+      <h1>My Profile</h1>
         <label>
           Email:
           <input
@@ -36,15 +42,6 @@ function Utilisateur() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Theme:
-          <input
-            type="text"
-            value={theme}
-            onChange={(e) => setTheme(e.target.value)}
           />
         </label>
         <br />
@@ -74,6 +71,7 @@ function Utilisateur() {
         </label>
         <br />
         <button type="submit">Update Profile</button>
+        <button onClick={back} >Retour</button>
       </form>
     </div>
   );
