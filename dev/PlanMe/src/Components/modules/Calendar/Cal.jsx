@@ -1,12 +1,32 @@
 import React, { Component } from "react";
 import Scheduler from "./Scheduler/Scheduler";
-
+const data = [
+  {
+    id: 1,
+    text: "Meeting",
+    start_date: "2020-06-10 6:00",
+    end_date: "2020-06-10 8:00",
+  },
+  {
+    id: 2,
+    text: "Lunch",
+    start_date: "2023-05-01T12:00:00",
+    end_date: "2023-05-01T13:00:00",
+  },
+  {
+    id: 3,
+    text: "Presentation",
+    start_date: "2023-05-01T14:00:00",
+    end_date: "2023-05-01T15:00:00",
+  },
+];
 class Cal extends Component {
   state = {
     currentTimeFormatState: true,
     messages: [],
     events: [],
   };
+  
 
   addMessage(message) {
     const maxLogLength = 5;
@@ -48,7 +68,6 @@ class Cal extends Component {
 
   async createEvent(id, title, start_date, end_date) {
     const user_email = sessionStorage.getItem("email");
-    console.log(user_email);
     const response = await fetch(
       "http://localhost:3001/api/calendrier/new_event",
       {
@@ -99,6 +118,7 @@ class Cal extends Component {
     );
     const events = await response.json();
     this.setState({ events });
+    return events;
   }catch(err){
     console.log(err);
     return [];
@@ -108,6 +128,8 @@ class Cal extends Component {
   async componentDidMount() {
     const events = await this.fetchEvents();
     this.setState({ events });
+    console.log("state events :")
+    console.log(events)
   }
 
   render() {
@@ -116,6 +138,7 @@ class Cal extends Component {
       <div className="min-h-screen w-full bg-gray-500 relative  z-0 overflow-y: scroll;">
         <div className="h-full w-full flex-grow mx-auto max-w-7xl min-h-0 p-4 overflow-y: scroll;">
           <Scheduler
+            
             events={this.state.events}
             timeFormatState={currentTimeFormatState}
             onDataUpdated={this.logDataUpdate}

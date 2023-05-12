@@ -58,10 +58,14 @@ export default class Scheduler extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return this.props.timeFormatState !== nextProps.timeFormatState;
+    return this.props.timeFormatState !== nextProps.timeFormatState || this.props.events !== nextProps.events;;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    if (this.props.events !== prevProps.events) {
+        scheduler.clearAll();
+        scheduler.parse(this.props.events);
+    }
     scheduler.render();
   }
 
