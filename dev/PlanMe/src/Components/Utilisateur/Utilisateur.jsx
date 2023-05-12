@@ -6,11 +6,12 @@ import { useHistory } from "react-router-dom";
 function Utilisateur() {
   let [email, setEmail] = useState("");
   let [username, setUsername] = useState("");
-  let [theme, setTheme] = useState("");
   let [contacts, setContacts] = useState("");
   let [suggestedContacts, setSuggestedContacts] = useState("");
   let [profilePicture, setProfilePicture] = useState("");
   const history = useHistory();
+  const sessEmail = sessionStorage.getItem("email");
+  const sessName = sessionStorage.getItem("name");
   
 
   const handleSubmit = (e) => {
@@ -26,12 +27,12 @@ function Utilisateur() {
     <div id="profileContainer">
       
       <form onSubmit={handleSubmit}>
-      <h1>My Profile</h1>
+      <h1>{sessName}'s Profile</h1>
         <label>
           Email:
           <input
             type="email"
-            value={email}
+            value={sessEmail}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
@@ -40,7 +41,7 @@ function Utilisateur() {
           Username:
           <input
             type="text"
-            value={username}
+            value={sessName}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>

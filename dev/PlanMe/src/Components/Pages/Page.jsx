@@ -48,6 +48,7 @@ function Page() {
         {showModule && (
           <div className="absolute z-20 bg-white shadow-md rounded p-4 mt-2">
             <button
+            // FIXME addModule("note") ne fonctionne pas
               // onClick={() => addModule("note")}
               onClick={() => handleModules("note")}
               className="bg-green-500 text-white px-4 py-2 rounded mb-2 w-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"

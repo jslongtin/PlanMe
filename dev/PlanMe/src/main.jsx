@@ -9,16 +9,19 @@ import Dashboard from "./Components/dashboard/dashboard";
 import "./index.css";
 import Utilisateur from "./Components/Utilisateur/utilisateur";
 
+
 const App = () => {
 
   return (
     <div id="main">
+       
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/profile" component={Utilisateur} />
         <Route path="/register" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
       </Switch>
+    
 
     </div>
   );
