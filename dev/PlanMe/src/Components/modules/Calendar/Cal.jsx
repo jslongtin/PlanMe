@@ -25,15 +25,15 @@ class Cal extends Component {
     this.addMessage(message);
     switch (action) {
       case "create":
-        await this.createEvent(ev.text, ev.start_date, ev.end_date);
+        await this.createEvent(id,ev.text, ev.start_date, ev.end_date);
         break;
       case "update":
-        await this.updateEvent(ev.text, ev.start_date, ev.end_date);
+        await this.updateEvent(id, ev.text, ev.start_date, ev.end_date);
         break;
       case "delete":
         console.log(ev.text);
         console.log(ev);
-        await this.deleteEvent(ev.text, ev.start_date, ev.end_date);
+        await this.deleteEvent(id);
         break;
       default:
         console.log("Unknown action");
@@ -46,7 +46,7 @@ class Cal extends Component {
     });
   };
 
-  async createEvent(title, start_date, end_date) {
+  async createEvent(id, title, start_date, end_date) {
     const user_email = sessionStorage.getItem("email");
     console.log(user_email);
     const response = await fetch(
@@ -56,12 +56,11 @@ class Cal extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({title, start_date, end_date, user_email }),
+        body: JSON.stringify({id, title, start_date, end_date, user_email }),
       }
     );
     const events = await this.fetchEvents();
     this.setState({events});
-    return response.json();
   }
 
   async updateEvent(id, title, start_date, end_date) {
@@ -75,14 +74,11 @@ class Cal extends Component {
         body: JSON.stringify({ title, start_date, end_date }),
       }
     );
-    return response.json();
   }
 
-  async deleteEvent(title, start_date, end_date) {
+  async deleteEvent(id, title) {
     const user_email = sessionStorage.getItem("email");
-    console.log(title, start_date, end_date);
-    const start = start_date.toISOString();
-    const end = end_date.toISOString();
+    console.log(id,title);
     const response = await fetch(
       "http://localhost:3001/api/calendrier/delete_event",
       {
@@ -90,29 +86,35 @@ class Cal extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({title, start_date: start, end_date: end, user_email}),
+        body: JSON.stringify({id, title}),
       }
     );
-    return response.json();
   }
 
-  async componentDidMount() {
+  fetchEvents = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:3001/api/calendrier/events"
-      );
-      const events = await response.json();
-      this.setState({ events });
-    } catch (error) {
-      console.error("Error fetching events:", error);
-    }
+    const email = sessionStorage.getItem("email");
+    const response = await fetch(
+      `http://localhost:3001/api/calendrier/events?email=${encodeURIComponent(email)}` //encodeURIComponent - ref : https://www.geeksforgeeks.org/javascript-encodeuri-decodeuri-and-its-components-functions/
+    );
+    const events = await response.json();
+    this.setState({ events });
+  }catch(err){
+    console.log(err);
+    return [];
+  }
+}
+
+  async componentDidMount() {
+    const events = await this.fetchEvents();
+    this.setState({ events });
   }
 
   render() {
     const { currentTimeFormatState, messages } = this.state;
     return (
-      <div className="min-h-screen w-full bg-gray-500 relative z-0">
-        <div className="h-full w-full flex-grow mx-auto max-w-7xl min-h-0 p-4">
+      <div className="min-h-screen w-full bg-gray-500 relative  z-0 overflow-y: scroll;">
+        <div className="h-full w-full flex-grow mx-auto max-w-7xl min-h-0 p-4 overflow-y: scroll;">
           <Scheduler
             events={this.state.events}
             timeFormatState={currentTimeFormatState}

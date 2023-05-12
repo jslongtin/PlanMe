@@ -80,7 +80,7 @@ export default class Scheduler extends Component {
         ref={(input) => {
           this.schedulerContainer = input;
         }}
-        className="w-full h-full overflow-auto  relative z-0"
+        className="w-full h-full overflow-auto  relative z-0 overflow-y: overlay"
       ></div>
     );
   }
