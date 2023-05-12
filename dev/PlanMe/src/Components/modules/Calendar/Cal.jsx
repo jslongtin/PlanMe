@@ -66,7 +66,7 @@ class Cal extends Component {
     });
   };
 
-  async createEvent(id, title, start_date, end_date) {
+  async createEvent(id, text, start_date, end_date) {
     const user_email = sessionStorage.getItem("email");
     const response = await fetch(
       "http://localhost:3001/api/calendrier/new_event",
@@ -75,14 +75,14 @@ class Cal extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({id, title, start_date, end_date, user_email }),
+        body: JSON.stringify({id, text, start_date, end_date, user_email }),
       }
     );
     const events = await this.fetchEvents();
     this.setState({events});
   }
 
-  async updateEvent(id, title, start_date, end_date) {
+  async updateEvent(id, text, start_date, end_date) {
     const response = await fetch(
       `http://localhost:3001/api/calendrier/update_event/${id}`,
       {
@@ -90,14 +90,14 @@ class Cal extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, start_date, end_date }),
+        body: JSON.stringify({ text, start_date, end_date }),
       }
     );
   }
 
-  async deleteEvent(id, title) {
+  async deleteEvent(id, text) {
     const user_email = sessionStorage.getItem("email");
-    console.log(id,title);
+    console.log(id,text);
     const response = await fetch(
       "http://localhost:3001/api/calendrier/delete_event",
       {
@@ -105,7 +105,7 @@ class Cal extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({id, title}),
+        body: JSON.stringify({id, text}),
       }
     );
   }
@@ -117,6 +117,7 @@ class Cal extends Component {
       `http://localhost:3001/api/calendrier/events?email=${encodeURIComponent(email)}` //encodeURIComponent - ref : https://www.geeksforgeeks.org/javascript-encodeuri-decodeuri-and-its-components-functions/
     );
     const events = await response.json();
+    
     this.setState({ events });
     return events;
   }catch(err){
