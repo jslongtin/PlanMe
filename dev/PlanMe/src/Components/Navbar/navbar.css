@@ -3,6 +3,7 @@
     left: 0;
     width: 20vw;
     height: 100vh;
+    max-width: 300px;
     background-color: var(--secondaryColor);
     display: flex;
     flex-direction: row;

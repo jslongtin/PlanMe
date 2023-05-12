@@ -13,8 +13,6 @@ math
 calandrir/evenement
 
 
-
-
 taches dans code:
 loader les events automatique
 lier les events aux pages(id)

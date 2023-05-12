@@ -1,79 +1,95 @@
-// ref: https://medium.com/outco/how-to-build-a-graph-data-structure-d779d822f9b4
-// ref: https://chat.openai.com/?model=text-davinci-002-render-sha
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Sommet {
-  constructor(id) {
-    this.id = id;
-    this.adjacent = new Map();
-  }
+function Sommet({ id }) {
+  let [adjacent, setAdjacent] = useState(new Map());
 
-  addNeighbor(neighbor, weight = 0) {
-    this.adjacent.set(neighbor, weight);
-  }
+  const addNeighbor = (neighbor, weight = 0) => {
+    adjacent.set(neighbor, weight);
+    setAdjacent(new Map(adjacent));
+  };
 
-  getConnections() {
-    return this.adjacent.keys();
-  }
+  const getConnections = () => {
+    return adjacent.keys();
+  };
 
-  getId() {
-    return this.id;
-  }
+  const getWeight = (neighbor) => {
+    return adjacent.get(neighbor);
+  };
 
-  getWeight(neighbor) {
-    return this.adjacent.get(neighbor);
-  }
+  return (
+    <div>
+      <p>ID: {id}</p>
+    </div>
+  );
 }
 
-class Graph extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sommets: new Map(),
-      numsommets: 0,
-    };
-  }
+function Graph() {
+  let [sommets, setSommets] = useState(new Map());
+  let [numsommets, setNumsommets] = useState(0);
 
-  addSommet(id) {
-    let newSommet = new Sommet(id);
-    let { sommets } = this.state;
+
+  const loadBd  = async (e) => {
+      e.preventDefault();
+      const response = await fetch("http://127.0.0.1:3001/api/getContacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        
+        data.forEach(element => {
+          let s1 = addSommet(element.contact)
+          let s2 = addSommet(element.utilisateur_email)
+          console.log(s1);
+          addArete(s1,s2,1)
+        });
+
+        
+      } else {
+        alert("Request failed");
+      }
+  };
+
+  const addSommet = (id) => {
+    let newSommet = <Sommet id={id} />;
     sommets.set(id, newSommet);
-    this.setState({ sommets, numsommets: this.state.numsommets + 1 });
+    setSommets(new Map(sommets));
+    setNumsommets(numsommets + 1);
     return newSommet;
-  }
+  };
 
-  getSommet(id) {
-    let { sommets } = this.state;
+  const getSommet = (id) => {
     if (sommets.has(id)) {
       return sommets.get(id);
     }
     return null;
-  }
+  };
 
-  addArete(ids, to, weight = 0) {
-    let { sommets } = this.state;
-    if (!sommets.has(ids)) {
-      this.addSommet(ids);
+  const addArete = (sommetDe, sommetTo, weight = 0) => {
+  
+    if (!sommets.has(sommetDe.id)) {
+      addSommet(sommetDe);
     }
-    if (!sommets.has(to)) {
-      this.addSommet(to);
+    if (!sommets.has(sommetTo.id)) {
+      addSommet(sommetTo);
     }
-    sommets.get(ids).addNeighbor(sommets.get(to), weight);
-    this.setState({ sommets });
-  }
+    sommetDe.addNeighbor(sommetTo, weight);
+    setSommets(new Map(sommets));
+  };
 
-  getsommets() {
-    let { sommets } = this.state;
+  const getsommets = () => {
     return Array.from(sommets.keys());
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        {/* your code here */}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <button onClick={loadBd}>Loadbd</button>
+    
+    </div>
+  );
 }
 
 export default Graph;

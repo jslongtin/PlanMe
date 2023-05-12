@@ -8,6 +8,7 @@ import Page from "./Components/Pages/page";
 import Dashboard from "./Components/dashboard/dashboard";
 import "./index.css";
 import Utilisateur from "./Components/Utilisateur/utilisateur";
+import Graph from "./Components/Graph";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/profile" component={Utilisateur} />
         <Route path="/register" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/graph" component={Graph} />
       </Switch>
     
 

@@ -97,8 +97,8 @@ const pool = new Pool({
   await pool.query(`
     CREATE TABLE IF NOT EXISTS contact (
       id SERIAL PRIMARY KEY,
-      utilisateur_email VARCHAR(255) NOT NULL,
-      contact VARCHAR(255) NOT NULL,
+      utilisateur_email VARCHAR(255) NOT NULL UNIQUE,
+      contact VARCHAR(255) NOT NULL UNIQUE,
       FOREIGN KEY (utilisateur_email) REFERENCES utilisateurs (email),
       FOREIGN KEY (contact) REFERENCES utilisateurs (email)
     )

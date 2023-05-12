@@ -325,6 +325,19 @@ app.post("/api/calendrier/delete_event", async (req, res) => {
   }
 });
 
+
+app.post("/api/getContacts", async (req, res) => {
+  try {
+    const getContactQuery = "SELECT * FROM contact";
+    const { rows } = await pool.query(getContactQuery);
+    
+    res.status(200).json(rows);
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
     
 
 const port = process.env.PORT || 3001;
