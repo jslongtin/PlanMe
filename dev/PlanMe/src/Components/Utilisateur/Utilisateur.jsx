@@ -1,84 +1,82 @@
-import { useState } from 'react'
-import reactLogo from '../assets/img/Hello_Kitty.svg'
-
-import '../App.css'
-
+import React, { useState } from "react";
+import "./utilisateur.css";
 
 // creation utilisateur aevc argument et affichage
 // ref: w3school react pages
-function Utilisateur(props) {
-    let id = props.id
-    let [prenom, setPrenom] = useState(props.prenom)
-    let [nom, setNom] = useState(props.nom)
-    let [courriel, setCourriel] = useState(props.courriel)
-    let [motDePasse, setMotDePasse] = useState(props.motDePasse)
-    let [theme, setTheme] = useState(props.theme)
-    let [photoDeProfil, setPhotoDeProfil] = useState(props.photoDeProfil)
-    let [contacts, setContacts] = useState(props.contacts)
+function Utilisateur() {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [theme, setTheme] = useState("");
+  const [contacts, setContacts] = useState("");
+  const [suggestedContacts, setSuggestedContacts] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  
 
-    let handleSubmit = (event) => {
-        event.preventDefault();
-        alert(`Mon nom est ${prenom} ${nom} ${courriel}`)
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO: handle form submission to update profile
+  };
 
-    let handleChange = (event) => {
-        let name = event.target.name
-        let value = event.target.value
-        if (name === "nom") {
-            setNom(value)
-        } else if (name === "prenom") {
-            setPrenom(value)
-        } else if (name === "courriel") {
-            setCourriel(value)
-        }
-         else if (name === "motDePasse") {
-            setMotDePasse(value)
-        }
-         else if (name === "theme") {
-            setTheme(value)
-        }
-         else if (name === "photoDeProfil") {
-            setPhotoDeProfil(value)
-        }else if (name === "contacts") {
-            setContacts(value)
-        }
-    }
-    return (
-        <>
-            <h1> Creer votre compte </h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Prenom : 
-                    <input
-                        type="text"
-                        name="prenom" 
-                        onChange={handleChange}
-                    />
-                </label>
-                <input type="submit" value="Submit" onClick={() => handleSubmit} />
-                <label>
-                    Nom : 
-                    <input
-                        type="text"
-                        name="nom" 
-                        onChange={handleChange}
-                    />
-                </label>
-                <input type="submit" value="Submit" onClick={() => handleSubmit} />
-                <label>
-                    Courriel : 
-                    <input
-                        type="text"
-                        name="courriel" 
-                        onChange={handleChange}
-                    />
-                </label>
-                <input type="submit" value="Submit" onClick={() => handleSubmit} />
-            </form>
-        </>
-    )
-
-
+  return (
+    <div>
+      <h1>My Profile</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Username:
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Theme:
+          <input
+            type="text"
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Contacts:
+          <textarea
+            value={contacts}
+            onChange={(e) => setContacts(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Suggested Contacts:
+          <textarea
+            value={suggestedContacts}
+            onChange={(e) => setSuggestedContacts(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Profile Picture:
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setProfilePicture(e.target.files[0])}
+          />
+        </label>
+        <br />
+        <button type="submit">Update Profile</button>
+      </form>
+    </div>
+  );
 }
 
-export default Utilisateur
+export default Utilisateur;

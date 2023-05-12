@@ -4,7 +4,7 @@ import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
 import { Link, Route, Switch } from "react-router-dom";
 import Search from "../search/search";
 import Page from "../Pages/page";
-import pageProfile from "../ProfilePage/pageProfile";
+import pageProfile from "../Utilisateur/UtilisateurTailwaind";
 import { useHistory } from "react-router-dom";
 
 
@@ -31,7 +31,7 @@ function Navbar({ setActivePage }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({utilisateur ,titre }),
+      body: JSON.stringify({ utilisateur, titre }),
     });
     if (response.ok) {
       let li = document.createElement("li")
