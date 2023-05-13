@@ -97,7 +97,7 @@ app.post("/api/login", async (req, res) => {
 
     // Create a JWT token
     const token = sign({ email }, "your_secret_key_here");
-    res.status(200).json({email, username, token });
+    res.status(200).json({ email, username, token });
   } catch (err) {
     console.log("Error during login:", err.message);
     console.error(err);
@@ -107,7 +107,7 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/newPage", async (req, res) => {
   try {
-    const { utilisateur,titre } = req.body;
+    const { utilisateur, titre } = req.body;
     const insertPageQuery =
       "INSERT INTO page (titre,contenu,utilisateur) VALUES ($1, $2, $3) ";
     result = await pool.query(insertPageQuery, [titre, null, utilisateur]);
@@ -120,13 +120,11 @@ app.post("/api/newPage", async (req, res) => {
 });
 app.post("/api/newModule", async (req, res) => {
   try {
-    const { type,page } = req.body;
+    const { type, page } = req.body;
     const insertPageModuleQuery =
       "INSERT INTO page_module (id_page,id_module) VALUES ($1, $2) ";
     result = await pool.query(insertPageModuleQuery, []);
     res.status(200).send(`Page Module created`);
-  
-    
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
@@ -268,7 +266,7 @@ app.post("/api/sharenotes", async (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //get all events
-app.get("/api/calendrier/events",async (req, res) => {
+app.get("/api/calendrier/events", async (req, res) => {
   try {
     const { email } = req.query;
 
@@ -284,11 +282,23 @@ app.get("/api/calendrier/events",async (req, res) => {
 // create event
 app.post("/api/calendrier/new_event", async (req, res) => {
   try {
-    const {id, text, start_date, end_date, user_email} = req.body;
-    const newEventquery= "INSERT INTO events (id, text, start_date, end_date, user_email) VALUES ($1, $2, $3, $4,$5)";
-    await pool.query(newEventquery, [id, text, start_date, end_date,user_email]);
+    const { id, text, start_date, end_date, user_email } = req.body;
+    const newEventquery =
+      "INSERT INTO events (id, text, start_date, end_date, user_email) VALUES ($1, $2, $3, $4,$5)";
+    await pool.query(newEventquery, [
+      id,
+      text,
+      start_date,
+      end_date,
+      user_email,
+    ]);
     res.status(200).send(`Event ${text} created`);
-    console.log(`Event ${text} created:`, { text, start_date, end_date, user_email });
+    console.log(`Event ${text} created:`, {
+      text,
+      start_date,
+      end_date,
+      user_email,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
@@ -298,11 +308,12 @@ app.post("/api/calendrier/new_event", async (req, res) => {
 // update event
 app.post("/api/calendrier/update_event/:id", async (req, res) => {
   try {
-    const { id} = req.params; // ref : chat gpt for express.js : req.params
-    const { text, start_date, end_date} = req.body;
-    const updateEventQuery = "UPDATE events SET text = $1, start_date = $2, end_date = $3 WHERE id = $4";
+    const { id } = req.params; // ref : chat gpt for express.js : req.params
+    const { text, start_date, end_date } = req.body;
+    const updateEventQuery =
+      "UPDATE events SET text = $1, start_date = $2, end_date = $3 WHERE id = $4";
     await pool.query(updateEventQuery, [text, start_date, end_date, id]);
-    res.status(200).send("Event ${text} updated")
+    res.status(200).send("Event ${text} updated");
     console.log(`Event ${text} updated:`, { text, start_date, end_date });
   } catch (err) {
     console.error(err);
@@ -314,31 +325,28 @@ app.post("/api/calendrier/update_event/:id", async (req, res) => {
 app.post("/api/calendrier/delete_event", async (req, res) => {
   console.log(req.body);
   try {
-    const {id,text} = req.body;// ref : chat gpt for express.js : req.params
+    const { id, message } = req.body; // ref : chat gpt for express.js : req.params
     const deleteEventQuery = "DELETE FROM events WHERE id = $1";
     await pool.query(deleteEventQuery, [id]);
-    res.status(200).send(`Event ${text} deleted`);
-    console.log(`Event ${text} deleted:`, { text });
+    res.status(200).send(`Event ${message} deleted`);
+    console.log(`Event ${message} deleted:`, { message });
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
   }
 });
-
 
 app.post("/api/getContacts", async (req, res) => {
   try {
     const getContactQuery = "SELECT * FROM contact";
     const { rows } = await pool.query(getContactQuery);
-    
+
     res.status(200).json(rows);
-    
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while accessing the database.");
   }
 });
-    
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
