@@ -29,6 +29,7 @@
     "react": "^18.2.0",
     "react-big-calendar": "^1.6.9",
     "react-calendar": "^4.2.1",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",
     "sequelize": "^6.29.3",
