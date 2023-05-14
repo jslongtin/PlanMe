@@ -32,10 +32,9 @@ const pool = new Pool({
   // await pool.query("DROP TABLE IF EXISTS events");
   // await pool.query("DROP TABLE IF EXISTS page_module");
   // await pool.query("DROP TABLE IF EXISTS texte");
-  
 
   //reset schema ref: https://stackoverflow.com/questions/3327312/how-to-drop-all-tables-in-postgresql
- 
+
   // await pool.query(`
   // DROP SCHEMA public CASCADE;
   // CREATE SCHEMA public;
@@ -104,21 +103,20 @@ const pool = new Pool({
     )
     `);
 
-    // ajouter des contacts par defauts a la création de la bd
-    await pool.query(
-      `
+  // ajouter des contacts par defauts a la création de la bd
+  await pool.query(
+    `
       INSERT INTO contact (utilisateur_email,contact) 
     VALUES ('Jess@hotmail.com', 'ato@ato.com') ON CONFLICT DO NOTHING`
-    );
-   
-    await pool.query(
-      `INSERT INTO contact (utilisateur_email,contact) 
+  );
+
+  await pool.query(
+    `INSERT INTO contact (utilisateur_email,contact) 
     VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
-    );
-    // **************************************************************
+  );
+  // **************************************************************
 
-
-    // MODULES
+  // MODULES
   await pool.query(`
     CREATE TABLE IF NOT EXISTS texte (
       id SERIAL PRIMARY KEY,
