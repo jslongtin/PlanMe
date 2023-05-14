@@ -50,7 +50,7 @@ function Login () {
           <div className="mb-5">
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-bold text-green-50"
+              className="block mb-2 text-sm font-bold text-green-500"
             >
               Email
             </label>
@@ -66,7 +66,7 @@ function Login () {
           <div className="mb-5">
             <label
               htmlFor="password"
-              className="block mb-2 text-sm font-bold text-green-50"
+              className="block mb-2 text-sm font-bold text-green-500 "
             >
               Password
             </label>
@@ -76,13 +76,13 @@ function Login () {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="block w-full p-3 rounded-lg bg-white border border-green-50 focus:outline-none focus:border-green-400"
+              className="block w-full p-3 rounded-lg bg-white border border-green-50 focus:outline-none text-black focus:border-green-400"
             />
           </div>
           <div className="text-center">
             <button
               type="submit"
-              className="py-3 px-6 bg-green-50 text-green font-bold rounded-full hover:bg-ash focus:outline-none focus:bg-green-400"
+              className=" py-3 px-6 bg-green-50 text-green font-bold rounded-full hover:bg-ash focus:outline-none text-black focus:bg-green-400"
             >
               Login
             </button>
@@ -91,7 +91,7 @@ function Login () {
         <div className="text-center mt-8">
           <button
            onClick={register}
-            className="text-gray-500 font-semibold hover:text-green-700 focus:outline-none"
+            className="text-gray-500 font-semibold hover:text-green-700 focus:outline-none "
           >
             Don't have an account? Register
           </button>

@@ -24,22 +24,7 @@ const Budget = () => {
   const [depence, setDepence] = useState(0);
   const [projection, setProjection] = useState(0);
 
-  const newDepence = (e) => {
-    e.preventDefault();
-    if (depences) {
-      setDepences([...depences, parseFloat(depence)]);
-      setDepence("");
-    }
-  };
-  const projectionAverage = () => {
-    const avg = depences.reduce((a, b) => a + b, 0) / depences.length;
-    const currentMonth = new Date().getMonth();
-    const projectedValues = depences.map((value, index) =>
-      index <= currentMonth ? value : avg
-    );
-    setProjection(projectedValues);
-  };
-
+  
   const data = {
     labels: [
       "Janvier",
@@ -74,13 +59,8 @@ const Budget = () => {
       },
     ], // ref :
   };
-  const customTooltip = (context) => {
-    const { chart, tooltip } = context;
-    const point = chart.getPointByIndex(tooltip.dataPoints[0].index);
-    const value = chart.data.datasets[0].data[point.dataIndex];
-    tooltip.body[0].lines[0] = `${value} €`;
-  };
-
+  
+  
   const options = {
     plugins: {
       tooltip: {
@@ -90,7 +70,22 @@ const Budget = () => {
       },
     },
   };
-
+  const newDepence = (e) => {
+    e.preventDefault();
+    if (depences) {
+      setDepences([...depences, parseFloat(depence)]);
+      setDepence("");
+    }
+  };
+  const projectionAverage = () => {
+    const avg = depences.reduce((a, b) => a + b, 0) / depences.length;
+    const currentMonth = new Date().getMonth();
+    const projectedValues = depences.map((value, index) =>
+      index <= currentMonth ? value : avg
+    );
+    setProjection(projectedValues);
+  };
+  
   // ref : Labels over dots in graph : chat gpt
   return (
     <div>
