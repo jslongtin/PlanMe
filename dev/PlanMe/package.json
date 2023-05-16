@@ -17,6 +17,7 @@
     "@syncfusion/ej2-react-schedule": "^21.2.3",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
+    "chart.js": "^4.3.0",
     "cors": "^2.8.5",
     "dhtmlx-scheduler": "^6.0.3",
     "express": "^4.18.2",

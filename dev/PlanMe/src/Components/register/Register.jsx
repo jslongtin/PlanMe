@@ -6,6 +6,8 @@ function Register() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [pwdError, setPwdError] = useState(false);
+
   const history = useHistory();
 
   const handleRegister = async (e) => {
@@ -25,6 +27,18 @@ function Register() {
       alert("Registration failed");
     }
   };
+
+  let validatePassword = () => {
+    const validPassword = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$'); //ref : https://www.tutorialspoint.com/regex-in-reactjs
+    
+    if (!validPassword.test(password)) {
+      setPwdError(true);
+   }
+    if (password.length < 8) {
+      alert("Password must be at least 8 characters");
+    }
+  };
+
   let login = () => {
     history.goBack("/login");
   };
@@ -90,6 +104,7 @@ function Register() {
             </div>
             <div className="text-center">
               <button
+                onClick={validatePassword}
                 type="submit"
                 className="py-3 px-6 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800 focus:outline-none focus:bg-gray-800"
               >

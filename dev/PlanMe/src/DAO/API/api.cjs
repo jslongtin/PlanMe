@@ -56,7 +56,7 @@ app.post("/api/register", async (req, res) => {
 
       // créé les utilisateur avec un module et page de base
       const initPageQuery =
-        "INSERT INTO page (titre,sous_titre,contenu,utilisateur) VALUES ($1,$2,$3,$4)";
+        "INSERT INTO page (titre,contenu,utilisateur) VALUES ($1,$2,$3,$4)";
       await pool.query(initPageQuery, [null, null, null, email]);
 
       // const initModuleQuery =
