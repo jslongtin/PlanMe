@@ -14,6 +14,17 @@ class Sommet extends React.Component {
     this.setState({ adjacent: new Map(adjacent) });
   };
 
+  removeNeighbor = (neighbor) => {
+    const { adjacent } = this.state;
+    adjacent.delete(neighbor);
+    this.setState({ adjacent: new Map(adjacent) });
+  };
+  modifNeighbor = (neighbor, weight) => {
+    const { adjacent } = this.state;
+    adjacent.set(neighbor, weight);
+    this.setState({ adjacent: new Map(adjacent) });
+  };
+
   getConnections = () => {
     const { adjacent } = this.state;
     return adjacent.keys();
@@ -83,6 +94,17 @@ class Graph extends React.Component {
     }
     return null;
   };
+  
+  getsommets = () => {
+    const { sommets } = this.state;
+    return Array.from(sommets.keys());
+  };
+
+  removeSommet = (id) => { 
+    const { sommets, numsommets } = this.state;
+    sommets.delete(id);
+    this.setState({ sommets: new Map(sommets), numsommets: numsommets - 1 });
+  };
 
   addArete = (sommetDe, sommetTo, weight = 0) => {
     const { sommets } = this.state;
@@ -98,15 +120,20 @@ class Graph extends React.Component {
     this.setState({ sommets: new Map(sommets) });
   };
 
-  getsommets = () => {
+  removeArete = (sommetDe, sommetTo) => {
     const { sommets } = this.state;
-    return Array.from(sommets.keys());
+    if (sommets.has(sommetDe.props.id) && sommets.has(sommetTo.props.id)) {
+      sommetDe.removeNeighbor(sommetTo);
+      this.setState({ sommets: new Map(sommets) });
+    }
   };
 
-  removeSommet = (id) => { 
-    const { sommets, numsommets } = this.state;
-    sommets.delete(id);
-    this.setState({ sommets: new Map(sommets), numsommets: numsommets - 1 });
+  modifNeighbor = (sommetDe, sommetTo, weight) => {
+    const { sommets } = this.state;
+    if (sommets.has(sommetDe.props.id) && sommets.has(sommetTo.props.id)) {
+      sommetDe.modifNeighbor(sommetTo, weight);
+      this.setState({ sommets: new Map(sommets) });
+    }
   };
 
   render() {
