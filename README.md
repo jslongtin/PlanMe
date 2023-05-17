@@ -212,14 +212,14 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Remerciments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Voici une liste re ressources utilisées dans ce projet
 
 * [Read-Me Template Pour ce ReadME](https://github.com/othneildrew/Best-README-Template)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+
 
 <p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
 
