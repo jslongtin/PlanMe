@@ -43,7 +43,6 @@ function Graph() {
         data.forEach(element => {
           let s1 = addSommet(element.contact)
           let s2 = addSommet(element.utilisateur_email)
-          console.log(s1);
           addArete(s1,s2,1)
         });
 
@@ -54,9 +53,24 @@ function Graph() {
   };
 
   const addSommet = (id) => {
-    let newSommet = <Sommet id={id} />;
-    sommets.set(id, newSommet);
-    setSommets(new Map(sommets));
+    // let newSommet = {
+    //   id,
+    //   addNeighbor: (neighbor, weight = 0) => {
+    //     let updatedSommets = new Map(sommets);
+    //     updatedSommets.get(id).adjacent.set(neighbor, weight);
+    //     setSommets(updatedSommets);
+    //   },
+    //   getConnections: () => {
+    //     return sommets.get(id).adjacent.keys();
+    //   },
+    //   getWeight: (neighbor) => {
+    //     return sommets.get(id).adjacent.get(neighbor);
+    //   },
+    // };
+    let newSommet =<Sommet id={id} />
+    let updatedSommets = new Map(sommets);
+    updatedSommets.set(id, newSommet);
+    setSommets(updatedSommets);
     setNumsommets(numsommets + 1);
     return newSommet;
   };
@@ -69,7 +83,6 @@ function Graph() {
   };
 
   const addArete = (sommetDe, sommetTo, weight = 0) => {
-  
     if (!sommets.has(sommetDe.id)) {
       addSommet(sommetDe);
     }
@@ -86,6 +99,7 @@ function Graph() {
 
   return (
     <div>
+      {/* <Graph/>  */}
       <button onClick={loadBd}>Loadbd</button>
     
     </div>
