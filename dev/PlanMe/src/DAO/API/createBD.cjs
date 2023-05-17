@@ -76,7 +76,7 @@ const pool = new Pool({
   // ref: https://chat.openai.com/
   //upsert : https://www.tutorialsteacher.com/postgresql/upsert
   const salt2 = await genSalt(10);
-  const hashedPassword2 = await hash("ato", salt2);
+  const hashedPassword2 = await hash("Ato!2345", salt2);
   await pool.query(
     `
     INSERT INTO utilisateurs (email, username, password, photo, theme_id) 
@@ -167,6 +167,8 @@ const pool = new Pool({
       start_date TIMESTAMP NOT NULL,
       end_date TIMESTAMP NOT NULL,
       user_email VARCHAR(255) NOT NULL,
+      page_id INTEGER,
+      FOREIGN KEY (page_id) REFERENCES page (id),
       FOREIGN KEY (user_email) REFERENCES utilisateurs (email)
     )
     `);
@@ -178,6 +180,8 @@ const pool = new Pool({
       titre VARCHAR(255),
       note TEXT,
       date DATE,
+      page_id INTEGER,
+      FOREIGN KEY (page_id) REFERENCES page (id),
       FOREIGN KEY (owner) REFERENCES utilisateurs (email)
     )
     `);
@@ -186,7 +190,9 @@ const pool = new Pool({
     id SERIAL PRIMARY KEY,
     budget FLOAT,
     echeance DATE,
-    depenses FLOAT
+    depenses FLOAT,
+    page_id INTEGER,
+    FOREIGN KEY (page_id) REFERENCES page (id)
     )
     `);
 })();
