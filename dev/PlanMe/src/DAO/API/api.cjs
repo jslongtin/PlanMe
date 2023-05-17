@@ -105,13 +105,31 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                               Pages                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// app.get("/api/getPages", async (req, res) => {
+//   try {
+//     const { email } = req.query;
+//     const getPagesQuery = "SELECT * FROM page WHERE utilisateur = $1";
+//     const { rows } = await pool.query(getPagesQuery, [email]);
+//     res.status(200).json(rows);
+//   } catch (err) {
+//     console.log(err);
+//     res
+//       .status(500)
+//       .send(`An error occurred while accessing the database: ${err.message}`);
+//   }
+// });
+
 app.post("/api/newPage", async (req, res) => {
   try {
     const { utilisateur, titre } = req.body;
     const insertPageQuery =
       "INSERT INTO page (titre,contenu,utilisateur) VALUES ($1, $2, $3) ";
     result = await pool.query(insertPageQuery, [titre, null, utilisateur]);
-    res.status(200).send(`Page ${titre} created`);
+    res.status(200).json({ message: `Page ${titre} created` });
     console.log(`Page ${titre} creer:`, { titre, utilisateur });
   } catch (err) {
     console.error(err);

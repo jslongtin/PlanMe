@@ -1,60 +1,87 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
 import { Link, Route, Switch } from "react-router-dom";
 import Search from "../search/search";
-import Page from "../Pages/page";
 import pageProfile from "../Utilisateur/UtilisateurTailwaind";
 import { useHistory } from "react-router-dom";
-
+// import Page from "../Pages/page";
 
 function Navbar({ setActivePage }) {
-  const [pages, setPages] = useState(0); // array of page objects with unique ids
-  const [newPageForm, setNewPageForm] = useState(false); // used to open the form to create a new page
-  const [newPageTitle, setNewPageTitle] = useState(""); // used to store the title of the new page
+  const [pages, setPages] = useState([]);
+  const [newPageForm, setNewPageForm] = useState(false);
+  const [newPageTitre, setNewPageTitre] = useState("");
   const history = useHistory();
   const username = sessionStorage.getItem("username");
   const email = sessionStorage.getItem("email");
 
-  // const handleNewPage = () => {
-  //   // add a new page object to the pages array
-  //   const newPage = { id: pages.length };
-  //   setPages([...pages, newPage]);
+  // useEffect(() => {
+  //   const fetchPages = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `http://127.0.0.1:3001/api/getPages?email=${email}`
+  //       );
+  //       if (response.ok) {
+  //         const pages = await response.json();
+  //         setPages(pages);
+  //       } else {
+  //         console.error(
+  //           `Failed to fetch pages. Response status: ${response.status}`
+  //         );
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to fetch pages:", error);
+  //     }
+  //   };
 
-  //   // update the active page to the newly created page
-  //   setActivePage(newPage.id);
-  // };
-  // TODO a verifier les id de page avec la bd
+  //   fetchPages();
+  // }, []); // Empty dependency array, so this runs once on mount
 
   let handleNewPage = async (e) => {
     e.preventDefault();
     let utilisateur = sessionStorage.getItem("email");
-    let title = "page " + pages;
-    setNewPageTitle(title);
-    if (newPageTitle.trim() === "") {
+    if (newPageTitre.trim() === "") {
       // trim() ref : chatgpt
-      alert("Please enter a title for the new page");
+      alert("Please enter a titre for the new page");
       return;
     }
-
-    const response = await fetch("http://127.0.0.1:3001/api/newPage", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ utilisateur, title }),
-    });
-
-    if (response.ok) {
-      let li = document.createElement("li");
-      li.innerHTML = "Page " + pages;
-      li.addEventListener("click", () => {
-        sessionStorage.setItem("activePage", pages);
+    try {
+      const response = await fetch("http://127.0.0.1:3001/api/newPage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ utilisateur, titre: newPageTitre }),
       });
-      document.getElementById("pageList").append(li);
-      setPages(pages + 1);
-    } else {
-      alert("Invalid email or password");
+
+      console.log("Response status:", response.status);
+      console.log("Response body:", response.body);
+
+      if (response.ok) {
+        const jsonResponse = await response.json(); // Convert response body to JSON
+        console.log("Response body:", jsonResponse);
+        const { id } = jsonResponse;
+
+        let li = document.createElement("li");
+        // li.innerHTML = "Page " + pages;
+        li.addEventListener("click", () => {
+          sessionStorage.setItem("activePage", pages);
+        });
+
+        document.getElementById("pageList").append(li);
+        setNewPageForm(false);
+        setPages([...pages, { id, titre: newPageTitre }]);
+      } else {
+        console.log(
+          "Error creating a new page. Response status:",
+          response.status
+        );
+        console.log("Response body:", await response.text());
+        alert("Failed to create a new page.");
+      }
+    } catch (error) {
+      console.error("Error creating a new page:", error);
+      alert("An error occurred while creating a new page.");
     }
   };
 
@@ -79,15 +106,59 @@ function Navbar({ setActivePage }) {
       </div>
 
       <div id="menuPages">
-        <button onClick={handleNewPage}>New Page</button>
+        <button onClick={() => setNewPageForm(true)}>New Page</button>
         <ul id="pageList">
-          {/* {pages.map((page) => (
+          {pages.map((page) => (
             <li key={page.id}>
-              <Link to={`/page/${page.id}`}>Page {page.id}</Link>
+              <Link
+                to={`/page/${page.id}`}
+                onClick={() => sessionStorage.setItem("activePage", page.id)}
+              >
+                {page.titre}
+              </Link>
             </li>
-          ))} */}
+          ))}
         </ul>
       </div>
+      {newPageForm && (
+        <div
+          id="newPageForm"
+          className="fixed inset-0 flex items-center justify-center"
+        >
+          <div className="bg-green-200 p-6 rounded-lg shadow-lg">
+            <form
+              onSubmit={handleNewPage}
+              className="bg-green-100 p-6 rounded-lg shadow-lg"
+            >
+              <input
+                type="text"
+                placeholder="New Page titre"
+                value={newPageTitre}
+                onChange={(e) => {
+                  console.log("newPageTitre", newPageTitre);
+                  setNewPageTitre(e.target.value);
+                }}
+              />
+              <button
+                type="submit"
+                className="bg-green-200 p-6 rounded-lg shadow-lg"
+              >
+                Confirm
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setNewPageForm(false);
+                  setNewPageTitre("");
+                }}
+                className="bg-green-200 p-6 rounded-lg shadow-lg"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

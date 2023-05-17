@@ -4,11 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Register from "./Components/register/Register";
 import Navbar from "./Components/Navbar/navbar";
-import Page from "./Components/Pages/page";
 import Dashboard from "./Components/dashboard/dashboard";
 import "./index.css";
 import Utilisateur from "./Components/Utilisateur/utilisateur";
-import Graph from "./Components/Graph";
+import Graph from "./Components/Graph/Graph";
 import Budget from "./Components/modules/budget/Budget";
 
 const App = () => {
