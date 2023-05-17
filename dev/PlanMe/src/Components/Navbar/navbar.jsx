@@ -15,32 +15,27 @@ function Navbar({ setActivePage }) {
   const username = sessionStorage.getItem("username");
   const email = sessionStorage.getItem("email");
 
-  useEffect(() => {
-    const fetchPages = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:3001/api/getPages?email=${email}`
-        );
-        if (response.ok) {
-          const pages = await response.json();
-          setPages(pages);
+  // useEffect(() => {
+  //   const fetchPages = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `http://127.0.0.1:3001/api/getPages?email=${email}`
+  //       );
+  //       if (response.ok) {
+  //         const pages = await response.json();
+  //         setPages(pages);
+  //       } else {
+  //         console.error(
+  //           `Failed to fetch pages. Response status: ${response.status}`
+  //         );
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to fetch pages:", error);
+  //     }
+  //   };
 
-          // Set the first page as the active page if none is set
-          if (!sessionStorage.getItem("activePage") && pages.length > 0) {
-            sessionStorage.setItem("activePage", pages[0].id);
-          }
-        } else {
-          console.error(
-            `Failed to fetch pages. Response status: ${response.status}`
-          );
-        }
-      } catch (error) {
-        console.error("Failed to fetch pages:", error);
-      }
-    };
-
-    fetchPages();
-  }, []);
+  //   fetchPages();
+  // }, []); // Empty dependency array, so this runs once on mount
 
   let handleNewPage = async (e) => {
     e.preventDefault();
@@ -113,23 +108,16 @@ function Navbar({ setActivePage }) {
       <div id="menuPages">
         <button onClick={() => setNewPageForm(true)}>New Page</button>
         <ul id="pageList">
-          {pages.map(
-            (page) => (
-              console.log(page.title),
-              (
-                <li key={page.title}>
-                  <Link
-                    to={`/Dashboard/${page.title}`}
-                    onClick={() =>
-                      sessionStorage.setItem("activePage", page.title)
-                    }
-                  >
-                    {page.titre}
-                  </Link>
-                </li>
-              )
-            )
-          )}
+          {pages.map((page) => (
+            <li key={page.id}>
+              <Link
+                to={`/page/${page.id}`}
+                onClick={() => sessionStorage.setItem("activePage", page.id)}
+              >
+                {page.titre}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       {newPageForm && (
