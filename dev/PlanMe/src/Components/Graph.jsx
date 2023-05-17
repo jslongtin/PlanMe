@@ -1,109 +1,116 @@
 import React, { useState } from 'react';
 
-function Sommet({ id }) {
-  let [adjacent, setAdjacent] = useState(new Map());
+class Sommet extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      adjacent: new Map(),
+    };
+  }
 
-  const addNeighbor = (neighbor, weight = 0) => {
+  addNeighbor = (neighbor, weight = 0) => {
+    const { adjacent } = this.state;
     adjacent.set(neighbor, weight);
-    setAdjacent(new Map(adjacent));
+    this.setState({ adjacent: new Map(adjacent) });
   };
 
-  const getConnections = () => {
+  getConnections = () => {
+    const { adjacent } = this.state;
     return adjacent.keys();
   };
 
-  const getWeight = (neighbor) => {
+  getWeight = (neighbor) => {
+    const { adjacent } = this.state;
     return adjacent.get(neighbor);
   };
 
-  return (
-    <div>
-      <p>ID: {id}</p>
-    </div>
-  );
+  render() {
+    const { id } = this.props;
+    return (
+      <div>
+        <p>ID: {id}</p>
+      </div>
+    );
+  }
 }
 
-function Graph() {
-  let [sommets, setSommets] = useState(new Map());
-  let [numsommets, setNumsommets] = useState(0);
+class Graph extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sommets: new Map(),
+      numsommets: 0,
+    };
+  }
 
+  loadBd = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://127.0.0.1:3001/api/getContacts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
 
-  const loadBd  = async (e) => {
-      e.preventDefault();
-      const response = await fetch("http://127.0.0.1:3001/api/getContacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      data.forEach((element) => {
+        let s1 = this.addSommet(element.contact);
+        let s2 = this.addSommet(element.utilisateur_email);
+        this.addArete(s1, s2, 1);
       });
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        
-        data.forEach(element => {
-          let s1 = addSommet(element.contact)
-          let s2 = addSommet(element.utilisateur_email)
-          addArete(s1,s2,1)
-        });
-
-        
-      } else {
-        alert("Request failed");
-      }
+    } else {
+      alert("Request failed");
+    }
   };
 
-  const addSommet = (id) => {
-    // let newSommet = {
-    //   id,
-    //   addNeighbor: (neighbor, weight = 0) => {
-    //     let updatedSommets = new Map(sommets);
-    //     updatedSommets.get(id).adjacent.set(neighbor, weight);
-    //     setSommets(updatedSommets);
-    //   },
-    //   getConnections: () => {
-    //     return sommets.get(id).adjacent.keys();
-    //   },
-    //   getWeight: (neighbor) => {
-    //     return sommets.get(id).adjacent.get(neighbor);
-    //   },
-    // };
-    let newSommet =<Sommet id={id} />
-    let updatedSommets = new Map(sommets);
-    updatedSommets.set(id, newSommet);
-    setSommets(updatedSommets);
-    setNumsommets(numsommets + 1);
+  addSommet = (id) => {
+    const { sommets, numsommets } = this.state;
+    let newSommet = new Sommet({ id }); // Create an instance of the Sommet component
+    sommets.set(id, newSommet);
+    this.setState({
+      sommets: new Map(sommets),
+      numsommets: numsommets + 1,
+    });
+    // console.log(newSommet);
     return newSommet;
   };
 
-  const getSommet = (id) => {
+  getSommet = (id) => {
+    const { sommets } = this.state;
     if (sommets.has(id)) {
       return sommets.get(id);
     }
     return null;
   };
 
-  const addArete = (sommetDe, sommetTo, weight = 0) => {
-    if (!sommets.has(sommetDe.id)) {
-      addSommet(sommetDe);
+  addArete = (sommetDe, sommetTo, weight = 0) => {
+    const { sommets } = this.state;
+    if (!sommets.has(sommetDe.props.id)) {
+      this.addSommet(sommetDe);
     }
-    if (!sommets.has(sommetTo.id)) {
-      addSommet(sommetTo);
+    if (!sommets.has(sommetTo.props.id)) {
+      this.addSommet(sommetTo);
     }
+    // getSommet(sommetDe.props.id).addNeighbor(sommetTo, weight);
     sommetDe.addNeighbor(sommetTo, weight);
-    setSommets(new Map(sommets));
+    console.log(sommetDe);
+    this.setState({ sommets: new Map(sommets) });
   };
 
-  const getsommets = () => {
+  getsommets = () => {
+    const { sommets } = this.state;
     return Array.from(sommets.keys());
   };
 
-  return (
-    <div>
-      {/* <Graph/>  */}
-      <button onClick={loadBd}>Loadbd</button>
-    
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <button onClick={this.loadBd}>Loadbd</button>
+      </div>
+    );
+  }
 }
 
 export default Graph;
