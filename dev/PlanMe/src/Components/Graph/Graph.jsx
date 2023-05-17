@@ -67,13 +67,12 @@ class Graph extends React.Component {
 
   addSommet = (id) => {
     const { sommets, numsommets } = this.state;
-    let newSommet = new Sommet({ id }); // Create an instance of the Sommet component
+    let newSommet = new Sommet({ id }); 
     sommets.set(id, newSommet);
     this.setState({
       sommets: new Map(sommets),
       numsommets: numsommets + 1,
     });
-    // console.log(newSommet);
     return newSommet;
   };
 
@@ -93,7 +92,7 @@ class Graph extends React.Component {
     if (!sommets.has(sommetTo.props.id)) {
       this.addSommet(sommetTo);
     }
-    // getSommet(sommetDe.props.id).addNeighbor(sommetTo, weight);
+    
     sommetDe.addNeighbor(sommetTo, weight);
     console.log(sommetDe);
     this.setState({ sommets: new Map(sommets) });
@@ -102,6 +101,12 @@ class Graph extends React.Component {
   getsommets = () => {
     const { sommets } = this.state;
     return Array.from(sommets.keys());
+  };
+
+  removeSommet = (id) => { 
+    const { sommets, numsommets } = this.state;
+    sommets.delete(id);
+    this.setState({ sommets: new Map(sommets), numsommets: numsommets - 1 });
   };
 
   render() {
