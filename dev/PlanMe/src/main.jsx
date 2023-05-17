@@ -7,7 +7,7 @@ import Navbar from "./Components/Navbar/navbar";
 import Dashboard from "./Components/dashboard/dashboard";
 import "./index.css";
 import Utilisateur from "./Components/Utilisateur/utilisateur";
-import Graph from "./Components/Graph/Graph";
+import Graph from "./Components/Contacts/Graph";
 import Budget from "./Components/modules/budget/Budget";
 
 const App = () => {
