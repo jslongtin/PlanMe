@@ -109,19 +109,19 @@ app.post("/api/login", async (req, res) => {
 //                                               Pages                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// app.get("/api/getPages", async (req, res) => {
-//   try {
-//     const { email } = req.query;
-//     const getPagesQuery = "SELECT * FROM page WHERE utilisateur = $1";
-//     const { rows } = await pool.query(getPagesQuery, [email]);
-//     res.status(200).json(rows);
-//   } catch (err) {
-//     console.log(err);
-//     res
-//       .status(500)
-//       .send(`An error occurred while accessing the database: ${err.message}`);
-//   }
-// });
+app.get("/api/getPages", async (req, res) => {
+  try {
+    const { email } = req.query;
+    const getPagesQuery = "SELECT * FROM page WHERE utilisateur = $1";
+    const { rows } = await pool.query(getPagesQuery, [email]);
+    res.status(200).json(rows);
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .send(`An error occurred while accessing the database: ${err.message}`);
+  }
+});
 
 app.post("/api/newPage", async (req, res) => {
   try {
@@ -207,11 +207,24 @@ app.post("/api/newModule", async (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // save notes in database
-// app.get("/api/getnotes", async (req, res) => {
+app.get("/api/getnotes", async (req, res) => {
+  try {
+    const { email } = req.query;
+    const getNotesQuery = "SELECT * FROM notes WHERE owner = $1";
+    const { rows } = await pool.query(getNotesQuery, [email]);
+    res.status(200).json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
+
+// app.get("/api/calendrier/events", async (req, res) => {
 //   try {
-//     const { email } = req.body;
-//     const getNotesQuery = "SELECT * FROM notes WHERE owner = $1";
-//     const { rows } = await pool.query(getNotesQuery, [email]);
+//     const { email } = req.query;
+
+//     const getEventsQuery = "SELECT * FROM events WHERE user_email = $1";
+//     const { rows } = await pool.query(getEventsQuery, [email]);
 //     res.status(200).json(rows);
 //   } catch (err) {
 //     console.error(err);

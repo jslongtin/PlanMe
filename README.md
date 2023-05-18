@@ -132,6 +132,7 @@ _Below is an example of how you can instruct your audience on installing and set
     npm install react-router-dom
     npm install react-chartjs-2
     npm install chart.js
+    npm install @vitejs/plugin-react
    ```
 4. Enter your API in `config.js`
    ```js

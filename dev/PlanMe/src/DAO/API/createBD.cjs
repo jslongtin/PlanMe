@@ -63,26 +63,58 @@ const pool = new Pool({
 
   // créer utilisateurs par defauts a la création de  la bd
   // ref: https://chat.openai.com/
-  //upsert : https://www.tutorialsteacher.com/postgresql/upsert
-  const salt = await genSalt(10);
-  const hashedPassword = await hash("jess", salt);
+  //ref upsert : https://www.tutorialsteacher.com/postgresql/upsert
+  // **************************************************************
+  // utilisateur par defauts
+  let salt = await genSalt(10);
+  let hashedPassword = await hash("Jess!2345", salt);
   await pool.query(
     `
     INSERT INTO utilisateurs (email, username, password, photo, theme_id) 
   VALUES ('Jess@hotmail.com', 'Jess', $1, NULL, NULL) ON CONFLICT DO NOTHING`,
     [hashedPasswordDefault]
   );
-  // créer utilisateurs par defauts a la création de  la bd
-  // ref: https://chat.openai.com/
-  //upsert : https://www.tutorialsteacher.com/postgresql/upsert
-  const salt2 = await genSalt(10);
-  const hashedPassword2 = await hash("Ato!2345", salt2);
+
+  salt = await genSalt(10);
+  hashedPassword = await hash("Ato!2345", salt);
   await pool.query(
     `
     INSERT INTO utilisateurs (email, username, password, photo, theme_id) 
   VALUES ('ato@ato.com', 'ato', $1, NULL, NULL) ON CONFLICT DO NOTHING`,
-    [hashedPassword2]
+    [hashedPassword]
   );
+
+// **************************************************************
+//  utilisateurs pour contacts
+
+let names = [
+  { email: 'sugar@sugar.com', username: 'sugar' },
+  { email: 'spice@spice.com', username: 'spice' },
+  { email: 'sasha@colby.com', username: 'sasha' },
+  { email: 'bob@thedragqueen.com', username: 'bob' },
+  { email: 'monet@xchange.com', username: 'monet' },
+  { email: 'jinx@monsoon.com', username: 'jinx' },
+  { email: 'alaska@thunderf6000,com', username: 'alaska' },
+];
+
+for (let { email, username } of names) {
+  let salt = await genSalt(10);
+  let hashedPassword = await hash('Ato!2345', salt);
+
+  await pool.query(
+    `
+    INSERT INTO utilisateurs (email, username, password, photo, theme_id) 
+    VALUES ($1, $2, $3, NULL, NULL) ON CONFLICT DO NOTHING`,
+    [email, username, hashedPassword]
+  );
+}
+
+await pool.query(
+  `INSERT INTO contact (utilisateur_email,contact) 
+  VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
+);
+
+  // **************************************************************
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS page (
