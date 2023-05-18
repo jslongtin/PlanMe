@@ -207,6 +207,7 @@ app.post("/api/newModule", async (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // save notes in database
+
 // app.get("/api/getnotes", async (req, res) => {
 //   try {
 //     const { email } = req.body;
