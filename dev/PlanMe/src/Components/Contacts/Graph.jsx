@@ -137,6 +137,9 @@ class Graph extends React.Component {
   };
   // Algorythme de Dijkstra pour trouver le plus court chemin entre deux sommets avec le poids des aretes
   // vus dans notre cours de mathématiques
+  // ref: https://chat.openai.com/ Pour debuggage et amélioration de l'algorythme
+  // ref: copilot Pour debuggage 
+  
   findPathWithDijkstra = (startNode, endNode) => {
     const { sommets } = this.state;
     const visitedNodesInOrder = [];

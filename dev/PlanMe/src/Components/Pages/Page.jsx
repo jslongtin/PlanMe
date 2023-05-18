@@ -34,12 +34,42 @@ function Page() {
     }
   };
 
+  const loadNotes = async (e) => {
+    e.preventDefault();
+    let user = sessionStorage.getItem("email");
+    const response = await fetch(`http://127.0.0.1:3001/api/getnotes?email=${user}`);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      alert("Invalid email or password");
+    }
+  };
+  
+  // fetchEvents = async () => {
+  //   try {
+  //     const email = sessionStorage.getItem("email");
+  //     const response = await fetch(
+  //       `http://localhost:3001/api/calendrier/events?email=${encodeURIComponent(
+  //         email
+  //       )}` //encodeURIComponent - ref : https://www.geeksforgeeks.org/javascript-encodeuri-decodeuri-and-its-components-functions/
+  //     );
+  //     const events = await response.json();
+
+  //     this.setState({ events });
+  //     return events;
+  //   } catch (err) {
+  //     console.log(err);
+  //     return [];
+  //   }
+  // };
+
   const moduleToggle = () => {
     setShowModule(!showModule);
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4" >
       <div className="relative z-10">
         <button
           onClick={moduleToggle}
@@ -47,6 +77,7 @@ function Page() {
         >
           Add Module
         </button>
+        <button onClick={loadNotes}></button>
 
         {showModule && (
           <div className="absolute z-20 bg-white shadow-md rounded p-4 mt-2">
