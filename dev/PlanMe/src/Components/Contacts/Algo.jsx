@@ -48,8 +48,8 @@ class Algo extends React.Component {
             potentialSuggestions.push(voisinSecondaire)
         });
 
-        
         potentialSuggestions = removeSelfImmediateConnections(user, immediateConnections)
+        suggestionFrequency = calculateFrequency(potentialSuggestions)
         potentialSuggestions = removeDuplicates(potentialSuggestions)
         
     };
@@ -67,6 +67,19 @@ class Algo extends React.Component {
     removeDuplicates = (potentialSuggestions) => {
         let suggestions = Array.from(new Set(potentialSuggestions));
         return suggestions
+    };
+    
+    // TODO a revoir
+    calculateFrequency = (potentialSuggestions) => {
+        let suggestionFrequency = new Map();
+        potentialSuggestions.forEach(suggestion => {
+            if (suggestionFrequency.has(suggestion)) {
+                suggestionFrequency.set(suggestion, suggestionFrequency.get(suggestion) + 1);
+            } else {
+                suggestionFrequency.set(suggestion, 1);
+            }
+        });
+        return suggestionFrequency
     };
         
 

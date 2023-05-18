@@ -135,6 +135,77 @@ class Graph extends React.Component {
       this.setState({ sommets: new Map(sommets) });
     }
   };
+  // Algorythme de Dijkstra pour trouver le plus court chemin entre deux sommets avec le poids des aretes
+  // vus dans notre cours de mathématiques
+  findPathWithDijkstra = (startNode, endNode) => {
+    const { sommets } = this.state;
+    const visitedNodesInOrder = [];
+    startNode.distance = 0;
+    const unvisitedNodes = new Set(sommets);
+    while (unvisitedNodes.size > 0) {
+      let closestNode = null;
+      for (const node of unvisitedNodes) {
+        if (closestNode === null || node.distance < closestNode.distance) {
+          closestNode = node;
+        }
+      }
+      unvisitedNodes.delete(closestNode);
+      if (closestNode === endNode) {
+        return visitedNodesInOrder;
+      }
+      closestNode.getConnections().forEach((neighbor) => {
+        if (!unvisitedNodes.has(neighbor)) {
+          return;
+        }
+        const distance = closestNode.getWeight(neighbor) + closestNode.distance;
+        if (distance < neighbor.distance) {
+          neighbor.distance = distance;
+          neighbor.previousNode = closestNode;
+        }
+      });
+      visitedNodesInOrder.push(closestNode);
+    }
+  };
+  
+  suggestContacts = (startNode, limit = Infinity) => {
+    let { sommets } = this.state;
+    let suggestedContacts = [];
+  
+    let startSommet = sommets.get(startNode);
+    if (!startSommet) {
+      return suggestedContacts;
+    }
+  
+    // Find the shortest paths from the startNode to all other nodes
+    let shortestPaths = new Map();
+    sommets.forEach((sommet) => {
+      sommet.distance = Infinity;
+      sommet.previousNode = null;
+    });
+    startSommet.distance = 0;
+    let visitedNodesInOrder = this.findPathWithDijkstra(startSommet, null);
+    visitedNodesInOrder.forEach((node) => {
+      shortestPaths.set(node, node.distance);
+    });
+  
+    // Find the suggested contacts based on the shortest paths, limited by the provided limit
+    sommets.forEach((sommet) => {
+      if (sommet !== startSommet && !startSommet.getConnections().has(sommet)) {
+        let path = this.findPathWithDijkstra(startSommet, sommet);
+        if (path && path.length > 0) {
+          let weight = shortestPaths.get(sommet);
+          suggestedContacts.push({ sommet, path, weight });
+        }
+      }
+    });
+    suggestedContacts.sort((a, b) => a.weight - b.weight);
+
+    // Limit the number of suggested contacts by the provided limit
+    let limitedContacts = suggestedContacts.slice(0, limit);
+    return limitedContacts;
+  };
+  
+
 
   render() {
     return (
