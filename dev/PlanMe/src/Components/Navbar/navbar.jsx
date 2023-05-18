@@ -111,7 +111,7 @@ function Navbar({ setActivePage }) {
           {pages.map((page) => (
             <li key={page.id}>
               <Link
-                to={`/page/${page.id}`}
+                to={`/dashboard/${page.id}`}
                 onClick={() => sessionStorage.setItem("activePage", page.id)}
               >
                 {page.titre}
