@@ -46,23 +46,6 @@ function Page() {
     }
   };
   
-  // fetchEvents = async () => {
-  //   try {
-  //     const email = sessionStorage.getItem("email");
-  //     const response = await fetch(
-  //       `http://localhost:3001/api/calendrier/events?email=${encodeURIComponent(
-  //         email
-  //       )}` //encodeURIComponent - ref : https://www.geeksforgeeks.org/javascript-encodeuri-decodeuri-and-its-components-functions/
-  //     );
-  //     const events = await response.json();
-
-  //     this.setState({ events });
-  //     return events;
-  //   } catch (err) {
-  //     console.log(err);
-  //     return [];
-  //   }
-  // };
 
   const moduleToggle = () => {
     setShowModule(!showModule);
@@ -77,7 +60,6 @@ function Page() {
         >
           Add Module
         </button>
-        <button onClick={loadNotes}></button>
 
         {showModule && (
           <div className="absolute z-20 bg-white shadow-md rounded p-4 mt-2">
