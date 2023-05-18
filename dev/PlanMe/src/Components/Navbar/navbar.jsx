@@ -98,7 +98,7 @@ function Navbar({ setActivePage }) {
           <div id="navBarUsername">{username}'s PlanMe</div>
         </div>
 
-        <div className="search w-50 h-50">
+        <div className="search w-50 h-50 relative z-0">
           <Search />
         </div>
 
@@ -123,12 +123,12 @@ function Navbar({ setActivePage }) {
       {newPageForm && (
         <div
           id="newPageForm"
-          className="fixed inset-0 flex items-center justify-center"
+          className="fixed inset-0 flex items-center justify-center relative z-0"
         >
-          <div className="bg-green-200 p-6 rounded-lg shadow-lg">
+          <div className="bg-green-200 p-6 rounded-lg shadow-lg relative z-0">
             <form
               onSubmit={handleNewPage}
-              className="bg-green-100 p-6 rounded-lg shadow-lg"
+              className="bg-green-100 p-6 rounded-lg shadow-lg relative z-0"
             >
               <input
                 type="text"
@@ -141,7 +141,7 @@ function Navbar({ setActivePage }) {
               />
               <button
                 type="submit"
-                className="bg-green-200 p-6 rounded-lg shadow-lg"
+                className="bg-green-200 p-6 rounded-lg shadow-lg relative z-0"
               >
                 Confirm
               </button>
@@ -151,7 +151,7 @@ function Navbar({ setActivePage }) {
                   setNewPageForm(false);
                   setNewPageTitre("");
                 }}
-                className="bg-green-200 p-6 rounded-lg shadow-lg"
+                className="bg-green-200 p-6 rounded-lg shadow-lg relative z-0"
               >
                 Cancel
               </button>
