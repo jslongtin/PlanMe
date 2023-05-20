@@ -1,53 +1,12 @@
 # PLANME 
-CVM: -C61 Projet syntese
+## Par: Finnegan Simpson et Jessika Longtin
+<!-- CVM: -C61 Projet syntese
 Clone de notion
 Nom du projet : PlanMe
-Equipiers: Finnegan Simpson et Jessika Longtin
-
-Docker - BD hosting
-https://hevodata.com/learn/docker-postgresql/
-
-with nodejs as a context : 
-https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/
-
+Equipiers: Finnegan Simpson et Jessika Longtin -->
 
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-
-
-<!-- [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url] -->
-
-
-
-<!-- PROJECT LOGO -->
-<!-- <br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
- -->
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -82,7 +41,7 @@ https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-re
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-PlanMe est un outil d'organisation personnel. 
+PlanMe est un outil d'organisation personnel inspiré de l'application Notion. Il se veux d''etre un site web qui regroupe plusieurs facon de s'organiser comme des notes traditionelles , calandrier et autres!
 
 <p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
 
@@ -99,28 +58,27 @@ PlanMe est un outil d'organisation personnel.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Cette section indique comment installer les outils nécessaire et comment se servir de notre site puisqu'il n'est pas mis en ligne pour l'instant.
 
 ### Prerequisites
+Liste des outils à installer 
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  Installer node.js
-  ```
+-  [Node.js](https://nodejs.org/en/download)
+-  [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- npm install : dans le terminal  
+
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+Cette section est pour installer les dependances dans le projet lui-meme
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+<!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
+1. Cloner le repo
    ```sh
    git clone https://github.com/jslongtin/PlanMe.git
    ```
-3. Install NPM packages
+   <!-- TODO finir la liste -->
+2. Install NPM packages
    ```sh
     on liner:
     npm install pg express tailwind styled-components react-router-dom    react-chartjs-2 chart.js
@@ -134,7 +92,7 @@ _Below is an example of how you can instruct your audience on installing and set
     npm install chart.js
     npm install @vitejs/plugin-react
    ```
-4. Enter your API in `config.js`
+3. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
@@ -146,65 +104,43 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Utilisation
 <!--TODO mettre des screenshot -->
-- Se faire un compte utilisateur
-- modifier son compte
+### Étapes
+1. cd dev/PlanMe
+2. ouvrir docker desktop
+3. npm run dev 
+
+- Se creer un compte utilisateur
+- modifier son compte utilisateur 
 - avoir son contenu organiser par page
-- Prendre des notes
+- Prendre des notes classique avec du gras/sousligné/italique avec un titre
 - avoir un calandrier avec son horaire
+- ajouter/modifier/retirer des evenements dans son calandrier
 - planifier son bugdet avec une projection du futur
+- Ajouter des pages
 
 
 
 <p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
 
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [  ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] English
-
-
-<p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">retourner en haut </a>)</p>
-
-
+<!-- TODO -->
+## References
+### Docker
+* https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
+* https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application
+* https://www.youtube.com/watch?v=Dm0CmZz-QyI
+* https://hub.docker.com/_/postgres
+* https://hevodata.com/learn/docker-postgresql/
+* https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/
+### Google could services
+* https://www.youtube.com/watch?v=JLdy_cJ1KRA&ab_channel=ScriptBytes
+### Projet
+* https://chat.openai.com/
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Nos githubs - [Jessika Longtin](https://github.com/jslongtin) - [Finnegan Simpson]()
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 

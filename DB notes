@@ -17,7 +17,7 @@ https://learn.microsoft.com/en-us/windows/wsl/install
 
 
 docker hub postgres 
-https://hub.docker.com/_/postgres
+<!-- https://hub.docker.com/_/postgres -->
 
 C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
 
@@ -26,9 +26,9 @@ docker login
 docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa111 -d postgres
 
 <!-- jess -->
-https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
+<!-- https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
 https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application
-https://www.youtube.com/watch?v=Dm0CmZz-QyI
+https://www.youtube.com/watch?v=Dm0CmZz-QyI -->
 <!--  b -->
 
 
@@ -44,12 +44,17 @@ sudo docker run --name planmedb -e POSTGRES_PASSWORD=Synthesis61 -v postgres:/va
 
 google cloud vm + docker server + postgres 
 Run a Postgres Database for Free on Google Cloud!:
-https://www.youtube.com/watch?v=JLdy_cJ1KRA&ab_channel=ScriptBytes
+<!-- https://www.youtube.com/watch?v=JLdy_cJ1KRA&ab_channel=ScriptBytes -->
 
 
 
 
+<!-- 
+Docker - BD hosting
+https://hevodata.com/learn/docker-postgresql/
 
+with nodejs as a context : 
+https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/ -->
 
 
 
