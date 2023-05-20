@@ -45,7 +45,7 @@ function Register() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="bg-green-500 text-gray-50 py-6">
+      <header className="bg-green-700 text-gray-50 py-6">
         <h1 className="text-4xl font-bold text-center">PlanMe</h1>
       </header>
       <div className="flex-grow bg-green-200 flex items-center justify-center">
