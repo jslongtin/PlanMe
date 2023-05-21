@@ -19,3 +19,4 @@ start /B nodemon api.cjs
 rem Change to the dev planme directory and start the development server
 cd ../../../dev/planme
 start npm run vite
+@REM open  -a "Google Chrome" http:localhost:3000
