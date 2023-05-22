@@ -1,3 +1,9 @@
+/* *********************************************
+    Fichier: input.css
+    Contexte: pour tailwind css
+    Auteurs: Jessika Longtin et Finnegan Simpson
+***********************************************/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

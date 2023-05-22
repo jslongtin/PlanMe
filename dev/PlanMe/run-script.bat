@@ -1,3 +1,10 @@
+@REM ********************************************
+@REM Fichier: run-script.bat
+@REM Contexte: Script automatisant le demarage de l'application
+@REM Auteurs: Jessika Longtin et Finnegan Simpson
+@REM ********************************************
+
+
 @REM ref : https://chat.openai.com/
 @echo off
 

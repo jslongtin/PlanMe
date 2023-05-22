@@ -1,9 +1,15 @@
+/***************************************************** 
+    Fichier: Utilisateur.jsx
+    Contexte: Gestion d'un utilisateur
+    Auteurs: Jessika Longtin et Finnegan Simpson
+ *****************************************************/
+
 import React, { useState } from "react";
 import "./utilisateur.css";
 import { useHistory } from "react-router-dom";
 // creation utilisateur aevc argument et affichage
 // ref: w3school react pages
-function Utilisateur() {
+export default function Utilisateur() {
   let [email, setEmail] = useState("");
   let [username, setUsername] = useState("");
   let [contacts, setContacts] = useState("");
@@ -78,4 +84,4 @@ function Utilisateur() {
   );
 }
 
-export default Utilisateur;
+

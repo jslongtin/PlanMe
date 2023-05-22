@@ -1,9 +1,14 @@
+/***************************************************** 
+  Fichier: Page.jsx
+  Contexte: Gestion d'une page avec ses modules de la base de donnée 
+  Auteurs: Jessika Longtin et Finnegan Simpson
+ *****************************************************/
 import React, { useState } from "react";
 import ModTexte from "../modules/text/text";
 import Cal from "../modules/Calendar/Cal";
 import Budget from "../modules/budget/Budget";
 
-function Page() {
+export default function Page() {
   const [modules, setModules] = useState([]);
   const [showModule, setShowModule] = useState(false);
 
@@ -104,4 +109,4 @@ function Page() {
   );
 }
 
-export default Page;
+

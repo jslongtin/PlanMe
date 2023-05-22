@@ -1,4 +1,9 @@
-#profileContainer{
+/***************************************************** 
+    Fichier: Utilisateur.css
+    Contexte: Styles pour Utilisateurs.jsx
+    Auteurs: Jessika Longtin et Finnegan Simpson
+ *****************************************************/
+ #profileContainer{
     background-color: var(--primaryColor);
     width: 100%;
     height: 100%;

@@ -1,8 +1,13 @@
+/***************************************************** 
+    Fichier: Register.jsx
+    Contexte: Création d'un utilisateur avec la base de données
+    Auteurs: Jessika Longtin et Finnegan Simpson
+ *****************************************************/
 import React, { useState } from "react";
 import "./register.css";
 import { useHistory } from "react-router-dom";
 
-function Register() {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -126,4 +131,4 @@ function Register() {
   );
 }
 
-export default Register;
+

@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: Navbar.jsx
+  Contexte: bare laterale de navigation contenant ses pages , deconnexion et modification profile
+  Auteurs: Jessika Longtin et Finnegan Simpson
+ *****************************************************/
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
@@ -7,7 +12,7 @@ import pageProfile from "../Utilisateur/UtilisateurTailwaind";
 import { useHistory } from "react-router-dom";
 // import Page from "../Pages/page";
 
-function Navbar({ setActivePage }) {
+export default function Navbar({ setActivePage }) {
   const [pages, setPages] = useState([]);
   const [newPageForm, setNewPageForm] = useState(false);
   const [newPageTitre, setNewPageTitre] = useState("");
@@ -163,4 +168,4 @@ function Navbar({ setActivePage }) {
   );
 }
 
-export default Navbar;
+
