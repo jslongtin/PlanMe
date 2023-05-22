@@ -25,10 +25,11 @@ class Sommet extends React.Component {
     this.setState({ adjacent: new Map(adjacent) });
   };
 
-  getConnections = () => {
+  getConnections= () => {
     const { adjacent } = this.state;
-    return adjacent.keys();
+    return Array.from(adjacent.keys());
   };
+
 
   getWeight = (neighbor) => {
     const { adjacent } = this.state;
@@ -64,13 +65,17 @@ class Graph extends React.Component {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       data.forEach((element) => {
         let s1 = this.addSommet(element.contact);
         let s2 = this.addSommet(element.utilisateur_email);
         this.addArete(s1, s2, 1);
       });
+      let user = sessionStorage.getItem("email");
+      user = this.getSommet(user);
+      let suggs = this.suggestContacts(user,3);
+      console.log(suggs);
     } else {
       alert("Request failed");
     }
@@ -116,7 +121,7 @@ class Graph extends React.Component {
     }
     
     sommetDe.addNeighbor(sommetTo, weight);
-    console.log(sommetDe);
+    // console.log(sommetDe);
     this.setState({ sommets: new Map(sommets) });
   };
 
@@ -156,6 +161,7 @@ class Graph extends React.Component {
       if (closestNode === endNode) {
         return visitedNodesInOrder;
       }
+      closestNode = closestNode[1]
       closestNode.getConnections().forEach((neighbor) => {
         if (!unvisitedNodes.has(neighbor)) {
           return;
@@ -168,16 +174,17 @@ class Graph extends React.Component {
       });
       visitedNodesInOrder.push(closestNode);
     }
+    return visitedNodesInOrder;
   };
   
-  suggestContacts = (startNode, limit = Infinity) => {
+  suggestContacts = (startSommet, limit = Infinity) => {
     let { sommets } = this.state;
     let suggestedContacts = [];
   
-    let startSommet = sommets.get(startNode);
-    if (!startSommet) {
-      return suggestedContacts;
-    }
+    // let startSommet = sommets.get(startNode);
+    // if (!startSommet) {
+    //   return suggestedContacts;
+    // }
   
     // Find the shortest paths from the startNode to all other nodes
     let shortestPaths = new Map();
@@ -193,7 +200,7 @@ class Graph extends React.Component {
   
     // Find the suggested contacts based on the shortest paths, limited by the provided limit
     sommets.forEach((sommet) => {
-      if (sommet !== startSommet && !startSommet.getConnections().has(sommet)) {
+      if (sommet !== startSommet && !startSommet.getConnections().includes(sommet)) {
         let path = this.findPathWithDijkstra(startSommet, sommet);
         if (path && path.length > 0) {
           let weight = shortestPaths.get(sommet);
