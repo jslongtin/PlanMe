@@ -65,7 +65,7 @@ class Graph extends React.Component {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       data.forEach((element) => {
         let s1 = this.addSommet(element.contact);
@@ -121,7 +121,7 @@ class Graph extends React.Component {
     }
     
     sommetDe.addNeighbor(sommetTo, weight);
-    console.log(sommetDe);
+    // console.log(sommetDe);
     this.setState({ sommets: new Map(sommets) });
   };
 
@@ -198,11 +198,9 @@ class Graph extends React.Component {
       shortestPaths.set(node, node.distance);
     });
   
-    console.log(startSommet.getConnections());
     // Find the suggested contacts based on the shortest paths, limited by the provided limit
     sommets.forEach((sommet) => {
-      console.log(sommet);
-      if (sommet !== startSommet && !startSommet.getConnections().has(sommet)) {
+      if (sommet !== startSommet && !startSommet.getConnections().includes(sommet)) {
         let path = this.findPathWithDijkstra(startSommet, sommet);
         if (path && path.length > 0) {
           let weight = shortestPaths.get(sommet);

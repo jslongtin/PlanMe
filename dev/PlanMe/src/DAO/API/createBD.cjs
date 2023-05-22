@@ -113,6 +113,14 @@ await pool.query(
   `INSERT INTO contact (utilisateur_email,contact) 
   VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
 );
+await pool.query(
+  `INSERT INTO contact (utilisateur_email,contact) 
+  VALUES ('ato@ato.com','sugar@sugar.com') ON CONFLICT DO NOTHING`
+);
+await pool.query(
+  `INSERT INTO contact (utilisateur_email,contact) 
+  VALUES ('sugar@sugar.com','spice@spice.com') ON CONFLICT DO NOTHING`
+);
 
   // **************************************************************
 
