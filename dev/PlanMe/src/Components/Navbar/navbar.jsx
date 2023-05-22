@@ -8,7 +8,7 @@ import "./navbar.css";
 import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
 import { Link, Route, Switch } from "react-router-dom";
 import Search from "../search/search";
-import pageProfile from "../Utilisateur/UtilisateurTailwaind";
+// import pageProfile from "../Utilisateur/UtilisateurTailwaind";
 import { useHistory } from "react-router-dom";
 // import Page from "../Pages/page";
 
@@ -167,5 +167,3 @@ export default function Navbar({ setActivePage }) {
     </div>
   );
 }
-
-

@@ -42,7 +42,9 @@ export default function Page() {
   const loadNotes = async (e) => {
     e.preventDefault();
     let user = sessionStorage.getItem("email");
-    const response = await fetch(`http://127.0.0.1:3001/api/getnotes?email=${user}`);
+    const response = await fetch(
+      `http://127.0.0.1:3001/api/getnotes?email=${user}`
+    );
     if (response.ok) {
       const data = await response.json();
       console.log(data);
@@ -50,14 +52,13 @@ export default function Page() {
       alert("Invalid email or password");
     }
   };
-  
 
   const moduleToggle = () => {
     setShowModule(!showModule);
   };
 
   return (
-    <div className="container mx-auto p-4" >
+    <div className="container mx-auto p-4">
       <div className="relative z-10">
         <button
           onClick={moduleToggle}
@@ -108,5 +109,3 @@ export default function Page() {
     </div>
   );
 }
-
-

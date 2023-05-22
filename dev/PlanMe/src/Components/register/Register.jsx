@@ -4,7 +4,6 @@
     Auteurs: Jessika Longtin et Finnegan Simpson
  *****************************************************/
 import React, { useState } from "react";
-import "./register.css";
 import { useHistory } from "react-router-dom";
 
 export default function Register() {
@@ -34,18 +33,20 @@ export default function Register() {
   };
 
   let validatePassword = () => {
-    const validPassword = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$'); //ref : https://www.tutorialspoint.com/regex-in-reactjs
-    
+    const validPassword = new RegExp(
+      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^ws]).{8,}$"
+    ); //ref : https://www.tutorialspoint.com/regex-in-reactjs
+
     if (!validPassword.test(password)) {
       setPwdError(true);
-   }
+    }
     if (password.length < 8) {
       alert("Password must be at least 8 characters");
     }
   };
 
   let login = () => {
-    history.goBack("/login");
+    history.push("/login");
   };
 
   return (
@@ -130,5 +131,3 @@ export default function Register() {
     </div>
   );
 }
-
-
