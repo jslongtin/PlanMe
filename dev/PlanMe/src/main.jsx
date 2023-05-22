@@ -25,7 +25,8 @@ const App = () => {
     </div>
   );
 };
-ReactDOM.createRoot(document.getElementById("root")).render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <Router>
     <App />
   </Router>

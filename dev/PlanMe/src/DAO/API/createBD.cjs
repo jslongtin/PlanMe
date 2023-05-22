@@ -84,35 +84,35 @@ const pool = new Pool({
     [hashedPassword]
   );
 
-// **************************************************************
-//  utilisateurs pour contacts
+  // **************************************************************
+  //  utilisateurs pour contacts
 
-let names = [
-  { email: 'sugar@sugar.com', username: 'sugar' },
-  { email: 'spice@spice.com', username: 'spice' },
-  { email: 'sasha@colby.com', username: 'sasha' },
-  { email: 'bob@thedragqueen.com', username: 'bob' },
-  { email: 'monet@xchange.com', username: 'monet' },
-  { email: 'jinx@monsoon.com', username: 'jinx' },
-  { email: 'alaska@thunderf6000,com', username: 'alaska' },
-];
+  let names = [
+    { email: "sugar@sugar.com", username: "sugar" },
+    { email: "spice@spice.com", username: "spice" },
+    { email: "sasha@colby.com", username: "sasha" },
+    { email: "bob@thedragqueen.com", username: "bob" },
+    { email: "monet@xchange.com", username: "monet" },
+    { email: "jinx@monsoon.com", username: "jinx" },
+    { email: "alaska@thunderf6000,com", username: "alaska" },
+  ];
 
-for (let { email, username } of names) {
-  let salt = await genSalt(10);
-  let hashedPassword = await hash('Ato!2345', salt);
+  for (let { email, username } of names) {
+    let salt = await genSalt(10);
+    let hashedPassword = await hash("Ato!2345", salt);
 
-  await pool.query(
-    `
+    await pool.query(
+      `
     INSERT INTO utilisateurs (email, username, password, photo, theme_id) 
     VALUES ($1, $2, $3, NULL, NULL) ON CONFLICT DO NOTHING`,
-    [email, username, hashedPassword]
-  );
-}
+      [email, username, hashedPassword]
+    );
+  }
 
-await pool.query(
-  `INSERT INTO contact (utilisateur_email,contact) 
+  await pool.query(
+    `INSERT INTO contact (utilisateur_email,contact) 
   VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
-);
+  );
 
   // **************************************************************
 
