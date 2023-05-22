@@ -367,6 +367,31 @@ app.post("/api/calendrier/delete_event", async (req, res) => {
   }
 });
 
+app.get("/api/budget/depences", async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    const getEventsQuery = "SELECT * FROM budget WHERE user_email = $1";
+    const { rows } = await pool.query(getEventsQuery, [email]);
+    res.status(200).json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
+app.post("/api/budget/new_depence", async (req, res) => {
+  try {
+    const { echeance, depenses, user_email } = req.body;
+    const newEventquery =
+      "INSERT INTO budget (echeance, depenses, user_email) VALUES ($1, $2, $3)";
+    await pool.query(newEventquery, [echeance, depenses, user_email]);
+    res.status(200).send(`Depence ${depenses} created`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
+
 app.post("/api/getContacts", async (req, res) => {
   try {
     const getContactQuery = "SELECT * FROM contact";
