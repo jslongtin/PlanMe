@@ -25,10 +25,11 @@ class Sommet extends React.Component {
     this.setState({ adjacent: new Map(adjacent) });
   };
 
-  getConnections = () => {
+  getConnections= () => {
     const { adjacent } = this.state;
-    return adjacent.keys();
+    return Array.from(adjacent.keys());
   };
+
 
   getWeight = (neighbor) => {
     const { adjacent } = this.state;
@@ -71,6 +72,10 @@ class Graph extends React.Component {
         let s2 = this.addSommet(element.utilisateur_email);
         this.addArete(s1, s2, 1);
       });
+      let user = sessionStorage.getItem("email");
+      user = this.getSommet(user);
+      let suggs = this.suggestContacts(user,3);
+      console.log(suggs);
     } else {
       alert("Request failed");
     }
@@ -156,6 +161,7 @@ class Graph extends React.Component {
       if (closestNode === endNode) {
         return visitedNodesInOrder;
       }
+      closestNode = closestNode[1]
       closestNode.getConnections().forEach((neighbor) => {
         if (!unvisitedNodes.has(neighbor)) {
           return;
@@ -168,16 +174,17 @@ class Graph extends React.Component {
       });
       visitedNodesInOrder.push(closestNode);
     }
+    return visitedNodesInOrder;
   };
   
-  suggestContacts = (startNode, limit = Infinity) => {
+  suggestContacts = (startSommet, limit = Infinity) => {
     let { sommets } = this.state;
     let suggestedContacts = [];
   
-    let startSommet = sommets.get(startNode);
-    if (!startSommet) {
-      return suggestedContacts;
-    }
+    // let startSommet = sommets.get(startNode);
+    // if (!startSommet) {
+    //   return suggestedContacts;
+    // }
   
     // Find the shortest paths from the startNode to all other nodes
     let shortestPaths = new Map();
@@ -191,8 +198,10 @@ class Graph extends React.Component {
       shortestPaths.set(node, node.distance);
     });
   
+    console.log(startSommet.getConnections());
     // Find the suggested contacts based on the shortest paths, limited by the provided limit
     sommets.forEach((sommet) => {
+      console.log(sommet);
       if (sommet !== startSommet && !startSommet.getConnections().has(sommet)) {
         let path = this.findPathWithDijkstra(startSommet, sommet);
         if (path && path.length > 0) {
