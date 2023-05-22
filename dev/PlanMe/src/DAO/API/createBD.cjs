@@ -85,6 +85,24 @@ const pool = new Pool({
   );
 
   // **************************************************************
+  await pool.query(`
+  CREATE TABLE IF NOT EXISTS page (
+      id SERIAL PRIMARY KEY,
+      titre VARCHAR(255),
+      contenu TEXT,
+      utilisateur VARCHAR(255) NOT NULL,
+      FOREIGN KEY (utilisateur) REFERENCES utilisateurs (email)
+  )`);
+
+  await pool.query(`
+  CREATE TABLE IF NOT EXISTS contact (
+    id SERIAL PRIMARY KEY,
+    utilisateur_email VARCHAR(255) NOT NULL UNIQUE,
+    contact VARCHAR(255) NOT NULL UNIQUE,
+    FOREIGN KEY (utilisateur_email) REFERENCES utilisateurs (email),
+    FOREIGN KEY (contact) REFERENCES utilisateurs (email)
+  )
+  `);
   //  utilisateurs pour contacts
 
   let names = [
@@ -123,25 +141,6 @@ const pool = new Pool({
   );
 
   // **************************************************************
-
-  await pool.query(`
-    CREATE TABLE IF NOT EXISTS page (
-        id SERIAL PRIMARY KEY,
-        titre VARCHAR(255),
-        contenu TEXT,
-        utilisateur VARCHAR(255) NOT NULL,
-        FOREIGN KEY (utilisateur) REFERENCES utilisateurs (email)
-    )`);
-
-  await pool.query(`
-    CREATE TABLE IF NOT EXISTS contact (
-      id SERIAL PRIMARY KEY,
-      utilisateur_email VARCHAR(255) NOT NULL UNIQUE,
-      contact VARCHAR(255) NOT NULL UNIQUE,
-      FOREIGN KEY (utilisateur_email) REFERENCES utilisateurs (email),
-      FOREIGN KEY (contact) REFERENCES utilisateurs (email)
-    )
-    `);
 
   // ajouter des contacts par defauts a la création de la bd
   await pool.query(
@@ -229,6 +228,7 @@ const pool = new Pool({
   CREATE TABLE IF NOT EXISTS budget (
     id SERIAL PRIMARY KEY,
     budget FLOAT,
+    user_email VARCHAR(255) NOT NULL,
     echeance DATE,
     depenses FLOAT,
     page_id INTEGER,
