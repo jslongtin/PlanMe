@@ -413,3 +413,15 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
+app.post("/api/addContact", async (req, res) => {
+  try {
+    const { id, idContact } = req.body;
+    const insertContactQuery =
+    "INSERT INTO contact (utilisateur_email,contact) VALUES ($1, $2) ON CONFLICT DO NOTHING";
+    result = await pool.query(insertContactQuery, [id, idContact]);
+    res.status(200).send(`Contact created`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});

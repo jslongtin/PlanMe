@@ -13,13 +13,20 @@ export default function Utilisateur() {
   const history = useHistory();
   const sessEmail = sessionStorage.getItem("email");
   const sessName = sessionStorage.getItem("username");
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   const storedContacts = sessionStorage.getItem("suggestedContacts");
-  //   if (storedContacts) {
-  //     setSuggestedContacts(JSON.parse(storedContacts));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const loadGraphData = async () => {
+      const graph = new Graph();
+      await graph.loadBd(); // Wait for the loadBd function to complete
+
+      // Perform any additional operations with the loaded data
+
+      setIsLoaded(true); // Set the isLoaded state to true after loading the data
+    };
+
+    loadGraphData();
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: handle form submission to update profile
@@ -28,8 +35,23 @@ export default function Utilisateur() {
   const back = () => {
     history.push("/dashboard");
   };
+  const addContact=   async (contacts) => {
+    // e.preventDefault();
+    const response = await fetch("http://127.0.0.1:3001/api/addContact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ sessEmail, contacts }),
+    });
+    if (response.ok) {
+      console.log("Contact added");
+    } else {
+      alert("Invalid email or password");
+    }
+  };
 
-  return (
+  return isLoaded ? (
     <div id="profileContainer">
        <ComponentWrapper component={Graph}setSuggestedContacts={setSuggestedContacts} />
       <form onSubmit={handleSubmit}>
@@ -69,7 +91,7 @@ export default function Utilisateur() {
           <div>
   {suggestedContacts && suggestedContacts.length > 0 && (
     suggestedContacts.map((contact) => (
-      <button key={contact}>{contact}</button>
+      <button key={contact} onClick={addContact(contact)}>{contact}</button>
     ))
   )}
 </div> 
@@ -87,7 +109,10 @@ export default function Utilisateur() {
         <button type="submit">Update Profile</button>
         <button onClick={back}>Retour</button>
       </form>
-    </div>
+    </div>)
+     : (
+      <div>Loading...</div>
+    
   );
 }
 
