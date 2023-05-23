@@ -408,6 +408,18 @@ app.post("/api/getContacts", async (req, res) => {
     res.status(500).send("An error occurred while accessing the database.");
   }
 });
+app.post("/api/getUserContacts", async (req, res) => {
+  try {
+    const { sessEmail } = req.body;
+    const getContactQuery = "SELECT * FROM contact WHERE utilisateur_email = $1";
+    const { rows } = await pool.query(getContactQuery, [sessEmail]);
+
+    res.status(200).json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while accessing the database.");
+  }
+});
 app.post("/api/addContact", async (req, res) => {
   try {
     const { sessEmail, contacts } = req.body;
