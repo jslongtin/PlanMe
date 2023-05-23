@@ -15,12 +15,11 @@ export default function Utilisateur() {
   const sessName = sessionStorage.getItem("username");
 
   // useEffect(() => {
-  //   let graph = new Graph();
-  //   graph.loadBd();
-  //   let suggs = graph.suggestContacts(sessEmail, 2);
-  //   setSuggestedContacts(suggs);
+  //   const storedContacts = sessionStorage.getItem("suggestedContacts");
+  //   if (storedContacts) {
+  //     setSuggestedContacts(JSON.parse(storedContacts));
+  //   }
   // }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: handle form submission to update profile
@@ -63,10 +62,17 @@ export default function Utilisateur() {
         <br />
         <label>
           Suggested Contacts:
-          <textarea
+          {/* <textarea
             value={suggestedContacts}
             onChange={(e) => setSuggestedContacts(e.target.value)}
-          />
+          /> */}
+          <div>
+  {suggestedContacts && suggestedContacts.length > 0 && (
+    suggestedContacts.map((contact) => (
+      <button key={contact}>{contact}</button>
+    ))
+  )}
+</div> 
         </label>
         <br />
         <label>
@@ -92,7 +98,7 @@ const ComponentWrapper = ({ component: Component, setSuggestedContacts  }) => {
     const sessEmail = sessionStorage.getItem("email");
 
     // Call the function of the passed component on mounting
-    if (Component && typeof Component === "function") {
+    if (Component ) {
       const graph = new Component();
       graph.loadBd().then(() => {
         const suggs = graph.suggestContacts(sessEmail, 2);
@@ -101,7 +107,8 @@ const ComponentWrapper = ({ component: Component, setSuggestedContacts  }) => {
           suggsContacts.push(element.sommet.props.id);
           console.log(element.sommet.props.id);
         });
-        
+        console.log(suggsContacts);
+        // sessionStorage.setItem("suggestedContacts", JSON.stringify(suggsContacts));
         setSuggestedContacts(suggsContacts);
         setIsMounted(true); // Set the mounting status to true after loading and suggesting contacts
       });
