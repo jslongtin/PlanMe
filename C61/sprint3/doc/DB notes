@@ -1,0 +1,94 @@
+https://forums.docker.com/t/error-response-from-daemon-open-pipe-docker-engine-windows-the-system-cannot-find-the-file-specified/131750/7
+
+
+https://www.coretechnologies.com/products/AlwaysUp/Apps/StartDockerDaemonAsAWindowsService.html#:~:text=To%20start%20Docker%20in%20daemon,immediately%2C%20before%20anyone%20logs%20on.
+
+kernel errors : 
+https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
+
+kernel error -> ubuntu cant login a vid:
+https://www.youtube.com/watch?time_continue=144&v=UZcXfPFeJN8&embeds_euri=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dwsl%2Brequires%2Ban%2Bupdate%2Bto%2Bits%2Bkernel%26rlz%3D1C1CHBF_enCA888CA888%26oq%3Dwsl%2Brequ%26aqs%3Dchrome.0.0i512l3j6&feature=emb_logo&ab_channel=ElyasTech
+
+install ubuntu 
+microsoft store 
+
+install wsl
+https://learn.microsoft.com/en-us/windows/wsl/install
+
+
+docker hub postgres 
+<!-- https://hub.docker.com/_/postgres -->
+
+C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
+
+docker login
+
+docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa111 -d postgres
+
+<!-- jess -->
+<!-- https://1kevinson.com/how-to-create-a-postgres-database-in-docker/
+https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application
+https://www.youtube.com/watch?v=Dm0CmZz-QyI -->
+<!--  b -->
+
+
+get content in database:
+
+node C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\Connxion.js
+
+nodemon C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\API\testapi.js
+
+
+sudo docker run --name planmedb -e POSTGRES_PASSWORD=Synthesis61 -v postgres:/var/lib/postgresql/data -p 5432:5432 -d postgres
+
+
+google cloud vm + docker server + postgres 
+Run a Postgres Database for Free on Google Cloud!:
+<!-- https://www.youtube.com/watch?v=JLdy_cJ1KRA&ab_channel=ScriptBytes -->
+
+
+
+
+<!-- 
+Docker - BD hosting
+https://hevodata.com/learn/docker-postgresql/
+
+with nodejs as a context : 
+https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/ -->
+
+
+
+DOCKER FILE IN THE PROJECT : 
+
+cd docker
+
+docker-compose up --build 
+
+docker-compose down  
+
+docker-compose -f /docker-compose.yml up   
+
+
+
+docker build -t synthese .
+
+docker run -d --name PlanMe -p 5432:5432 synthese
+388d5dbc6728d9f7f555b5ce21b9bd235599906f4cd5626a97b622052dd3041c
+
+
+docker run -d --name PlanMe -p 5432:5432 postgres
+
+
+
+current build google cloud - :
+
+host ip: 34.72.6.142
+
+sudo docker run --name PlanMe -p 5432:5432 -e POSTGRES_PASSWORD=AAAaaa11
+1e004b141a5477e9fc874f5091f78fb9bb98d8672a5bdc5cc5ef1feb1b816d28
+
+
+reset database:
+
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;

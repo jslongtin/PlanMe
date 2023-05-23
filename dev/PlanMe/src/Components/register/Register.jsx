@@ -1,7 +1,7 @@
 /***************************************************** 
     Fichier: Register.jsx
     Contexte: Création d'un utilisateur avec la base de données
-    Auteurs: Jessika Longtin et Finnegan Simpson
+    Auteurs: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";

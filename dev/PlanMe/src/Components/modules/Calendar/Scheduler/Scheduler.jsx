@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: .jsx
+  Contexte: 
+  Auteur: Finnegan Simpson et Jessika Longtin
+ *****************************************************/
 // ref : https://github.com/DHTMLX
 // https://docs.dhtmlx.com/scheduler/howtostart_nodejs.html
 // https://www.youtube.com/watch?v=UdmAB5Hoqxg

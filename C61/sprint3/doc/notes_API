@@ -1,0 +1,28 @@
+install nodemon (so you dont have to ctr c and restart the port everytime)
+
+sudo npm i -g nodemon
+
+if access denied : 
+Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy Unrestricted
+
+nodemon C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\API\testapi.js
+
+SET THE PORT
+set PORT=5000
+
+
+
+
+---------------------------------
+#TODO
+ Invoke-WebRequest -Uri 'http://127.0.0.1:3000/test' -Method 'GET'
+ error 
+
+
+---------------------------------
+
+
+
+Copy-Item C:\travail\Projet_Synthese\dev\PlanMe\package*.json C:\travail\Projet_Synthese\dev\PlanMe\Docker\
+PS C:\travail\Projet_Synthese\dev\planme> Copy-Item C:\travail\Projet_Synthese\dev\PlanMe\src\DAO\API\server.cjs C:\travail\Projet_Synthese\dev\PlanMe\Docker\
