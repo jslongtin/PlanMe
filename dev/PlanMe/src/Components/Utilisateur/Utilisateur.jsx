@@ -52,7 +52,31 @@ export default function Utilisateur() {
       alert("Error in inserting contact");
     }
   };
+  // TODO
+  const getContact= async (e) => {
+    const response = await fetch("http://127.0.0.1:3001/api/getContacts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      const data = await response.json();
+      // console.log(data);
 
+      data.forEach((element) => {
+        let s1 = this.addSommet(element.contact);
+        let s2 = this.addSommet(element.utilisateur_email);
+        this.addArete(s1, s2, 1);
+      });
+      let user = sessionStorage.getItem("email");
+      // user = this.getSommet(user);
+      // let suggs = this.suggestContacts(user,3);
+      // console.log(suggs);
+    } else {
+      alert("Request failed");
+    }
+  };
   return isLoaded ? (
     <div id="profileContainer">
        <ComponentWrapper component={Graph}setSuggestedContacts={setSuggestedContacts} />
