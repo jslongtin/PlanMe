@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: .jsx
+  Contexte: 
+  Auteur:  Jessika Longtin et Finnegan Simpson 
+ *****************************************************/
 import { useState } from 'react'
 import './module.css'
 import ModTexte from './text/text'
