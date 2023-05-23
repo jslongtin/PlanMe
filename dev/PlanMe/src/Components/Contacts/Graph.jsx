@@ -56,7 +56,7 @@ class Graph extends React.Component {
   }
 
   loadBd = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const response = await fetch("http://127.0.0.1:3001/api/getContacts", {
       method: "POST",
       headers: {
@@ -73,9 +73,9 @@ class Graph extends React.Component {
         this.addArete(s1, s2, 1);
       });
       let user = sessionStorage.getItem("email");
-      user = this.getSommet(user);
-      let suggs = this.suggestContacts(user,3);
-      console.log(suggs);
+      // user = this.getSommet(user);
+      // let suggs = this.suggestContacts(user,3);
+      // console.log(suggs);
     } else {
       alert("Request failed");
     }
@@ -177,15 +177,11 @@ class Graph extends React.Component {
     return visitedNodesInOrder;
   };
   
-  suggestContacts = (startSommet, limit = Infinity) => {
+  suggestContacts = (id, limit = Infinity) => {
     let { sommets } = this.state;
     let suggestedContacts = [];
-  
-    // let startSommet = sommets.get(startNode);
-    // if (!startSommet) {
-    //   return suggestedContacts;
-    // }
-  
+    let startSommet = this.getSommet(id);
+   
     // Find the shortest paths from the startNode to all other nodes
     let shortestPaths = new Map();
     sommets.forEach((sommet) => {

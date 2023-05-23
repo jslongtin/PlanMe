@@ -1,39 +1,40 @@
-/***************************************************** 
-    Fichier: Utilisateur.jsx
-    Contexte: Gestion d'un utilisateur
-    Auteurs: Jessika Longtin et Finnegan Simpson
- *****************************************************/
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./utilisateur.css";
 import { useHistory } from "react-router-dom";
-// creation utilisateur aevc argument et affichage
-// ref: w3school react pages
+import Graph from "../Contacts/Graph";
+
+
 export default function Utilisateur() {
-  let [email, setEmail] = useState("");
-  let [username, setUsername] = useState("");
-  let [contacts, setContacts] = useState("");
-  let [suggestedContacts, setSuggestedContacts] = useState("");
-  let [profilePicture, setProfilePicture] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [contacts, setContacts] = useState("");
+  const [suggestedContacts, setSuggestedContacts] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
   const history = useHistory();
   const sessEmail = sessionStorage.getItem("email");
-  const sessName = sessionStorage.getItem("name");
-  
+  const sessName = sessionStorage.getItem("username");
+
+  // useEffect(() => {
+  //   let graph = new Graph();
+  //   graph.loadBd();
+  //   let suggs = graph.suggestContacts(sessEmail, 2);
+  //   setSuggestedContacts(suggs);
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: handle form submission to update profile
   };
 
-  let back = () => {
+  const back = () => {
     history.push("/dashboard");
-}
+  };
 
   return (
     <div id="profileContainer">
-      
+       <ComponentWrapper component={Graph}setSuggestedContacts={setSuggestedContacts} />
       <form onSubmit={handleSubmit}>
-      <h1>{sessName}'s Profile</h1>
+        <h1>{sessName}'s Profile</h1>
         <label>
           Email:
           <input
@@ -78,10 +79,34 @@ export default function Utilisateur() {
         </label>
         <br />
         <button type="submit">Update Profile</button>
-        <button onClick={back} >Retour</button>
+        <button onClick={back}>Retour</button>
       </form>
     </div>
   );
 }
 
+const ComponentWrapper = ({ component: Component, setSuggestedContacts  }) => {
+  const [isMounted, setIsMounted] = useState(false);
 
+  useEffect(() => {
+    const sessEmail = sessionStorage.getItem("email");
+
+    // Call the function of the passed component on mounting
+    if (Component && typeof Component === "function") {
+      const graph = new Component();
+      graph.loadBd().then(() => {
+        const suggs = graph.suggestContacts(sessEmail, 2);
+        let suggsContacts = [];
+        suggs.forEach((element) => {  
+          suggsContacts.push(element.sommet.props.id);
+          console.log(element.sommet.props.id);
+        });
+        
+        setSuggestedContacts(suggsContacts);
+        setIsMounted(true); // Set the mounting status to true after loading and suggesting contacts
+      });
+    }
+  }, [Component]);
+
+  return isMounted ? <Component /> : null;
+};
