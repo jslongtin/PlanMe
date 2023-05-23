@@ -108,6 +108,10 @@ const pool = new Pool({
     FOREIGN KEY (contact) REFERENCES utilisateurs (email)
   )
   `);
+  await pool.query(`
+  ALTER TABLE contact
+  ADD CONSTRAINT unique_email_contact UNIQUE (utilisateur_email, contact)
+`);
   //  utilisateurs pour contacts
 
   let names = [
@@ -132,18 +136,7 @@ const pool = new Pool({
     );
   }
 
-  await pool.query(
-    `INSERT INTO contact (utilisateur_email,contact) 
-  VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
-  );
-  await pool.query(
-    `INSERT INTO contact (utilisateur_email,contact) 
-  VALUES ('ato@ato.com','sugar@sugar.com') ON CONFLICT DO NOTHING`
-  );
-  await pool.query(
-    `INSERT INTO contact (utilisateur_email,contact) 
-  VALUES ('sugar@sugar.com','spice@spice.com') ON CONFLICT DO NOTHING`
-  );
+
 
   // **************************************************************
 
@@ -157,6 +150,15 @@ const pool = new Pool({
   await pool.query(
     `INSERT INTO contact (utilisateur_email,contact) 
     VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
+  );
+  
+  await pool.query(
+    `INSERT INTO contact (utilisateur_email,contact) 
+  VALUES ('ato@ato.com','sugar@sugar.com') ON CONFLICT DO NOTHING`
+  );
+  await pool.query(
+    `INSERT INTO contact (utilisateur_email,contact) 
+  VALUES ('sugar@sugar.com','spice@spice.com') ON CONFLICT DO NOTHING`
   );
   // **************************************************************
 
