@@ -115,7 +115,20 @@ class Budget extends Component {
     const { depences, depence, projection } = this.state;
 
     const data = {
-      labels: depences.map((_, index) => index + 1), // Use index to generate labels
+      labels: [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril",
+        "Mai",
+        "Juin",
+        "Juillet",
+        "Aout",
+        "Septembre",
+        "Octobre",
+        "Novembre",
+        "Décembre",
+      ], 
       datasets: [
         {
           label: "Projection dépenses",
