@@ -31,12 +31,13 @@ export default function Utilisateur() {
     e.preventDefault();
     // TODO: handle form submission to update profile
   };
-
+ 
   const back = () => {
     history.push("/dashboard");
   };
-  const addContact=   async (contacts) => {
+  const addContact= async (contacts) => {
     // e.preventDefault();
+    console.log(contacts,sessEmail);
     const response = await fetch("http://127.0.0.1:3001/api/addContact", {
       method: "POST",
       headers: {
@@ -45,9 +46,10 @@ export default function Utilisateur() {
       body: JSON.stringify({ sessEmail, contacts }),
     });
     if (response.ok) {
+      // const data = await response.json();
       console.log("Contact added");
     } else {
-      alert("Invalid email or password");
+      alert("Error in inserting contact");
     }
   };
 
@@ -91,7 +93,7 @@ export default function Utilisateur() {
           <div>
   {suggestedContacts && suggestedContacts.length > 0 && (
     suggestedContacts.map((contact) => (
-      <button key={contact} onClick={addContact(contact)}>{contact}</button>
+      <button key={contact} onClick={() => addContact(contact)}>{contact}</button>
     ))
   )}
 </div> 
