@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: createBD.cjs
+  Contexte: script de creation et insertion default de la base de données
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 const { Pool } = require("pg");
