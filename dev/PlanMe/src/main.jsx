@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: .jsx
+  Contexte: 
+  Auteur: Jessika Longtin et Finnegan Simpson
+ *****************************************************/
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

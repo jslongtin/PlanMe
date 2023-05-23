@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: .jsx
+  Contexte: 
+  Auteur: Finnegan Simpson et Jessika Longtin
+ *****************************************************/
 const { Pool } = require("pg");
 const express = require("express");
 const bodyParser = require("body-parser");

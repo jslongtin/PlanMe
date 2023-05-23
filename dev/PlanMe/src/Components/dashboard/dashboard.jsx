@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: .jsx
+  Contexte: 
+  Auteur: Finnegan Simpson et Jessika Longtin
+ *****************************************************/
 import React, { useState } from "react";
 import Navbar from "../Navbar/navbar";
 import Page from "../Pages/page";

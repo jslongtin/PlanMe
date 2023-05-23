@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: .jsx
+  Contexte: 
+  Auteur: Finnegan Simpson et Jessika Longtin
+ *****************************************************/
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import {

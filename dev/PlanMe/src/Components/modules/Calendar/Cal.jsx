@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: Cal.jsx
+  Contexte: 
+  Auteur: Finnegan Simpson et Jessika Longtin
+ *****************************************************/
 import React, { Component } from "react";
 import Scheduler from "./Scheduler/Scheduler";
 
