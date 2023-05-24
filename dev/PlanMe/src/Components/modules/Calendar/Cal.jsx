@@ -5,7 +5,7 @@
  *****************************************************/
 import React, { Component } from "react";
 import Scheduler from "./Scheduler/Scheduler";
-
+import "./cal.css";
 class Cal extends Component {
   state = {
     currentTimeFormatState: true,

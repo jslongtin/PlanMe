@@ -1,6 +1,6 @@
 /***************************************************** 
   Fichier: Budget.jsx
-  Contexte: Module spécifique de budget
+  Contexte: 
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 // refs :algorithme -> chat gpt | Chart.js -> https://www.youtube.com/watch?v=Ly-9VTXJlnA
@@ -209,8 +209,8 @@ class Budget extends Component {
         </button>
         {depences && depences.length > 0 && (
           <div className="text-black">
-            <table className="min-w-full divide-y divide-gray-200 shadow-sm rounded-lg overflow-hidden">
-              <thead className="bg-gray-50">
+            <table className="w-full divide-y divide-green-500 bg-green-400 shadow-sm rounded-lg overflow-hidden">
+              <thead className="bg-green-300">
                 <tr>
                   {data.labels.map((label, index) => (
                     <th
@@ -222,7 +222,7 @@ class Budget extends Component {
                   ))}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-green-200 divide-y divide-green-200">
                 <tr>
                   {depences.map((depence, index) => (
                     <td key={index} className="px-6 py-4 whitespace-nowrap">

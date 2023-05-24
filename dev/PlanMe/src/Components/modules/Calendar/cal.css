@@ -1,0 +1,36 @@
+    .dhx_cal_event .dhx_body {
+    color: rgb(255, 255, 255);
+}
+.dhx_cal_event .dhx_title {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 137, 102);
+}
+
+.dhx_cal_event .dhx_body {
+    background-color: rgb(134, 194, 161);
+    color: black;
+}
+
+
+.dhx_cal_today_button {
+    background-color: rgb(179, 230, 179) !important;
+    color: rgb(73, 107, 83);
+    border-color: rgb(67, 119, 80);
+}
+
+.dhx_cal_today_button:hover {
+    background-color: rgb(179, 230, 179) !important;
+    color: rgb(27, 117, 54);
+    border-color: rgb(67, 119, 80);
+}
+.dhx_cal_navline .dhx_cal_tab {
+    background-color: rgb(179, 230, 179) !important;
+    color: rgb(73, 107, 83);
+    border-color: rgb(67, 119, 80);
+}
+.dhx_cal_navline .dhx_cal_tab:hover {
+    background-color: rgb(190, 224, 190) !important;
+    color: rgb(27, 117, 54);
+    border-color: rgb(67, 119, 80);
+}
+    

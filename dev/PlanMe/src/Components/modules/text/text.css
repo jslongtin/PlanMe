@@ -9,6 +9,7 @@
     .editor{
         height: 40%;
         background-color: aliceblue;
+        color: black;
         /* overflow: aut
         overflow-wrap: break-word;
         word-wrap: break-word;
@@ -18,7 +19,7 @@
     }
     .titre{
         position: relative;
-        
+        color: #000;
         /* background-color: aliceblue; */
         overflow: auto;
         overflow-wrap: break-word;
@@ -34,5 +35,6 @@
     }
     
     [contenteditable] {
+        color: #000;
         outline: 0px solid transparent;
       }
