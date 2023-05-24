@@ -1,8 +1,9 @@
 /***************************************************** 
-  Fichier: .jsx
+  Fichier: Budget.jsx
   Contexte: 
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
+// refs :algorithme -> chat gpt | Chart.js -> https://www.youtube.com/watch?v=Ly-9VTXJlnA
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import {
@@ -27,9 +28,9 @@ class Budget extends Component {
     super(props);
 
     this.state = {
-      depences: [],
+      depences: Array(12).fill(0), // Initialize with 12 months of 0 depenses
       depence: "",
-      projection: 0,
+      projection: [],
     };
   }
 
@@ -49,26 +50,29 @@ class Budget extends Component {
     if (depence) {
       try {
         const email = sessionStorage.getItem("email");
-        const response = await fetch("/api/budget/new_depence", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            echeance: new Date().toISOString().split("T")[0], // Set the current date as the echeance ref : chatgpt
-            depenses: parseFloat(depence),
-            user_email: email,
-          }),
+        const currentMonth = new Date().getMonth();
+        const updatedDepences = [...depences];
+        updatedDepences[currentMonth] += parseFloat(depence);
+        this.setState({
+          depences: updatedDepences,
+          depence: "",
         });
-
-        if (response.ok) {
-          const newDepences = [...depences, parseFloat(depence)];
-          this.setState({
-            depences: newDepences,
-            depence: "",
-          });
-        } else {
-          console.error("Failed to add depence:", response.status);
+        const response = await fetch(
+          "http://localhost:3001/api/budget/new_depence",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              echeance: new Date().toISOString(),
+              depenses: parseFloat(depence),
+              user_email: email,
+            }),
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
       } catch (err) {
         console.error("An error occurred while adding depence:", err);
@@ -79,27 +83,45 @@ class Budget extends Component {
   calculateProjection = () => {
     const { depences } = this.state;
     const currentMonth = new Date().getMonth();
-    const avg = depences.reduce((a, b) => a + b, 0) / depences.length;
+    const pastMonths = depences.slice(0, currentMonth + 1);
+    const avg = pastMonths.reduce((a, b) => a + b, 0) / pastMonths.length;
+    const growthRate = (depences[currentMonth] - depences[0]) / currentMonth;
+    let lastProjectedValue = depences[currentMonth];
     const projection = [];
     for (let i = currentMonth + 1; i < 12; i++) {
-      projection.push(avg);
+      const projectedValue = lastProjectedValue + growthRate;
+      projection.push(projectedValue);
+      lastProjectedValue = projectedValue;
     }
     this.setState({
       projection: projection,
     });
   };
+
   fetchDepences = async () => {
     try {
       const email = sessionStorage.getItem("email");
       const response = await fetch(
         `http://localhost:3001/api/budget/depences?email=${encodeURIComponent(
           email
-        )}` //encodeURIComponent - ref : https://www.geeksforgeeks.org/javascript-encodeuri-decodeuri-and-its-components-functions/
+        )}`
       );
       const depences = await response.json();
 
-      this.setState({ depences });
-      return depences;
+      const updatedDepences = Array(12).fill(0);
+      depences.forEach((depence) => {
+        const month = new Date(depence.echeance).getMonth();
+        updatedDepences[month] += depence.depenses;
+      });
+
+      const currentMonth = new Date().getMonth();
+      const pastMonths = Array(currentMonth).fill(423); // Default values for past months
+
+      this.setState(
+        { depences: [...pastMonths, ...updatedDepences] },
+        this.calculateProjection
+      ); // Added callback here
+      return [...pastMonths, ...updatedDepences];
     } catch (err) {
       console.log(err);
       return [];
@@ -112,6 +134,7 @@ class Budget extends Component {
     console.log("state depences :");
     console.log(depences);
   }
+
   render() {
     const { depences, depence, projection } = this.state;
 
@@ -132,11 +155,27 @@ class Budget extends Component {
       ],
       datasets: [
         {
-          label: "Projection dépenses",
-          data: projection,
+          label: "Dépenses réelles",
+          data: depences,
           fill: false,
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgba(255, 99, 132, 0.2)",
+          elements: {
+            line: {
+              borderWidth: 2,
+              tension: 0,
+            },
+            point: {
+              radius: 5,
+            },
+          },
+        },
+        {
+          label: "Projection dépenses",
+          data: [...Array(new Date().getMonth()).fill(null), ...projection],
+          fill: false,
+          backgroundColor: "rgb(0, 123, 255)",
+          borderColor: "rgba(0, 123, 255, 0.2)",
           elements: {
             line: {
               borderWidth: 2,
@@ -199,5 +238,3 @@ class Budget extends Component {
 }
 
 export default Budget;
-
-//reformated in class from const by chatgpt

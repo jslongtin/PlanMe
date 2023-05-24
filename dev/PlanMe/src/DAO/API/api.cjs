@@ -411,7 +411,8 @@ app.post("/api/getContacts", async (req, res) => {
 app.post("/api/getUserContacts", async (req, res) => {
   try {
     const { sessEmail } = req.body;
-    const getContactQuery = "SELECT * FROM contact WHERE utilisateur_email = $1";
+    const getContactQuery =
+      "SELECT * FROM contact WHERE utilisateur_email = $1";
     const { rows } = await pool.query(getContactQuery, [sessEmail]);
 
     res.status(200).json(rows);
@@ -426,7 +427,7 @@ app.post("/api/addContact", async (req, res) => {
     console.log(sessEmail);
     console.log(contacts);
     const insertContactQuery =
-    "INSERT INTO contact (utilisateur_email,contact) VALUES ($1, $2) ON CONFLICT DO NOTHING";
+      "INSERT INTO contact (utilisateur_email,contact) VALUES ($1, $2) ON CONFLICT DO NOTHING";
     result = await pool.query(insertContactQuery, [sessEmail, contacts]);
     res.status(200).send(`Contact created`);
   } catch (err) {
