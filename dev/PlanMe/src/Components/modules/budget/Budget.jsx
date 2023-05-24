@@ -111,17 +111,13 @@ class Budget extends Component {
       const updatedDepences = Array(12).fill(0);
       depences.forEach((depence) => {
         const month = new Date(depence.echeance).getMonth();
-        updatedDepences[month] += depence.depenses;
+        if (month >= 0 && month <= 11) {
+          updatedDepences[month] += depence.depenses;
+        }
       });
 
-      const currentMonth = new Date().getMonth();
-      const pastMonths = Array(currentMonth).fill(423); // Default values for past months
-
-      this.setState(
-        { depences: [...pastMonths, ...updatedDepences] },
-        this.calculateProjection
-      ); // Added callback here
-      return [...pastMonths, ...updatedDepences];
+      this.setState({ depences: updatedDepences }, this.calculateProjection);
+      return updatedDepences;
     } catch (err) {
       console.log(err);
       return [];
@@ -213,22 +209,30 @@ class Budget extends Component {
         </button>
         {depences && depences.length > 0 && (
           <div className="text-black">
-            <table>
-              <thead>
+            <table className="min-w-full divide-y divide-gray-200 shadow-sm rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
                 <tr>
-                  <th>Date</th>
-                  <th>Dépense</th>
+                  {data.labels.map((label, index) => (
+                    <th
+                      key={index}
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      {label}
+                    </th>
+                  ))}
                 </tr>
               </thead>
-              <tbody>
-                {depences.map((depence, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{depence} €</td>
-                  </tr>
-                ))}
+              <tbody className="bg-white divide-y divide-gray-200">
+                <tr>
+                  {depences.map((depence, index) => (
+                    <td key={index} className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">{depence} €</div>
+                    </td>
+                  ))}
+                </tr>
               </tbody>
             </table>
+
             <Line data={data} options={this.options} />
           </div>
         )}

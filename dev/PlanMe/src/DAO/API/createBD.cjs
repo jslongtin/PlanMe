@@ -108,10 +108,10 @@ const pool = new Pool({
     FOREIGN KEY (contact) REFERENCES utilisateurs (email)
   )
   `);
-  await pool.query(`
-  ALTER TABLE contact
-  ADD CONSTRAINT unique_email_contact UNIQUE (utilisateur_email, contact)
-`);
+  //   await pool.query(`
+  //   ALTER TABLE contact
+  //   ADD CONSTRAINT unique_email_contact UNIQUE (utilisateur_email, contact)
+  // `);
   //  utilisateurs pour contacts
 
   let names = [
@@ -136,8 +136,6 @@ const pool = new Pool({
     );
   }
 
-
-
   // **************************************************************
 
   // ajouter des contacts par defauts a la création de la bd
@@ -151,7 +149,7 @@ const pool = new Pool({
     `INSERT INTO contact (utilisateur_email,contact) 
     VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
   );
-  
+
   await pool.query(
     `INSERT INTO contact (utilisateur_email,contact) 
   VALUES ('ato@ato.com','sugar@sugar.com') ON CONFLICT DO NOTHING`
@@ -242,4 +240,13 @@ const pool = new Pool({
     FOREIGN KEY (page_id) REFERENCES page (id)
     )
     `);
+  // await pool.query(`
+  // INSERT INTO budget (budget, user_email, echeance, depenses, page_id)
+  // VALUES
+  // (1000, 'ato@ato.com', '2023-01-01', 200, 1),
+  // (1000, 'ato@ato.com', '2023-02-01', 250, 1),
+  // (1000, 'ato@ato.com', '2023-03-01', 300, 1),
+  // (1000, 'ato@ato.com', '2023-04-01', 350, 1),
+  // (1000, 'ato@ato.com', '2023-05-01', 400, 1);
+  // `);
 })();

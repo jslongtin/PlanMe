@@ -5,6 +5,7 @@
  *****************************************************/
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import greeenLeafImage from "../../assets/images/greeen_leaf.png";
 
 function Home() {
   const history = useHistory();
@@ -35,7 +36,11 @@ function Home() {
       </div>
       <div className="flex-grow bg-green-200 flex items-center justify-center">
         <div className="bg-teal-900 p-10 rounded-lg shadow-2xl w-100 h-100">
-          <img src="" alt="home image" mx-auto w-48 h-48 />
+          <img
+            src={greeenLeafImage}
+            alt="home image"
+            className="mx-auto w-48 h-48"
+          />
           <div className="text-center mt-5"></div>
           <div className="text-center mt-5"></div>
         </div>
