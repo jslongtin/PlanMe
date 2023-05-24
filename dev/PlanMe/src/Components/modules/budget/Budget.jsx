@@ -76,15 +76,16 @@ class Budget extends Component {
     }
   };
 
-  calculateProjectionAverage = () => {
+  calculateProjection = () => {
     const { depences } = this.state;
-    const avg = depences.reduce((a, b) => a + b, 0) / depences.length;
     const currentMonth = new Date().getMonth();
-    const projectedValues = depences.map((value, index) =>
-      index <= currentMonth ? value : avg
-    );
+    const avg = depences.reduce((a, b) => a + b, 0) / depences.length;
+    const projection = [];
+    for (let i = currentMonth + 1; i < 12; i++) {
+      projection.push(avg);
+    }
     this.setState({
-      projection: projectedValues,
+      projection: projection,
     });
   };
   fetchDepences = async () => {
@@ -128,7 +129,7 @@ class Budget extends Component {
         "Octobre",
         "Novembre",
         "Décembre",
-      ], 
+      ],
       datasets: [
         {
           label: "Projection dépenses",
@@ -166,7 +167,7 @@ class Budget extends Component {
           </button>
         </form>
         <button
-          onClick={this.calculateProjectionAverage}
+          onClick={this.calculateProjection}
           className="bg-blue-500 text-white px-4 py-2 rounded"
         >
           Projection
@@ -196,6 +197,7 @@ class Budget extends Component {
     );
   }
 }
+
 export default Budget;
 
 //reformated in class from const by chatgpt
