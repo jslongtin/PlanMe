@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: Module.jsx
+  Contexte: Module de base modulaire
   Auteur:  Jessika Longtin et Finnegan Simpson 
  *****************************************************/
 import { useState } from 'react'

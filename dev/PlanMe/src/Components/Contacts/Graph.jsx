@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: Graph.jsx
+  Contexte: Structure de données graph et algorithme de suggestion de contacts
+  Auteur:  Jessika Longtin et Finnegan Simpson 
+ *****************************************************/
 import React, { useState } from 'react';
 
 class Sommet extends React.Component {

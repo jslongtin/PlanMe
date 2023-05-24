@@ -83,7 +83,7 @@ Liste des outils à installer
 
 ### Installation
 
-Cette section est pour installer les dependances dans le projet lui-meme
+Cette section est pour installer les dependances dans le projet lui-meme 
 
 1. Cloner le repo
    ```sh
@@ -93,7 +93,7 @@ Cette section est pour installer les dependances dans le projet lui-meme
 2. Install NPM packages
    ```sh
     on liner:
-    npm install pg express tailwind styled-components react-router-dom    react-chartjs-2 chart.js
+    npm install pg express tailwind styled-components react-router-dom   react-chartjs-2 chart.js
 
     npm install pg
     npm install tailwind
@@ -103,10 +103,6 @@ Cette section est pour installer les dependances dans le projet lui-meme
     npm install react-chartjs-2
     npm install chart.js
     npm install @vitejs/plugin-react
-   ```
-3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
    ```
 
 <p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
@@ -129,6 +125,8 @@ Cette section est pour installer les dependances dans le projet lui-meme
 - ajouter/modifier/retirer des evenements dans son calandrier
 - planifier son bugdet avec une projection du futur
 - Ajouter des pages
+- voir ses contacts 
+- voir ses contacts suggerer et les ajouter dans ses contatcs
 
 
 
@@ -200,24 +198,3 @@ Project Link: [https://github.com/jslongtin/PlanMe](https://github.com/jslongtin
 
 
 
-<p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-<!-- [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
-![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) 
-![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) 
-![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) 
-![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white) 
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) 
-![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
- ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
- ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white) -->

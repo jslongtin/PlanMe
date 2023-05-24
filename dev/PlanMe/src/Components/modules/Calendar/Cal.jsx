@@ -1,6 +1,6 @@
 /***************************************************** 
   Fichier: Cal.jsx
-  Contexte: 
+  Contexte: Module specifique de calendrier qui possede un scheduler
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 import React, { Component } from "react";

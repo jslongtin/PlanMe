@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: Home.jsx
+  Contexte: Page d'acceuille lien vers login et register
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 import React, { useState } from "react";

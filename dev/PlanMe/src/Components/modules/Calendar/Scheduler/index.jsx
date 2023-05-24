@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: index.jsx
+  Contexte: Importation de Scheduler
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 import Scheduler from "./Scheduler";

@@ -1,6 +1,6 @@
 /***************************************************** 
     Fichier: Register.jsx
-    Contexte: Création d'un utilisateur avec la base de données
+    Contexte: Création d'un utilisateur avec la base de données et fromulaire de création de compte
     Auteurs: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 import React, { useState } from "react";

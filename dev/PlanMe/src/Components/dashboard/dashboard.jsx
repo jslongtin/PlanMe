@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: dashboard.jsx
+  Contexte: conteneur de la navbar et de la page
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 import React, { useState } from "react";

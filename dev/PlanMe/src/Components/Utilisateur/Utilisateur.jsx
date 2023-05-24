@@ -1,3 +1,8 @@
+/***************************************************** 
+  Fichier: Utilisateur.jsx
+  Contexte: Contenu et affichage du profil de l'utilisateur
+  Auteur: Jessika Longtin et Finnegan Simpson
+ *****************************************************/
 import React, { useState, useEffect } from "react";
 import "./utilisateur.css";
 import { useHistory } from "react-router-dom";

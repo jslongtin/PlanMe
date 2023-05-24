@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: Login.jsx
+  Contexte: Connexion de l'utilisateur avec l'interface eet l'api
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 import React, { useState } from "react";

@@ -1,6 +1,6 @@
 /***************************************************** 
   Fichier: Budget.jsx
-  Contexte: 
+  Contexte: Module spécifique de budget
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 // refs :algorithme -> chat gpt | Chart.js -> https://www.youtube.com/watch?v=Ly-9VTXJlnA
