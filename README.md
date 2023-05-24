@@ -94,7 +94,8 @@ Cette section est pour installer les dependances dans le projet lui-meme
    ```sh
     on liner:
     npm install pg express tailwind styled-components react-router-dom   react-chartjs-2 chart.js
-
+    npm install bycriptjs react-chartjs
+    npm install bycript
     npm install pg
     npm install tailwind
     npm install express --save

@@ -3,7 +3,7 @@
   Contexte: api contenant tous les appels a la base de donnees pour le backend de l'application
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
-// code taken / inspired from https://www.youtube.com/watch?v=7nafaH9SddU
+// code taken / ref from https://www.youtube.com/watch?v=7nafaH9SddU
 const express = require("express");
 const bodyParser = require("body-parser");
 const { genSalt, hash, compare } = require("bcrypt");

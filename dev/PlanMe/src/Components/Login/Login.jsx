@@ -98,7 +98,7 @@ function Login() {
               onClick={register}
               className="text-gray-500 font-semibold hover:text-green-700 focus:outline-none "
             >
-              Don't have an account? Register
+              Don't have an account? - Register
             </button>
           </div>
         </div>

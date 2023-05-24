@@ -123,7 +123,7 @@ export default function Register() {
               onClick={login}
               className="text-gray-600 font-semibold hover:text-gray-800 focus:outline-none"
             >
-              Already have an account? Login
+              Already have an account? - Login
             </button>
           </div>
         </div>
