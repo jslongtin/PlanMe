@@ -1,3 +1,9 @@
+/***************************************************** 
+  Fichier: addMod.jsx
+  Contexte: boutons d'ajout et de modification de modules
+  *Non utilisé
+  Auteur:  Jessika Longtin et Finnegan Simpson 
+ *****************************************************/
 import React from 'react'
 import './addMod.css'
 

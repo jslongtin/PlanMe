@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: api.cjs
-  Contexte: api contenant tous les appels a la base de donnees pour le backend de l'application
+  Fichier: index.css
+  Contexte: styles globaux de l'application
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 @import "tailwindcss/base";

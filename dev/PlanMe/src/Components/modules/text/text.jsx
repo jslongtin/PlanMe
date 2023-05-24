@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: text.jsx
+  Contexte: Module spécifique de notes textuel 
   Auteur:  Jessika Longtin et Finnegan Simpson 
  *****************************************************/
 import React from "react";

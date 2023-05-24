@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: main.jsx
+  Contexte: Application principale
   Auteur: Jessika Longtin et Finnegan Simpson
  *****************************************************/
 import React from "react";

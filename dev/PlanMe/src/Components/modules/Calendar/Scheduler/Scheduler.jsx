@@ -1,6 +1,6 @@
 /***************************************************** 
-  Fichier: .jsx
-  Contexte: 
+  Fichier: Scheduler.jsx
+  Contexte: Librairie de calendrier externe
   Auteur: Finnegan Simpson et Jessika Longtin
  *****************************************************/
 // ref : https://github.com/DHTMLX
