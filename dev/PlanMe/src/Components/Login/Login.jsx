@@ -65,10 +65,10 @@ function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="block w-full p-3 rounded-lg bg-white border border-green-50 focus:outline-none focus:border-green-400"
+                className="block w-full p-3 rounded-lg bg-white text-black border border-green-50 focus:outline-none focus:border-green-400"
               />
             </div>
-            <div className="mb-5">
+            <div className="mb-5 text-black">
               <label
                 htmlFor="password"
                 className="block mb-2 text-sm font-bold text-green-500 "

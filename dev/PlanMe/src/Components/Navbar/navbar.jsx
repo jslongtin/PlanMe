@@ -100,18 +100,27 @@ export default function Navbar({ setActivePage }) {
       <div id="menuTopSection">
         <div id="uiUser">
           <PhotoDeProfil />
-          <div id="navBarUsername">{username}'s PlanMe</div>
+          <div
+            className="text-green-800 pl-10 text-xl font-bold "
+            id="navBarUsername"
+          >
+            {username}'s PlanMe
+          </div>
         </div>
 
         <div className="search w-50 h-50 relative z-0">
           <Search />
         </div>
 
-        <button onClick={() => logout()}>Logout</button>
+        <button className=" text-black" onClick={() => logout()}>
+          Logout
+        </button>
       </div>
 
       <div id="menuPages">
-        <button onClick={() => setNewPageForm(true)}>New Page</button>
+        <button className="text-black" onClick={() => setNewPageForm(true)}>
+          New Page
+        </button>
         <ul id="pageList">
           {pages.map((page) => (
             <li key={page.id}>
