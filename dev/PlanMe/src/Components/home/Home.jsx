@@ -6,6 +6,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import greeenLeafImage from "../../assets/images/greeen_leaf.png";
+import budget from "../../assets/images/budget.png";
+import note from "../../assets/images/note.png";
+import profile from "../../assets/images/user_profile.png";
+import cal_day from "../../assets/images/cal_day.png";
+import cal_week from "../../assets/images/cal_week.png";
+import cal_month from "../../assets/images/cal_month.png";
 
 function Home() {
   const history = useHistory();
@@ -40,6 +46,21 @@ function Home() {
             src={greeenLeafImage}
             alt="home image"
             className="mx-auto w-48 h-48"
+          />
+          <img
+            src={cal_day}
+            alt="home image"
+            className="mx-auto"
+          />
+          <img
+            src={budget}
+            alt="home image"
+            className="mx-auto"
+          />
+          <img
+            src={note}
+            alt="home image"
+            className="mx-auto "
           />
           <div className="text-center mt-5"></div>
           <div className="text-center mt-5"></div>
