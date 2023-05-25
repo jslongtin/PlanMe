@@ -12,7 +12,9 @@ class Sommet extends React.Component {
       adjacent: new Map(),
     };
   }
-
+  equals = (otherSommet) => {
+    return this.props.id === otherSommet.props.id;
+  };
   addNeighbor = (neighbor, weight = 0) => {
     const { adjacent } = this.state;
     adjacent.set(neighbor, weight);
@@ -197,13 +199,18 @@ class Graph extends React.Component {
   
     // Find the suggested contacts based on the shortest paths, limited by the provided limit
     sommets.forEach((sommet) => {
-      if (sommet !== startSommet && !startSommet.getConnections().includes(sommet)) {
+      if (sommet !== startSommet) {
         let path = this.findPathWithDijkstra(startSommet, sommet);
-        if (path && path.length > 0) {
-          let weight = shortestPaths.get(sommet);
-          suggestedContacts.push({ sommet, path, weight });
-        }
-      }
+        if (path && path.length > 1) {
+          console.log(startSommet.getConnections());
+          startSommet.getConnections().forEach((neighbor) => {
+            if (!neighbor.equals(sommet) ) {
+             
+              let weight = shortestPaths.get(sommet);
+              suggestedContacts.push({ sommet, path, weight });
+          
+            } 
+      } );}}
     });
     suggestedContacts.sort((a, b) => a.weight - b.weight);
 
@@ -217,7 +224,7 @@ class Graph extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.loadBd}>Loadbd</button>
+        {/* <button onClick={this.loadBd}>Loadbd</button> */}
       </div>
     );
   }

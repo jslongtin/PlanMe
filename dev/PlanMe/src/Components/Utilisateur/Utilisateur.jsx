@@ -24,20 +24,20 @@ export default function Utilisateur() {
   useEffect(() => {
     const loadGraphData = async () => {
       const graph = new Graph();
-      await graph.loadBd(); 
-      setIsLoaded(true);    
+      await graph.loadBd();
+      setIsLoaded(true);
     };
     loadGraphData();
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
- 
+
   const back = () => {
     history.push("/dashboard");
   };
-  const addContact= async (contacts) => {
-    console.log(contacts,sessEmail);
+  const addContact = async (contacts) => {
+    console.log(contacts, sessEmail);
     const response = await fetch("http://127.0.0.1:3001/api/addContact", {
       method: "POST",
       headers: {
@@ -52,7 +52,7 @@ export default function Utilisateur() {
       alert("Error in inserting contact");
     }
   };
-  const getContact= async (e) => {
+  const getContact = async (e) => {
     const response = await fetch("http://127.0.0.1:3001/api/getUserContacts", {
       method: "POST",
       headers: {
@@ -75,7 +75,7 @@ export default function Utilisateur() {
   };
   return isLoaded ? (
     <div id="profileContainer">
-       <ComponentWrapper component={Graph}setSuggestedContacts={setSuggestedContacts} />
+      <ComponentWrapper component={Graph} setSuggestedContacts={setSuggestedContacts} />
       <form onSubmit={handleSubmit}>
         <h1>{sessName}'s Profile</h1>
         <label>
@@ -110,12 +110,12 @@ export default function Utilisateur() {
         <label>
           Suggested Contacts:
           <div>
-  {suggestedContacts && suggestedContacts.length > 0 && (
-    suggestedContacts.map((contact) => (
-      <button key={contact} onClick={() => addContact(contact)}>{contact}</button>
-    ))
-  )}
-</div> 
+            {suggestedContacts && suggestedContacts.length > 0 && (
+              suggestedContacts.map((contact) => (
+                <button key={contact} onClick={() => addContact(contact)}>{contact}</button>
+              ))
+            )}
+          </div>
         </label>
         <br />
         <label>
@@ -131,31 +131,31 @@ export default function Utilisateur() {
         <button onClick={back}>Retour</button>
       </form>
     </div>)
-     : (
+    : (
       <div>Loading...</div>
-    
-  );
+
+    );
 }
 
-const ComponentWrapper = ({ component: Component, setSuggestedContacts  }) => {
+const ComponentWrapper = ({ component: Component, setSuggestedContacts }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     const sessEmail = sessionStorage.getItem("email");
 
     // attant que graph soit monté pour faire les suggestions de contacts
-    if (Component ) {
+    if (Component) {
       const graph = new Component();
       graph.loadBd().then(() => {
         const suggs = graph.suggestContacts(sessEmail, 2);
         let suggsContacts = [];
-        suggs.forEach((element) => {  
+        suggs.forEach((element) => {
           suggsContacts.push(element.sommet.props.id);
-         
+
         });
-       
+
         setSuggestedContacts(suggsContacts);
-        setIsMounted(true); 
+        setIsMounted(true);
       });
     }
   }, [Component]);

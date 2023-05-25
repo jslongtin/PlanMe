@@ -28,7 +28,7 @@ const pool = new Pool({
   // await pool.query("DROP TABLE IF EXISTS liste");
   // await pool.query("DROP TABLE IF EXISTS module");
   // await pool.query("DROP TABLE IF EXISTS page");
-  // await pool.query("DROP TABLE IF EXISTS contact");
+  await pool.query("DROP TABLE IF EXISTS contact");
   // await pool.query("DROP TABLE IF EXISTS utilisateurs");
   // await pool.query("DROP TABLE IF EXISTS themes");
   // await pool.query("DROP TABLE IF EXISTS calendriers");
@@ -108,6 +108,10 @@ const pool = new Pool({
     FOREIGN KEY (contact) REFERENCES utilisateurs (email)
   )
   `);
+  await pool.query(`
+  CREATE UNIQUE INDEX IF NOT EXISTS unique_email_contact
+  ON contact (utilisateur_email, contact)
+`);
   //   await pool.query(`
   //   ALTER TABLE contact
   //   ADD CONSTRAINT unique_email_contact UNIQUE (utilisateur_email, contact)
@@ -150,6 +154,10 @@ const pool = new Pool({
     VALUES ('ato@ato.com','Jess@hotmail.com') ON CONFLICT DO NOTHING`
   );
 
+  await pool.query(
+    `INSERT INTO contact (utilisateur_email,contact) 
+  VALUES ('jinx@monsoon.com','sugar@sugar.com') ON CONFLICT DO NOTHING`
+  );
   await pool.query(
     `INSERT INTO contact (utilisateur_email,contact) 
   VALUES ('ato@ato.com','sugar@sugar.com') ON CONFLICT DO NOTHING`
