@@ -12,7 +12,7 @@ import profile from "../../assets/images/user_profile.png";
 import cal_day from "../../assets/images/cal_day.png";
 import cal_week from "../../assets/images/cal_week.png";
 import cal_month from "../../assets/images/cal_month.png";
-
+import user from "../../assets/images/user.png";
 function Home() {
   const history = useHistory();
   const btnLogin = () => {
@@ -58,7 +58,7 @@ function Home() {
             className="mx-auto"
           />
           <img
-            src={note}
+            src={user}
             alt="home image"
             className="mx-auto "
           />
