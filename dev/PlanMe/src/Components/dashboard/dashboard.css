@@ -10,12 +10,10 @@
     height: 100vh;
 }
 
-#navBarContainer {
-    /* align-self: flex-start; */
+#navBarContainer { 
     left: 0;
     width: 20%;
     height: 100%;
-    /* background-color: aquamarine; */
 }
 
 #pageContainer {

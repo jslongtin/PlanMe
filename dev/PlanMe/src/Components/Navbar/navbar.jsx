@@ -3,14 +3,13 @@
   Contexte: bare laterale de navigation contenant ses pages , deconnexion et modification profile
   Auteurs: Jessika Longtin et Finnegan Simpson
  *****************************************************/
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./navbar.css";
 import PhotoDeProfil from "../photoDeProfil/photoDeProfil";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Search from "../search/search";
-// import pageProfile from "../Utilisateur/UtilisateurTailwaind";
 import { useHistory } from "react-router-dom";
-// import Page from "../Pages/page";
+
 
 export default function Navbar({ setActivePage }) {
   const [pages, setPages] = useState([]);
@@ -20,27 +19,7 @@ export default function Navbar({ setActivePage }) {
   const username = sessionStorage.getItem("username");
   const email = sessionStorage.getItem("email");
 
-  // useEffect(() => {
-  //   const fetchPages = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `http://127.0.0.1:3001/api/getPages?email=${email}`
-  //       );
-  //       if (response.ok) {
-  //         const pages = await response.json();
-  //         setPages(pages);
-  //       } else {
-  //         console.error(
-  //           `Failed to fetch pages. Response status: ${response.status}`
-  //         );
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to fetch pages:", error);
-  //     }
-  //   };
-
-  //   fetchPages();
-  // }, []); // Empty dependency array, so this runs once on mount
+  
 
   let handleNewPage = async (e) => {
     e.preventDefault();
@@ -63,7 +42,7 @@ export default function Navbar({ setActivePage }) {
       console.log("Response body:", response.body);
 
       if (response.ok) {
-        const jsonResponse = await response.json(); // Convert response body to JSON
+        const jsonResponse = await response.json(); 
         console.log("Response body:", jsonResponse);
         const { id } = jsonResponse;
 

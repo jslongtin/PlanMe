@@ -11,17 +11,11 @@
         background-color: aliceblue;
         color: black;
         min-height: 100px;
-        /* overflow: aut
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        word-break: break-word;
-        hyphens: auto; */
-        /* resize: vertical; */
+        
     }
     .titre{
         position: relative;
         color: #000;
-        /* background-color: aliceblue; */
         overflow: auto;
         overflow-wrap: break-word;
         word-wrap: break-word; 

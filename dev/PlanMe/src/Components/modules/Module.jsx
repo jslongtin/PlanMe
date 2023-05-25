@@ -14,8 +14,6 @@ function Module(props) {
         let moduleMap = {
             note: ModTexte
         };
-
-        //TODO faire du checking so ont passe la bonne chose
         let NewModule = moduleMap[moduleType]
         return <NewModule />
     }

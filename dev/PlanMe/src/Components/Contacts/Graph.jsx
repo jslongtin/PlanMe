@@ -61,7 +61,6 @@ class Graph extends React.Component {
   }
 
   loadBd = async (e) => {
-    // e.preventDefault();
     const response = await fetch("http://127.0.0.1:3001/api/getContacts", {
       method: "POST",
       headers: {
@@ -70,7 +69,6 @@ class Graph extends React.Component {
     });
     if (response.ok) {
       const data = await response.json();
-      // console.log(data);
 
       data.forEach((element) => {
         let s1 = this.addSommet(element.contact);
@@ -78,9 +76,7 @@ class Graph extends React.Component {
         this.addArete(s1, s2, 1);
       });
       let user = sessionStorage.getItem("email");
-      // user = this.getSommet(user);
-      // let suggs = this.suggestContacts(user,3);
-      // console.log(suggs);
+     
     } else {
       alert("Request failed");
     }

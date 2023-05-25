@@ -24,25 +24,19 @@ export default function Utilisateur() {
   useEffect(() => {
     const loadGraphData = async () => {
       const graph = new Graph();
-      await graph.loadBd(); // Wait for the loadBd function to complete
-
-      // Perform any additional operations with the loaded data
-
-      setIsLoaded(true); // Set the isLoaded state to true after loading the data
+      await graph.loadBd(); 
+      setIsLoaded(true);    
     };
-
     loadGraphData();
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: handle form submission to update profile
   };
  
   const back = () => {
     history.push("/dashboard");
   };
   const addContact= async (contacts) => {
-    // e.preventDefault();
     console.log(contacts,sessEmail);
     const response = await fetch("http://127.0.0.1:3001/api/addContact", {
       method: "POST",
@@ -52,7 +46,6 @@ export default function Utilisateur() {
       body: JSON.stringify({ sessEmail, contacts }),
     });
     if (response.ok) {
-      // const data = await response.json();
       console.log("Contact added");
       getContact();
     } else {
@@ -116,10 +109,6 @@ export default function Utilisateur() {
         <br />
         <label>
           Suggested Contacts:
-          {/* <textarea
-            value={suggestedContacts}
-            onChange={(e) => setSuggestedContacts(e.target.value)}
-          /> */}
           <div>
   {suggestedContacts && suggestedContacts.length > 0 && (
     suggestedContacts.map((contact) => (
@@ -154,7 +143,7 @@ const ComponentWrapper = ({ component: Component, setSuggestedContacts  }) => {
   useEffect(() => {
     const sessEmail = sessionStorage.getItem("email");
 
-    // Call the function of the passed component on mounting
+    // attant que graph soit monté pour faire les suggestions de contacts
     if (Component ) {
       const graph = new Component();
       graph.loadBd().then(() => {
@@ -162,12 +151,11 @@ const ComponentWrapper = ({ component: Component, setSuggestedContacts  }) => {
         let suggsContacts = [];
         suggs.forEach((element) => {  
           suggsContacts.push(element.sommet.props.id);
-          // console.log(element.sommet.props.id);
+         
         });
-        // console.log(suggsContacts);
-        // sessionStorage.setItem("suggestedContacts", JSON.stringify(suggsContacts));
+       
         setSuggestedContacts(suggsContacts);
-        setIsMounted(true); // Set the mounting status to true after loading and suggesting contacts
+        setIsMounted(true); 
       });
     }
   }, [Component]);

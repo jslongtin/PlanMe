@@ -21,7 +21,7 @@ export default function Page() {
     setShowModule(false);
   };
 
-  // TODO finir la fonction addModule avec l'api
+  
   let addModule = async (e) => {
     let pageCourante = sessionStorage.getItem("activePage");
     // e.preventDefault();
