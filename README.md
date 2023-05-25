@@ -75,10 +75,9 @@ Cette section indique comment installer les outils nécessaire et comment se ser
 
 ### Prerequisites
 Liste des outils à installer 
-
+-  [Visual studio Code](https://code.visualstudio.com/download)
 -  [Node.js](https://nodejs.org/en/download)
 -  [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- npm install : dans le terminal  
 
 
 ### Installation
@@ -89,8 +88,11 @@ Cette section est pour installer les dependances dans le projet lui-meme
    ```sh
    git clone https://github.com/jslongtin/PlanMe.git
    ```
-   <!-- TODO finir la liste -->
-2. Install NPM packages
+   
+2.  Installer npm 
+  -  cd dev/PlanMe
+  - npm install
+3. Install NPM packages
    ```sh
     on liner:
     npm install pg express tailwind styled-components react-router-dom   react-chartjs-2 chart.js
@@ -112,7 +114,6 @@ Cette section est pour installer les dependances dans le projet lui-meme
 
 <!-- USAGE EXAMPLES -->
 ## Utilisation
-<!--TODO mettre des screenshot -->
 ### Étapes
 1. cd dev/PlanMe
 2. ouvrir docker desktop
@@ -128,8 +129,6 @@ Cette section est pour installer les dependances dans le projet lui-meme
 - Ajouter des pages
 - voir ses contacts 
 - voir ses contacts suggerer et les ajouter dans ses contatcs
-
-
 
 <p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
 
@@ -176,7 +175,7 @@ Cette section est pour installer les dependances dans le projet lui-meme
   * https://www.makeuseof.com/nodejs-bcrypt-hash-verify-salt-password/
   * https://www.tabnine.com/code/javascript/functions/crypto/randomBytes
   * https://www.youtube.com/watch?v=7nafaH9SddU
-* [BD]
+* [BD](dev\PlanMe\src\DAO\API\createBD.cjs)
   * https://stackoverflow.com/questions/3327312/how-to-drop-all-tables-in-postgresql
   * https://chat.openai.com/
   * https://www.tutorialsteacher.com/postgresql/upsert
