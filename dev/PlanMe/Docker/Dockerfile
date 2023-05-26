@@ -1,3 +1,8 @@
+# /***************************************************** 
+#   Fichier: Dockerfile
+#   Contexte: settings pour docker
+#   Auteur:  Jessika Longtin et Finnegan Simpson 
+#  *****************************************************/
 FROM node:14-alpine
 
 # Install PostgreSQL client

@@ -1,3 +1,8 @@
+# /***************************************************** 
+#   Fichier: docker-compose.yml
+#   Contexte: settings de docker-compose pour le projet PlanMe
+#   Auteur:  Jessika Longtin et Finnegan Simpson 
+#  *****************************************************/
 version: '3'
 
 services:
