@@ -92,10 +92,8 @@ Cette section est pour installer les dependances dans le projet lui-meme
 2.  Installer npm 
   -  cd dev/PlanMe
   - npm install
-3. Install NPM packages
+3. commandes pour intsall individuels, PAS NECESSAIRE SI NPM INSTALL FONCTIONNE
    ```sh
-    on liner:
-    npm install pg express tailwind styled-components react-router-dom   react-chartjs-2 chart.js
     npm install bycriptjs react-chartjs
     npm install bycript
     npm install pg

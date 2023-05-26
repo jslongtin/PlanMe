@@ -1,6 +1,6 @@
 /***************************************************** 
   Fichier: Graph.jsx
-  Contexte: Structure de données graph et algorithme de suggestion de contacts
+  Contexte: Structure de données graph fait par nous et algorithme de suggestion de contacts
   Auteur:  Jessika Longtin et Finnegan Simpson 
  *****************************************************/
 import React, { useState } from 'react';
@@ -32,11 +32,10 @@ class Sommet extends React.Component {
     this.setState({ adjacent: new Map(adjacent) });
   };
 
-  getConnections= () => {
+  getConnections = () => {
     const { adjacent } = this.state;
     return Array.from(adjacent.keys());
   };
-
 
   getWeight = (neighbor) => {
     const { adjacent } = this.state;
@@ -78,7 +77,7 @@ class Graph extends React.Component {
         this.addArete(s1, s2, 1);
       });
       let user = sessionStorage.getItem("email");
-     
+
     } else {
       alert("Request failed");
     }
@@ -86,7 +85,7 @@ class Graph extends React.Component {
 
   addSommet = (id) => {
     const { sommets, numsommets } = this.state;
-    let newSommet = new Sommet({ id }); 
+    let newSommet = new Sommet({ id });
     sommets.set(id, newSommet);
     this.setState({
       sommets: new Map(sommets),
@@ -102,13 +101,13 @@ class Graph extends React.Component {
     }
     return null;
   };
-  
+
   getsommets = () => {
     const { sommets } = this.state;
     return Array.from(sommets.keys());
   };
 
-  removeSommet = (id) => { 
+  removeSommet = (id) => {
     const { sommets, numsommets } = this.state;
     sommets.delete(id);
     this.setState({ sommets: new Map(sommets), numsommets: numsommets - 1 });
@@ -122,9 +121,7 @@ class Graph extends React.Component {
     if (!sommets.has(sommetTo.props.id)) {
       this.addSommet(sommetTo);
     }
-    
     sommetDe.addNeighbor(sommetTo, weight);
-    // console.log(sommetDe);
     this.setState({ sommets: new Map(sommets) });
   };
 
@@ -143,11 +140,11 @@ class Graph extends React.Component {
       this.setState({ sommets: new Map(sommets) });
     }
   };
+
+  // ********************************************************************************************************************
   // Algorythme de Dijkstra pour trouver le plus court chemin entre deux sommets avec le poids des aretes
   // vus dans notre cours de mathématiques
-  // ref: https://chat.openai.com/ Pour debuggage et amélioration de l'algorythme
-  // ref: copilot Pour debuggage 
-  
+  // ref: https://chat.openai.com/  Pour debuggage et amélioration de l'algorythme
   findPathWithDijkstra = (startNode, endNode) => {
     const { sommets } = this.state;
     const visitedNodesInOrder = [];
@@ -179,13 +176,13 @@ class Graph extends React.Component {
     }
     return visitedNodesInOrder;
   };
-  
+
   suggestContacts = (id, limit = Infinity) => {
     let { sommets } = this.state;
     let suggestedContacts = [];
     let startSommet = this.getSommet(id);
-   
-    // Find the shortest paths from the startNode to all other nodes
+
+    // trouve le plus court chemin entre le sommet de départ et tous les autres sommets
     let shortestPaths = new Map();
     sommets.forEach((sommet) => {
       sommet.distance = Infinity;
@@ -196,35 +193,31 @@ class Graph extends React.Component {
     visitedNodesInOrder.forEach((node) => {
       shortestPaths.set(node, node.distance);
     });
-  
-    // Find the suggested contacts based on the shortest paths, limited by the provided limit
+
+    // trouve les suggestions de contacts selon le plus court chemin 
+    // et le poids des aretes en limiant le nombre de suggestions
     sommets.forEach((sommet) => {
       if (sommet !== startSommet) {
         let path = this.findPathWithDijkstra(startSommet, sommet);
         if (path && path.length > 1) {
-          console.log(startSommet.getConnections());
           startSommet.getConnections().forEach((neighbor) => {
-            if (!neighbor.equals(sommet) ) {
-             
+            if (!neighbor.equals(sommet)) {
               let weight = shortestPaths.get(sommet);
               suggestedContacts.push({ sommet, path, weight });
-          
-            } 
-      } );}}
+            }
+          });
+        }
+      }
     });
     suggestedContacts.sort((a, b) => a.weight - b.weight);
 
-    // Limit the number of suggested contacts by the provided limit
     let limitedContacts = suggestedContacts.slice(0, limit);
     return limitedContacts;
   };
-  
-
 
   render() {
     return (
       <div>
-        {/* <button onClick={this.loadBd}>Loadbd</button> */}
       </div>
     );
   }
