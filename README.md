@@ -22,11 +22,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -35,7 +31,7 @@
 <!-- ABOUT THE PROJECT -->
 ## A propos du projet
 
-![imagecal](dev\PlanMe\src\assets\images\cal_month.png)
+![imagecal](dev\PlanMe\src\assets\images\dashboard.png)
 
 PlanMe est un outil d'organisation personnel inspiré de l'application Notion. Il se veux d'etre un site web qui regroupe plusieurs facon de s'organiser comme des notes traditionelles , calandrier ,budget avec projection et autres! Il y a aussi un algorythme de suggestionn de contatcs pour vous mettre en relation avec des utilisateur qui vous ressemble. Ce projet est un projet web monté avec React.js et Node.js. Il utilise aussi une base de donnée postgresql et est deployé avec docker.         
 
@@ -121,16 +117,19 @@ Cette section explique comment installer le projet sur votre machine locale et c
 3. npm run dev 
 
 - Se creer un compte utilisateur
+  -   ![imageRegister](dev\PlanMe\src\assets\images\register.png)
 - modifier son compte utilisateur 
 - avoir son contenu organiser par page
 - Prendre des notes classique avec du gras/sousligné/italique avec un titre
+  - ![imageNote](dev\PlanMe\src\assets\images\note.png)
 - avoir un calandrier avec son horaire
-- ![imagecal](dev\PlanMe\src\assets\images\cal_week.png)
+  - ![imagecal](dev\PlanMe\src\assets\images\cal_week.png)
 - ajouter/modifier/retirer des evenements dans son calandrier
 - planifier son bugdet avec une projection du futur
 - Ajouter des pages
 - voir ses contacts 
 - voir ses contacts suggerer et les ajouter dans ses contatcs
+  - ![imageUser](dev\PlanMe\src\assets\images\user.PNG)`  
 
 <p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
 
