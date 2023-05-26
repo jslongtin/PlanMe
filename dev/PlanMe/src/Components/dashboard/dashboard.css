@@ -13,6 +13,7 @@
 #navBarContainer { 
     left: 0;
     width: 20%;
+    max-width: fit-content;;
     height: 100%;
 }
 

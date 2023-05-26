@@ -35,15 +35,16 @@
 <!-- ABOUT THE PROJECT -->
 ## A propos du projet
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![imagecal](dev\PlanMe\src\assets\images\cal_month.png)
 
-PlanMe est un outil d'organisation personnel inspiré de l'application Notion. Il se veux d''etre un site web qui regroupe plusieurs facon de s'organiser comme des notes traditionelles , calandrier et autres!
+PlanMe est un outil d'organisation personnel inspiré de l'application Notion. Il se veux d'etre un site web qui regroupe plusieurs facon de s'organiser comme des notes traditionelles , calandrier ,budget avec projection et autres! Il y a aussi un algorythme de suggestionn de contatcs pour vous mettre en relation avec des utilisateur qui vous ressemble. Ce projet est un projet web monté avec React.js et Node.js. Il utilise aussi une base de donnée postgresql et est deployé avec docker.         
+
 
 <p align="right">(<a href="#readme-top">retourner en haut</a>)</p>
 
 
 
-### Construit avec
+## Construit avec
 <!-- * [![React][React.js]][React-url] -->
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
@@ -73,8 +74,9 @@ PlanMe est un outil d'organisation personnel inspiré de l'application Notion. I
 
 Cette section indique comment installer les outils nécessaire et comment se servir de notre site puisqu'il n'est pas mis en ligne pour l'instant.
 
+
 ### Prerequisites
-Liste des outils à installer 
+Liste des outils à installer pour l'installation du projet
 -  [Visual studio Code](https://code.visualstudio.com/download)
 -  [Node.js](https://nodejs.org/en/download)
 -  [Docker Desktop](https://www.docker.com/products/docker-desktop/)
@@ -82,7 +84,7 @@ Liste des outils à installer
 
 ### Installation
 
-Cette section est pour installer les dependances dans le projet lui-meme 
+Cette section explique comment installer le projet sur votre machine locale et comment le faire fonctionner.
 
 1. Cloner le repo
    ```sh
@@ -92,7 +94,8 @@ Cette section est pour installer les dependances dans le projet lui-meme
 2.  Installer npm 
   -  cd dev/PlanMe
   - npm install
-3. commandes pour intsall individuels, PAS NECESSAIRE SI NPM INSTALL FONCTIONNE
+  ### PAS NECESSAIRE SI NPM INSTALL FONCTIONNE
+3. commandes pour intsall individuels(optionel)
    ```sh
     npm install bycriptjs react-chartjs
     npm install bycript
@@ -122,6 +125,7 @@ Cette section est pour installer les dependances dans le projet lui-meme
 - avoir son contenu organiser par page
 - Prendre des notes classique avec du gras/sousligné/italique avec un titre
 - avoir un calandrier avec son horaire
+- ![imagecal](dev\PlanMe\src\assets\images\cal_week.png)
 - ajouter/modifier/retirer des evenements dans son calandrier
 - planifier son bugdet avec une projection du futur
 - Ajouter des pages
@@ -182,6 +186,7 @@ Cette section est pour installer les dependances dans le projet lui-meme
 
 ### Autres
   * [Read-Me Template Pour ce Read-Me](https://github.com/othneildrew/Best-README-Template)
+  *  [Mardown](https://medium.com/markdown-monster-blog/getting-images-into-markdown-documents-and-weblog-posts-with-markdown-monster-9ec6f353d8ec)
   
 
 ## Contact
