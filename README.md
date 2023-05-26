@@ -93,6 +93,7 @@ Cette section explique comment installer le projet sur votre machine locale et c
   ### PAS NECESSAIRE SI NPM INSTALL FONCTIONNE
 3. commandes pour intsall individuels(optionel)
    ```sh
+    npm install nodemon
     npm install bycriptjs react-chartjs
     npm install bycript
     npm install pg
