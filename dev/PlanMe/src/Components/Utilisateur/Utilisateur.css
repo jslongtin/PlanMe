@@ -8,7 +8,24 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+
+   
 }
+#profileContainer>#form  {
+    display: flex;
+    flex-direction: column;
+    max-width: 90vw;
+    max-height: 90vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--secondaryColor);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-left: 80px;
+  }
+
 form {
     display: flex;
     flex-direction: column;
@@ -21,6 +38,7 @@ form {
     border-radius: 5px;
     background-color: var(--secondaryColor);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ 
   }
   
   label {

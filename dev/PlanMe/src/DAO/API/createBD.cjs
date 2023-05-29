@@ -21,14 +21,14 @@ const pool = new Pool({
 
 (async () => {
   let sel = await genSalt(10);
-  let hashedPasswordDefault = await hash("jess", sel);
+  let hashedPasswordDefault = await hash("Jess!2345", sel);
   // Drop tables if they exist
   // await pool.query("DROP TABLE IF EXISTS liens");
   // await pool.query("DROP TABLE IF EXISTS tableaux");
   // await pool.query("DROP TABLE IF EXISTS liste");
   // await pool.query("DROP TABLE IF EXISTS module");
   // await pool.query("DROP TABLE IF EXISTS page");
-  await pool.query("DROP TABLE IF EXISTS contact");
+  // await pool.query("DROP TABLE IF EXISTS contact");
   // await pool.query("DROP TABLE IF EXISTS utilisateurs");
   // await pool.query("DROP TABLE IF EXISTS themes");
   // await pool.query("DROP TABLE IF EXISTS calendriers");
@@ -244,17 +244,16 @@ const pool = new Pool({
     user_email VARCHAR(255) NOT NULL,
     echeance DATE,
     depenses FLOAT,
-    page_id INTEGER,
-    FOREIGN KEY (page_id) REFERENCES page (id)
+    page_id INTEGER
     )
     `);
-  // await pool.query(`
-  // INSERT INTO budget (budget, user_email, echeance, depenses, page_id)
-  // VALUES
-  // (1000, 'ato@ato.com', '2023-01-01', 200, 1),
-  // (1000, 'ato@ato.com', '2023-02-01', 250, 1),
-  // (1000, 'ato@ato.com', '2023-03-01', 300, 1),
-  // (1000, 'ato@ato.com', '2023-04-01', 350, 1),
-  // (1000, 'ato@ato.com', '2023-05-01', 400, 1);
-  // `);
+  await pool.query(`
+  INSERT INTO budget (budget, user_email, echeance, depenses, page_id)
+  VALUES
+  (1000, 'ato@ato.com', '2023-01-01', 200, 1),
+  (1000, 'ato@ato.com', '2023-02-01', 400, 1),
+  (1000, 'ato@ato.com', '2023-03-01', 300, 1),
+  (1000, 'ato@ato.com', '2023-04-01', 350, 1),
+  (1000, 'ato@ato.com', '2023-05-01', 100, 1);
+  `);
 })();

@@ -76,7 +76,7 @@ export default function Utilisateur() {
   return isLoaded ? (
     <div id="profileContainer">
       <ComponentWrapper component={Graph} setSuggestedContacts={setSuggestedContacts} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="form">
         <h1>{sessName}'s Profile</h1>
         <label>
           Email:
