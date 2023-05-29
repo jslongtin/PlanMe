@@ -1,0 +1,2 @@
+Stuctures de données:
+- Un graph que nous avons concu : dev\PlanMe\src\Components\Contacts\Graph.jsx lignes 0 a 143
