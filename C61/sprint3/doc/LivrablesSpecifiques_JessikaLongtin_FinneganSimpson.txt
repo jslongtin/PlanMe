@@ -1,2 +1,42 @@
-Stuctures de données:
-- Un graph que nous avons concu : dev\PlanMe\src\Components\Contacts\Graph.jsx lignes 0 a 143
+
+Structures de données:
+Un graph que nous avons conçu : 
+	dev\PlanMe\src\Components\Contacts\Graph.jsx lignes 0 à 143
+un map javascript: 
+ 	dev\PlanMe\src\Components\Contacts\Graph.jsx lignes 12 et59
+
+Design pattern:
+Factory pour notre système de module: 
+	dev\PlanMe\src\Components\Pages\Page.jsx lignes 19 à 40
+	dev\PlanMe\src\Components\modules\Module.jsx lignes 12 à 27
+Composite pour notre structure de graph:
+	dev\PlanMe\src\Components\Contacts\Graph.jsx 
+Ont peut gérer le graph en entier comme chaque sommet:
+	classe sommet lignes 8 à 54
+	algorithmes graph complet :lignes 148 à 216
+Facade navbar:
+notre barre de navigation donne une interface simple pour nos autres classes complexe sous-jacentes comme nos page, lien vers profil utilisateur 
+	dev\PlanMe\src\Components\Navbar\navbar.jsx lignes 81,91,104 à 111 et 24 à 70
+
+
+Données intrants/extrants:
+
+Ont a une base de donnée postgresql héberger dans docker 
+voici les fichier de création de la base de donnée et l'api pour les requêtes:
+- dev\PlanMe\src\DAO\API\api.cjs
+- dev\PlanMe\src\DAO\API\create.cjs
+
+Fichiers de configuration de docker : 
+- dev\PlanMe\Docker\docker-compose.yml
+- dev\PlanMe\Docker\Dockerfile
+
+Math:
+
+	Algorithme de Dijkstra pour trouver le chemin le plus court entre deux utilisateurs avec le
+           poid des arrêts :  dev\PlanMe\src\Components\Contacts\Graph.jsx - lignes ( 148 à 177)
+
+Expressions régulières:
+	pour valider le mot de passe: 
+	"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^ws]).{8,}$"
+	(dev\PlanMe\src\Components\register\Register.jsx ligne - 37 )
+
